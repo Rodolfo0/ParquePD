@@ -9,7 +9,8 @@
         //public DbSet<Entidad> Entidades 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-
+            //DataContext
+            //Aquí van las entidades
         }
     }
 }
