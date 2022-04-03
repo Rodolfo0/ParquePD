@@ -1,6 +1,7 @@
 ﻿namespace ParqueProcesoDesarrollo.Web.Data.Entities
 {
     using Microsoft.AspNetCore.Identity;
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class User : IdentityUser
@@ -11,15 +12,39 @@
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio.")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
-        [Display(Name = "Apellidos")]
-        public string LastName { get; set; }
+        [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [Display(Name = "Apellido Paterno")]
+        public string ParentalSurname { get; set; }
 
-        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [Required(ErrorMessage = "{0} es obligatorio.")]
+        [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [Display(Name = "Apellido Materno")]
+        public string MaternalSurname { get; set; }
+
+        [MaxLength(15, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         [Display(Name = "Teléfono")]
         public override string PhoneNumber { get; set; }
 
+        [Required(ErrorMessage = "{0} es obligatorio.")]
+        [MaxLength(14, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [Display(Name = "RFC")]
+        public string RFC { get; set; }
+
+        [Required(ErrorMessage = "{0} es obligatorio.")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [Display(Name = "Email")]
+        public override string Email { get; set; }
+
+        [Required(ErrorMessage = "{0} es obligatorio.")]
+        [Display(Name = "Fecha de contratación")]
+        public DateTime DateOfHire { get; set; }
+
+        [Required(ErrorMessage = "{0} es obligatorio.")]
+        [MaxLength (4, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [Display(Name = "Salario ")]
+        public int Salary { get; set; }
+
         [Display(Name = "Nombre")]
-        public string FullName => $"{LastName} {FirstName}";
+        public string FullName => $"{ParentalSurname} {MaternalSurname} {FirstName}";
     }
 }

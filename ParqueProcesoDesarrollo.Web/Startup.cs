@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ParqueProcesoDesarrollo.Web.Data;
 using ParqueProcesoDesarrollo.Web.Data.Entities;
+using ParqueProcesoDesarrollo.Web.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,10 @@ namespace ParqueProcesoDesarrollo.Web
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddTransient<Seeder>();
+            services.AddScoped<IUserHelper, UserHelper>();
+            //services.AddScoped<ICombosHelper, CombosHelper>();
+            //services.AddScoped<IImageHelper, ImageHelper>();
             services.AddControllersWithViews();
         }
 
