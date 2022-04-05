@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{919C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{DA7C2AF3-CF87-48A0-A9C1-8972E14EA70E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParqueProcesoDesarrollo.Web", "ParqueProcesoDesarrollo.Web\ParqueProcesoDesarrollo.Web.csproj", "{32186F92-3DA5-4DDC-AB7F-1F2B73817C0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParqueProcesoDesarrollo.Web", "ParqueProcesoDesarrollo.Web\ParqueProcesoDesarrollo.Web.csproj", "{32186F92-3DA5-4DDC-AB7F-1F2B73817C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,14 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (this.User.Identity.IsAuthenticated)
+{    <h1 class="display-4">Bienvenidos</h1>
+    
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">Bienvenidos</h1>
+        <p><a href="https://drive.google.com/drive/folders/1UtceU0pb4XVZshWRLKAIXb8OGYNjANdS?usp=sharing">Link a Carpeta de Drive</a>.</p>
+    </div>
+}

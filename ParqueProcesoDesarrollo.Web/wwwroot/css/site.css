@@ -76,11 +76,31 @@ body {
     background-color: #f2f2f2
 }
 
+.user-box {
+    background-color: lightgray;
+    display: inline;
+    position: absolute;
+    text-align: center;
+    height: 5%;
+    border-radius: 10px;
+    top: 1%;
+    left: 70%;
+    -webkit-transition: .1s;
+    -o-transition: .1s;
+    transition: .1s;
+}
+
 .title-page {
-    padding-left: 50px;
+    display: inline;
+    padding-left: 8%;
     padding-top: 12px;
-    padding-right: 50px;
+    padding-right: 50%;
     padding-bottom: 12px;
+}
+
+.subtitle-page {
+    display: inline;
+    font-size: 22px;
 }
 
 .floating-menu {
@@ -119,15 +139,11 @@ body {
         }
 
 .menu-bg {
-    background-image: -webkit-linear-gradient(top,#1C5E91 0,#167699 100%);
-    background-image: -o-linear-gradient(top,#1C5E91 0,#167699 100%);
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#1C5E91),to(#167699));
-    background-image: linear-gradient(to bottom,#1C5E91 0,#167699 100%);
-    background-repeat: repeat-x;
+    background-color: #253575;
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 50px;
+    border-radius: 20px;
     z-index: -1;
     top: 0;
     left: 0;

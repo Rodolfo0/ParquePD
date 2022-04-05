@@ -10,7 +10,7 @@ using ParqueProcesoDesarrollo.Web.Data;
 namespace ParqueProcesoDesarrollo.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220403055319_initial")]
+    [Migration("20220404063452_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
