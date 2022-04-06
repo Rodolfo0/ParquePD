@@ -4,52 +4,11 @@
 }
 
 @if (this.User.Identity.IsAuthenticated)
-{    <div class="col-md-4 offset-md-2">
-        <img src="">
-    </div>
-    <div class="col-md-4">
-        <h1>Bienvenido</h1>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.ImageUrl)
-            </dt>
-            <dd class="col-sm-10">
-                @*@if (!string.IsNullOrEmpty(Model.User.ImageUrl))
-                {
-                    <img src="@Url.Content(Model.User.ImageUrl)" style="width:300px; height:auto;" />
-                }*@
-                <img src="images/_default.png" style="width:300px; height:auto;" />
-            </dd>
-            <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.User.FullName)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.User.FullName)
-            </dd>
-            <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.Id)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.Id)
-            </dd>
-            <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.User.Email)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.User.Email)
-            </dd>
-            <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.User.HiringDate)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.User.HiringDate)
-            </dd>
-            <dt class="col-sm-4">
-            </dt>
-            <dd class="col-sm-6">
-            </dd>
-        </dl>
+{
+    <div class="text-center">
+        <h1 class="display-4">Bienvenido</h1>
+        <h2>@User.Identity.Name</h2>
+        <p><a href="https://drive.google.com/drive/folders/1UtceU0pb4XVZshWRLKAIXb8OGYNjANdS?usp=sharing">Link a Carpeta de Drive</a>.</p>
     </div>
 }
 else

@@ -17,6 +17,8 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         {
             if (this.User.Identity.IsAuthenticated)
                 return this.RedirectToAction("Index", "Home");
+                //TODO En cuanto se tenga el detalles de Empleado, redireccionar a esa el Login.
+                //return this.RedirectToAction("Details", "Employee");
             
             return View();
         }
