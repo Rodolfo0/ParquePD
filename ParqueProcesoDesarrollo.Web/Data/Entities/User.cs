@@ -37,12 +37,16 @@
 
         [Required(ErrorMessage = "{0} es obligatorio.")]
         [Display(Name = "Fecha de contratación")]
-        public DateTime DateOfHire { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime HiringDate { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio.")]
         [MaxLength (4, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         [Display(Name = "Salario ")]
         public int Salary { get; set; }
+
+        [Display(Name = "Foto del Usuario")]
+        public string ImageUrl { get; set; }
 
         [Display(Name = "Nombre")]
         public string FullName => $"{ParentalSurname} {MaternalSurname} {FirstName}";
