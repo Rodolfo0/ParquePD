@@ -9,26 +9,69 @@
     <div class="col-md-4">
         <dl class="row">
             <dt class="col-sm-6">
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.FirstName)
             </dt>
-
             <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.FullName)
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.ParentalSurname)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.ParentalSurname)
+            </dd>
+
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.MaternalSurname)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.MaternalSurname)
             </dd>
 
             <dt class="col-sm-6">
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </dt>
             <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.RFC)
+            </dt>
+            <dd class="col-sm-6">
                 @Html.DisplayFor(model => model.RFC)
+            </dd>
+
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Salary)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Salary)
+            </dd>
+
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.HiringDate)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.HiringDate)
+            </dd>
+
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Email)
             </dd>
 
             <dt class="col-sm-6">
                 @Html.DisplayNameFor(model => model.Role.Name)
             </dt>
             <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.Salary)
+                @Html.DisplayFor(model => model.Role.Name)
             </dd>
+
+
         </dl>
 
     </div>
@@ -37,5 +80,6 @@
 <div>
     <a asp-action="Index" class="button"><i class="bi bi-arrow-return-left"></i></a>
 </div>
+
 
 
