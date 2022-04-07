@@ -8,6 +8,7 @@
     public class DataContext : IdentityDbContext<User>
     {
         public DbSet<Provider> Providers { get; set; }
+        public override DbSet<User> Users { get; set; }
         public DbSet<ProviderContact> ProviderContacts { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Supplies> Supplies { get; set; }

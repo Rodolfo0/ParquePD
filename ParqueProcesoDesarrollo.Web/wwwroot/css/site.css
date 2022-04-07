@@ -98,11 +98,6 @@ body {
     padding-bottom: 12px;
 }
 
-.subtitle-page {
-    display: inline;
-    font-size: 22px;
-}
-
 .floating-menu {
     border-radius: 150px;
     z-index: 999;
@@ -115,6 +110,11 @@ body {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%)
+}
+
+.subtitle-page {
+    display: inline;
+    font-size: 22px;
 }
 
 .main-menu {
@@ -140,16 +140,17 @@ body {
 
 .menu-bg {
     background-color: #253575;
+    background-repeat: repeat-x;
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
     z-index: -1;
     top: 0;
     left: 0;
     -webkit-transition: .1s;
     -o-transition: .1s;
-    transition: .1s
+    transition: .1s;
+    border-radius: 20px;
 }
 
 .ripple {

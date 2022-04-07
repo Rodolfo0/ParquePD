@@ -45,7 +45,7 @@ namespace ParqueProcesoDesarrollo.Web
             });
             services.AddTransient<Seeder>();
             services.AddScoped<IUserHelper, UserHelper>();
-            //services.AddScoped<ICombosHelper, CombosHelper>();
+            services.AddScoped<ICombosHelper, CombosHelper>();
             //services.AddScoped<IImageHelper, ImageHelper>();
             services.AddControllersWithViews();
         }
@@ -63,7 +63,6 @@ namespace ParqueProcesoDesarrollo.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.Use(async (context, next) =>
             {
                 await next();

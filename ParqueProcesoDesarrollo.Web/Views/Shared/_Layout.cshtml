@@ -18,43 +18,48 @@
             <div class="user-box" style="width: 19%;">
                 <a style="padding-right: 15px;">@this.User.Identity.Name</a>
                 <a asp-area="" asp-controller="Account" asp-action="Logout">
-                    <i class="fa-solid fa-right-from-bracket fa-xl"><h3 class="subtitle-page">     Logout</h3></i>
+                <i class="fa-solid fa-right-from-bracket fa-xl"><h3 class="subtitle-page">     Logout</h3></i>
                 </a>
-             </div>
-        }
-        else
-        {
+            </div> 
+         }
+         else
+         {
             <div class="user-box" style="width: 7%;">
                 <a asp-area="" asp-controller="Account" asp-action="Login">
-                    <i class="fa-solid fa-right-to-bracket fa-xl"><h3 class="subtitle-page">     Login</h3></i>
+                <i class="fa-solid fa-right-to-bracket fa-xl"><h3 class="subtitle-page">     Login</h3></i>
                 </a>
             </div>
-        }
+         }
         <nav class="floating-menu">
             <ul class="main-menu">
                 <li>
                     <a class="ripple" asp-area="" asp-controller="Home" asp-action="Index">
-                        <i class="fa-solid fa-house fa-2xl"></i>
+                        <i class="fa-solid fa-house fa-2x"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="ripple" asp-area="" asp-controller="Users" asp-action="Index">
+                        <i class="fa-solid fa-user fa-2x"></i>
                     </a>
                 </li>
                 <li>
                     <a class="ripple" asp-area="" asp-controller="Home" asp-action="Privacy">
-                        <i class="fa-solid fa-user fa-2xl"></i>
+                        <i class="fa-solid fa-user fa-2x"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="ripple" >
-                        <i class="fa-solid fa-address-card fa-2xl"></i>
+                    <a class="ripple">
+                        <i class="fa-solid fa-address-card fa-2x"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="ripple" >
+                    <a class="ripple">
                         <i class="fa-solid fa-gears fa-2xl"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="ripple" >
-                        <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                    <a class="ripple">
+                        <i class="fa-solid fa-cart-shopping fa-2x"></i>
                     </a>
                 </li>
             </ul>

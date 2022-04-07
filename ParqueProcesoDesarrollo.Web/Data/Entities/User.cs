@@ -41,12 +41,13 @@
         public DateTime HiringDate { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio.")]
-        [MaxLength (4, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         [Display(Name = "Salario ")]
         public int Salary { get; set; }
 
         [Display(Name = "Foto del Usuario")]
         public string ImageUrl { get; set; }
+        [Display(Name = "Rol ")]
+        public IdentityRole Role { get; set; }
 
         [Display(Name = "Nombre")]
         public string FullName => $"{ParentalSurname} {MaternalSurname} {FirstName}";
