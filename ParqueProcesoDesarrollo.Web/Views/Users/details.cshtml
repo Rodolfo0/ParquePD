@@ -4,7 +4,7 @@
 }
 <h1>Detalles</h1>
 
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <dl class="row">
@@ -74,6 +74,14 @@
 
         </dl>
 
+    </div>
+    <div class="col-md-7 offset-md-1">
+        <div class="form-group">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Url.Content(Model.ImageUrl)" style="width:100%" />
+            }
+        </div>
     </div>
 </div>
 

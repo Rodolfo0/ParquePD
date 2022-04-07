@@ -18,12 +18,14 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         private readonly DataContext dataContext;
         private readonly IUserHelper userHelper;
         private readonly ICombosHelper combosHelper;
+        private readonly IImageHelper imageHelper;
 
-        public UsersController(DataContext context, IUserHelper userHelper, ICombosHelper combosHelper)
+        public UsersController(DataContext context, IUserHelper userHelper, ICombosHelper combosHelper, IImageHelper imageHelper)
         {
             this.userHelper = userHelper;
             this.combosHelper = combosHelper;
             dataContext = context;
+            this.imageHelper = imageHelper;
             
         }
 
@@ -46,6 +48,75 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             }
 
             return View(cUser);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await this.dataContext.Users
+                .Include(p => p.Role)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var model = new addUserViewModel
+            {
+                FirstName = user.FirstName,
+                ParentalSurname = user.ParentalSurname,
+                MaternalSurname = user.MaternalSurname,
+                PhoneNumber = user.PhoneNumber,
+                RFC = user.RFC,
+                Email = user.Email,
+                UserName = user.Email,
+                HiringDate = user.HiringDate,
+                Salary = user.Salary,
+                ImageUrl = user.ImageUrl,
+                idRole = user.Role.Id,
+                Role = user.Role,
+                roles = this.combosHelper.GetComboRoles()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(updateUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    FirstName = model.FirstName,
+                    ParentalSurname = model.ParentalSurname,
+                    MaternalSurname = model.MaternalSurname,
+                    PhoneNumber = model.PhoneNumber,
+                    RFC = model.RFC,
+                    Email = model.Email,
+                    UserName = model.Email,
+                    HiringDate = model.HiringDate,
+                    Salary = model.Salary,
+                    
+                    ImageUrl = (model.ImageFile != null ? await imageHelper.UploadImageAsync(
+                    model.ImageFile, model.FirstName, "users") : model.ImageUrl),
+                    Role = await this.dataContext.Roles.FindAsync(model.idRole)
+                };
+                var result = await userHelper.UpdateUserAsync(user);
+                //var result = await UserManager.UpdateAsync(user);
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("No se ha podido añadir el usuario");
+                }
+                await userHelper.AddUserToRoleAsync(user, user.Role.Name);
+                //await this.dataContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
         }
 
         public IActionResult Create()
@@ -76,6 +147,8 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                         UserName = model.Email,
                         HiringDate = model.HiringDate,
                         Salary = model.Salary,
+                        ImageUrl = (model.ImageFile != null ? await imageHelper.UploadImageAsync(
+                        model.ImageFile, model.FirstName, "users") : string.Empty),
                         Role = await this.dataContext.Roles.FindAsync(model.idRole)
                     };
                 }

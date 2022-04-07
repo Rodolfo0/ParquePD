@@ -1,26 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ParqueProcesoDesarrollo.Web.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParqueProcesoDesarrollo.Web.Models
 {
-    public class addUserViewModel: User
+    public class updateUserViewModel: User
     {
-        [Display(Name = "Contraseña")]
-        [Required(ErrorMessage = "El {0} es requerido.")]
-        public string Pass { get; set; }
-
         [Display(Name = "Rol")]
         [Required(ErrorMessage = "El {0} es requerido.")]
-        public string idRole{ get; set; }
+        public string idRole { get; set; }
 
         [Display(Name = "Imágen")]
         public IFormFile ImageFile { get; set; }
         public IEnumerable<SelectListItem> roles { get; set; }
-
     }
 }

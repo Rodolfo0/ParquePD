@@ -1,17 +1,17 @@
-﻿@model ParqueProcesoDesarrollo.Web.Models.addUserViewModel
-
+﻿@model ParqueProcesoDesarrollo.Web.Models.updateUserViewModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Editar";
 }
 
-<h1>Agregar usuario</h1>
-
-<h4>Ingresa los datos</h4>
+<h4>Ingresa los nuevos datos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ImageUrl" />
+
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
@@ -45,7 +45,7 @@
             <div class="form-group">
                 <label asp-for="idRole" class="control-label"></label>
                 <select asp-for="idRole" class="form-control" asp-items="Model.roles"></select>
-                <span asp-validation-for="idRole" class="text-danger"></span>
+                <span asp-validation-for="Role" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -54,22 +54,29 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Pass" class="control-label"></label>
-                <input asp-for="Pass" class="form-control" type="password" />
-                <span asp-validation-for="Pass" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="ImageFile" class="control-label"></label>
                 <input asp-for="ImageFile" class="form-control" type="file" />
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Agregar" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
+
         </form>
+    </div>
+    <div class="col-md-7 offset-md-1">
+        <div class="form-group">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Url.Content(Model.ImageUrl)" style="width:100%"/>
+            }
+        </div>
     </div>
 </div>
 
 <div>
     <a asp-action="Index" class="button"><i class="bi bi-arrow-return-left"></i></a>
 </div>
+
+

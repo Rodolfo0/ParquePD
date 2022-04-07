@@ -46,7 +46,7 @@ namespace ParqueProcesoDesarrollo.Web
             services.AddTransient<Seeder>();
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();
-            //services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IImageHelper, ImageHelper>();
             services.AddControllersWithViews();
         }
 
