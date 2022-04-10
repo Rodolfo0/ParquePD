@@ -13,6 +13,8 @@
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Supplies> Supplies { get; set; }
         public DbSet<Employee> Employees { get; set; }
+
+
         //public DbSet<Entidad> Entidades
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
