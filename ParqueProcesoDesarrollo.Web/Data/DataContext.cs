@@ -6,14 +6,17 @@
     using System.Linq;
 
     public class DataContext : IdentityDbContext<User>
-    {
-        public DbSet<Provider> Providers { get; set; }
-        public override DbSet<User> Users { get; set; }
+    {        
+        public DbSet<ConsumableWarehouse> ConsumableWarehouses { get; set; }
+        public DbSet<Employee> Employees { get; set; }  
+        public DbSet<Provider> Providers { get; set; }       
         public DbSet<ProviderContact> ProviderContacts { get; set; }
+        public DbSet<PurchaseDetail> PurchaseDetails { get; set; }
+        public DbSet<PurchaseHeader> PurchaseHeader { get; set; }
         public DbSet<Status> Statuses { get; set; }
-        public DbSet<Supplies> Supplies { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-
+        public DbSet<Supply> Supplies { get; set; }
+        public DbSet<TypeOfPayment> TypeOfPayments { get; set; }
+        public override DbSet<User> Users { get; set; }
 
         //public DbSet<Entidad> Entidades
         public DataContext(DbContextOptions<DataContext> options) : base(options)

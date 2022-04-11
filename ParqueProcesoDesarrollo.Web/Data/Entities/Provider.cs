@@ -33,5 +33,6 @@
         
         public Status Status { get; set; }
         public ICollection <ProviderContact> ProviderContacts { get; set; }
+        public ICollection <PurchaseHeader> PurchaseHeaders { get; set; }  
     }
 }

@@ -91,7 +91,7 @@
 
             if (!this.dataContext.Supplies.Any())
             {
-                await CheckSupplies(568892, 54.96, "Rollos de baño de 500 hojas dobles");
+                await CheckSupply(568892, 54.96, "Rollos de baño de 500 hojas dobles");
             }
         }
 
@@ -141,9 +141,9 @@
         }
 
         //64 minutos
-        public async Task CheckSupplies(int barcode, double unitPrice, string description)
+        public async Task CheckSupply(int barcode, double unitPrice, string description)
         {
-            this.dataContext.Supplies.Add(new Supplies
+            this.dataContext.Supplies.Add(new Supply
             {
                 Barcode = barcode,
                 UnitPrice = unitPrice,
