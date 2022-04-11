@@ -1,27 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ParqueProcesoDesarrollo.Web.Data;
-using ParqueProcesoDesarrollo.Web.Data.Entities;
+﻿
 
 namespace ParqueProcesoDesarrollo.Web.Controllers
 {
+    using ParqueProcesoDesarrollo.Web.Data;
+    using ParqueProcesoDesarrollo.Web.Data.Entities;
+    using ParqueProcesoDesarrollo.Web.Helpers;
+    using ParqueProcesoDesarrollo.Web.Models;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class ProvidersController : Controller
     {
         private readonly DataContext _context;
+        private readonly ICombosHelper combosHelper;
 
-        public ProvidersController(DataContext context)
+
+        public ProvidersController(DataContext context, ICombosHelper combosHelper)
         {
             _context = context;
+            this.combosHelper = combosHelper;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Providers.ToListAsync());
+            return View(await _context.Providers
+                .Include(p => p.Status)
+                .ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -43,22 +51,39 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var model = new ProviderViewModel
+            {
+                Statuses = this.combosHelper.GetComboStatus()
+            };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SocialReason,RFC,Address,Email,Phone")] Provider provider)
+        public async Task<IActionResult> Create(ProviderViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var provider = new Provider
+                {
+                    SocialReason = model.SocialReason,
+                    RFC = model.RFC,
+                    Address = model.Address,
+                    Email = model.Email,
+                    Phone = model.Phone,
+                    Status = await _context.Statuses.FindAsync(model.StatusId)
+                    //ProviderContacts = model.ProviderContacts
+
+                };
+
                 _context.Add(provider);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(provider);
-        } 
+            return View(model);
+        }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -66,44 +91,60 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return NotFound();
             }
 
-            var provider = await _context.Providers.FindAsync(id);
+            var provider = await _context.Providers
+                .Include(p => p.Status)
+
+                .FirstOrDefaultAsync(p => p.Id == id);
+
             if (provider == null)
             {
                 return NotFound();
             }
-            return View(provider);
+
+            var model = new ProviderViewModel
+            {
+                SocialReason = provider.SocialReason,
+                RFC = provider.RFC,
+                Address = provider.Address,
+                Email = provider.Email,
+                Phone = provider.Phone,
+                Status = provider.Status,
+                StatusId = provider.Status.Id,
+                Statuses = this.combosHelper.GetComboStatus(),
+
+                //
+                //ProviderContacts = provider2.ProviderContacts
+
+
+            };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SocialReason,RFC,Address,Email,Phone")] Provider provider)
+        public async Task<IActionResult> Edit(ProviderViewModel model)
         {
-            if (id != provider.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
+                var provider = new Provider
                 {
-                    _context.Update(provider);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProviderExists(provider.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                    Id = model.Id,
+                    SocialReason = model.SocialReason,
+                    RFC = model.RFC,
+                    Address = model.Address,
+                    Email = model.Email,
+                    Phone = model.Phone,
+                    Status = await _context.Statuses.FindAsync(model.StatusId)
+                    
+
+                };
+
+                _context.Update(provider);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(provider);
+
+            return View(model);
         }
 
         public async Task<IActionResult> Delete(int? id)

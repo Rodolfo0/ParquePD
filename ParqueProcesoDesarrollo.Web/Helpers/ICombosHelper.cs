@@ -6,5 +6,6 @@
     public interface ICombosHelper
     {
         public IEnumerable<SelectListItem> GetComboRoles();
+        public IEnumerable<SelectListItem> GetComboStatus();
     }
 }

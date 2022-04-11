@@ -31,5 +31,21 @@
             return list;
         }
 
+        public IEnumerable<SelectListItem> GetComboStatus()
+        {
+            var list = this.dataContext.Statuses.Select(b => new SelectListItem
+            {
+                Text = b.Name,
+                Value = $"{b.Id}"
+            }).ToList();
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona un Estado",
+                Value = "0"
+            });
+
+            return list;
+        }
+
     }
 }
