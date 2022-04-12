@@ -47,5 +47,22 @@
             return list;
         }
 
+        public IEnumerable<SelectListItem> GetComboProviders()
+        {
+            var list = this.dataContext.Providers.Select(b => new SelectListItem
+            {
+                Text = b.SocialReason,
+                Value = $"{b.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona un proveedor",
+                Value = "0"
+            });
+
+            return list;
+        }
+
     }
 }

@@ -7,5 +7,6 @@
     {
         public IEnumerable<SelectListItem> GetComboRoles();
         public IEnumerable<SelectListItem> GetComboStatus();
+        public IEnumerable<SelectListItem> GetComboProviders();
     }
 }
