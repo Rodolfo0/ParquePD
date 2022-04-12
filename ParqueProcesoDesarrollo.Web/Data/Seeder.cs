@@ -91,7 +91,8 @@
 
             if (!this.dataContext.Supplies.Any())
             {
-                await CheckSupply(568892, 54.96, "Rollos de baño de 500 hojas dobles");
+                var provider = dataContext.Providers.FirstOrDefault(c => c.Id == 1);
+                await CheckSupply(568892, 54.96, "Rollos de baño de 500 hojas dobles", provider);
             }
 
             if (!this.dataContext.TypeOfMaintenances.Any())
@@ -126,6 +127,35 @@
                 await CheckTypeOfPayment("Efectivo");
                 await CheckTypeOfPayment("Tarjeta VISA");
                 await CheckTypeOfPayment("Tarjeta Mastercard");
+            }
+
+            if (!this.dataContext.IvaTypes.Any())
+            {
+                await CheckIvaType("Impuesto Valor Agregado", 0.16);
+            }
+
+            if (!this.dataContext.TypeOfWristbands.Any())
+            {
+                await CheckTypeOfWristband("Adulto", "Rojo", 500);
+                await CheckTypeOfWristband("Niño", "Verde", 400);
+                await CheckTypeOfWristband("Adulto Mayor", "Azul", 300);
+                await CheckTypeOfWristband("Adulto VIP", "Rojo con Amarillo", 600);
+                await CheckTypeOfWristband("Niño VIP", "Verde con Amarillo", 500);
+                await CheckTypeOfWristband("Adulto Mayor VIP", "Azul con Amarillo", 400);
+            }
+        
+            if (!this.dataContext.CollarSizes.Any())
+            {
+                await CheckCollarSize("Pequeña", 100);
+                await CheckCollarSize("Mediana", 150);
+                await CheckCollarSize("Grande", 200);
+            }
+        
+            if (!this.dataContext.CashBoxes.Any())
+            {
+                var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
+                var employee = dataContext.Employees.FirstOrDefault(c => c.Id == 4);
+                await CheckCashBox("192.168.586.544", employee, status);
             }
         }
 
@@ -175,13 +205,14 @@
         }
 
         //64 minutos
-        public async Task CheckSupply(int barcode, double unitPrice, string description)
+        public async Task CheckSupply(int barcode, double unitPrice, string description, Provider provider)
         {
             this.dataContext.Supplies.Add(new Supply
             {
                 Barcode = barcode,
                 UnitPrice = unitPrice,
-                Description = description
+                Description = description,
+                Provider = provider
             });
             await this.dataContext.SaveChangesAsync();
         }
@@ -250,6 +281,48 @@
             this.dataContext.TypeOfPayments.Add(new TypeOfPayment
             {
                 Description = description
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckIvaType(string description, double interestRate)
+        {
+            this.dataContext.IvaTypes.Add(new IvaType
+            {
+                Description = description,
+                InterestRate = interestRate
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+        
+        public async Task CheckTypeOfWristband(string description, string colour, double price)
+        {
+            this.dataContext.TypeOfWristbands.Add(new TypeOfWristband
+            {
+                Description = description,
+                Colour = colour,
+                Price = price
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+        
+        public async Task CheckCollarSize(string size, double price)
+        {
+            this.dataContext.CollarSizes.Add(new CollarSize
+            {
+                Size = size,
+                Price = price
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckCashBox(string ip, Employee employee, Status status)
+        {
+            this.dataContext.CashBoxes.Add(new CashBox
+            {
+                Ip = ip,
+                Employee = employee,
+                Status = status
             });
             await this.dataContext.SaveChangesAsync();
         }

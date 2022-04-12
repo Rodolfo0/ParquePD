@@ -21,6 +21,7 @@
         [Display(Name = "Descripcion")]
         public string Description { get; set; }
 
+        public Provider Provider { get; set; }
         public ICollection <ConsumableWarehouse> ConsumableWarehouses { get; set; }
         public ICollection <PurchaseDetail> PurchasDetails { get; set; }
     }
