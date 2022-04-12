@@ -93,6 +93,33 @@
             {
                 await CheckSupply(568892, 54.96, "Rollos de baño de 500 hojas dobles");
             }
+
+            if (!this.dataContext.TypeOfMaintenances.Any())
+            {
+                await CheckTypeOfMaintenance("Preventivo");
+                await CheckTypeOfMaintenance("Correctivo");
+            }
+
+            if (!this.dataContext.SanitizationProtocols.Any())
+            {
+                await CheckSanitizationProtocol("Bomba de pulverización");
+                await CheckSanitizationProtocol("Limpieza con microfibra y atomizador");
+            }
+
+            if (!this.dataContext.Attractions.Any())
+            {
+                var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
+                var employee = dataContext.Employees.FirstOrDefault(c => c.Id == 7);
+                await CheckAttraction("Carrucel", status, employee);
+
+                await CheckAttraction("Devora Tormentas", status, employee);
+
+                await CheckAttraction("Kamikase", status, employee);
+
+                await CheckAttraction("Krakatoa", status, employee);
+
+                await CheckAttraction("Kilawea", status, employee);
+            }
         }
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
@@ -178,6 +205,35 @@
                 Provider = provider,
                 Post = post,
                 BusinessHours = businessHours
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckTypeOfMaintenance(string description)
+        {
+            this.dataContext.TypeOfMaintenances.Add(new TypeOfMaintenance
+            {
+                Description = description
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckAttraction(string name, Status status, Employee employee)
+        {
+            this.dataContext.Attractions.Add(new Attraction
+            {
+                Name = name,
+                Status = status,
+                Employee = employee
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckSanitizationProtocol(string description)
+        {
+            this.dataContext.SanitizationProtocols.Add(new SanitizationProtocol
+            {
+                Description = description
             });
             await this.dataContext.SaveChangesAsync();
         }
