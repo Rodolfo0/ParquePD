@@ -120,6 +120,13 @@
 
                 await CheckAttraction("Kilawea", status, employee);
             }
+
+            if (!this.dataContext.TypeOfPayments.Any())
+            {
+                await CheckTypeOfPayment("Efectivo");
+                await CheckTypeOfPayment("Tarjeta VISA");
+                await CheckTypeOfPayment("Tarjeta Mastercard");
+            }
         }
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
@@ -232,6 +239,15 @@
         public async Task CheckSanitizationProtocol(string description)
         {
             this.dataContext.SanitizationProtocols.Add(new SanitizationProtocol
+            {
+                Description = description
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckTypeOfPayment(string description)
+        {
+            this.dataContext.TypeOfPayments.Add(new TypeOfPayment
             {
                 Description = description
             });
