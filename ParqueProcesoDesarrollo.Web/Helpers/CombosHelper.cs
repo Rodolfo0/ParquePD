@@ -64,5 +64,21 @@
             return list;
         }
 
+        public IEnumerable<SelectListItem> GetComboTypeOfPayments()
+        {
+            var list = this.dataContext.TypeOfPayments.Select(tp => new SelectListItem
+            {
+                Text = tp.Description,
+                Value = $"{tp.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona un método de pago",
+                Value = "0"
+            });
+
+            return list;
+        }
     }
 }

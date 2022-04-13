@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.PurchaseHeader>
+
+@{
+    ViewData["Title"] = "Compra";
+}
+
+<h1>Compra</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Agregar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IssueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofPayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Provider.SocialReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfPayment.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                @Html.DisplayFor(modelItem => item.IssueDate)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.DateofPayment)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.Provider.SocialReason)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.TypeOfPayment.Description)
+                </td>
+                <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detail</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>  
+        }
+    </tbody>
+</table>

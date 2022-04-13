@@ -1,0 +1,49 @@
+﻿@model ParqueProcesoDesarrollo.Web.Models.PurchaseHeaderViewModel
+
+@{
+    ViewData["Title"] = "Compra";
+}
+
+<h1>Agregar compra</h1>
+
+<h4>Ingresa los datos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IssueDate" class="control-label"></label>
+                <input asp-for="IssueDate" class="form-control" />
+                <span asp-validation-for="IssueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateofPayment" class="control-label"></label>
+                <input asp-for="DateofPayment" class="form-control" />
+                <span asp-validation-for="DateofPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProviderId" class="control-label"></label>
+                <select asp-for="ProviderId" asp-items="Model.Providers" class="form-control"></select>
+                <span asp-validation-for="Provider" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfPaymentId" class="control-label"></label>
+                <select asp-for="TypeOfPaymentId" asp-items="Model.TypeOfPayments" class="form-control"></select>
+                <span asp-validation-for="TypeOfPayment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
