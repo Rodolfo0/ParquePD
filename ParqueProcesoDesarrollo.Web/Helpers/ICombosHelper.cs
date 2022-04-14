@@ -9,5 +9,7 @@
         public IEnumerable<SelectListItem> GetComboStatus();
         public IEnumerable<SelectListItem> GetComboProviders();
         public IEnumerable<SelectListItem> GetComboTypeOfPayments();
+        public IEnumerable<SelectListItem> GetComboSupplies();
+        public IEnumerable<SelectListItem> GetComboPurchaseHeaders();
     }
 }

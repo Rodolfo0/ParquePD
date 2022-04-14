@@ -1,0 +1,42 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.PurchaseDetail
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Compra</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Supply)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Supply)
+        </dd>
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.PurchaseHeader)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.PurchaseHeader)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditDetail" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index" class="btn btn-danger">Regresar</a>
+</div>

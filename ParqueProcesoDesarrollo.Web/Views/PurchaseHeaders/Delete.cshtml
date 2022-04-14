@@ -1,0 +1,14 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.PurchaseHeader
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h3>¿Deseas eliminar el proveedor?</h3>
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-primary">Regresar</a>
+    </form>
+</div>

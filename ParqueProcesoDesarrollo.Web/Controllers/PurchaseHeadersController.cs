@@ -41,6 +41,19 @@
             return View(model);
         }
 
+        // PurchaseDetail
+        [HttpGet]
+        public IActionResult CreateDetail()
+        {
+            var model = new PurchaseDetailViewModel
+            {
+                Supplies = this.combosHelper.GetComboSupplies(),
+
+                PurchaseHeaders = this.combosHelper.GetComboPurchaseHeaders()
+            };
+            return View(model);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(PurchaseHeaderViewModel model)
         {
@@ -54,6 +67,26 @@
                     TypeOfPayment = await this.dataContext.TypeOfPayments.FindAsync(model.TypeOfPaymentId)
                 };
                 this.dataContext.Add(purchaseHeader);
+                await this.dataContext.SaveChangesAsync();
+                return RedirectToAction(nameof(CreateDetail));
+            }
+            return View(model);
+        }
+
+        // PurchaseDetail
+        [HttpPost]
+        public async Task<IActionResult> CreateDetail(PurchaseDetailViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var purchaseDetail = new PurchaseDetail
+                {
+                    Quantity = model.Quantity,
+                    UnitPrice = model.UnitPrice,
+                    Supply = await this.dataContext.Supplies.FindAsync(model.SupplyId),
+                    PurchaseHeader = await this.dataContext.PurchaseHeader.FindAsync(model.PurchaseHeaderId)
+                };
+                this.dataContext.Add(purchaseDetail);
                 await this.dataContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -92,6 +125,39 @@
             return View(model);
         }
 
+        // PurchaseDetail
+        [HttpGet]
+        public async Task<IActionResult> EditDetail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var purchaseDetail = await this.dataContext.PurchaseDetails
+                .Include(pd => pd.Supply)
+                .Include(pd => pd.PurchaseHeader)
+                .FirstOrDefaultAsync(ph => ph.Id == id);
+
+            if (purchaseDetail == null)
+            {
+                return NotFound();
+            }
+            var model = new PurchaseDetailViewModel
+            {
+                Id = purchaseDetail.Id,
+                Quantity = purchaseDetail.Quantity,
+                UnitPrice = purchaseDetail.UnitPrice,
+                Supply = purchaseDetail.Supply,
+                SupplyId = purchaseDetail.Supply.Id,
+                Supplies = this.combosHelper.GetComboSupplies(),
+                PurchaseHeader = purchaseDetail.PurchaseHeader,
+                PurchaseHeaderId = purchaseDetail.PurchaseHeader.Id,
+                PurchaseHeaders = this.combosHelper.GetComboPurchaseHeaders(),
+            };
+            return View(model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(PurchaseHeaderViewModel model)
@@ -112,6 +178,45 @@
             } 
 
             return View(model);
+        }
+
+        // PurchaseDetail
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditDetail(PurchaseDetailViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var purchaseDetail = new PurchaseDetail
+                {
+                    Quantity = model.Quantity,
+                    UnitPrice = model.UnitPrice,
+                    Supply = await this.dataContext.Supplies.FindAsync(model.SupplyId),
+                    PurchaseHeader = await this.dataContext.PurchaseHeader.FindAsync(model.PurchaseHeaderId)
+                };
+                this.dataContext.Add(purchaseDetail);
+                await this.dataContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
+
+        // PurchaseDetail
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var purchaseDetail = await dataContext.PurchaseDetails
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (purchaseDetail == null)
+            {
+                return NotFound();
+            }
+
+            return View(purchaseDetail);
         }
 
         public async Task<IActionResult> Delete(int? id)
