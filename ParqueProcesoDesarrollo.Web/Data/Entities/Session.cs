@@ -9,17 +9,14 @@
         public int Id { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [MaxLength(ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
         [Display(Name = "Hora de inicio")]
         public DateTime StartTime { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [MaxLength(ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
         [Display(Name = "Hora de fin")]
         public DateTime FinishTime { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [MaxLength(ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
         [Display(Name = "Hora de inicio")]
         public DateTime SessionDate { get; set; }
 
