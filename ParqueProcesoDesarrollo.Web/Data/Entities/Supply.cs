@@ -11,7 +11,7 @@
         public int Barcode { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Apellido Paterno")]
+        [Display(Name = "Precio unitario")]
         public double UnitPrice { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
