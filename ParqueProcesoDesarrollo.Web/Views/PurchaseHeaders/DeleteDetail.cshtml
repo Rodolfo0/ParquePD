@@ -1,12 +1,12 @@
-﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.PurchaseHeader
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.PurchaseDetail
 
 @{
     ViewData["Title"] = "Eliminar";
 }
 
-<h3>¿Deseas eliminar la compra?</h3>
+<h3>¿Deseas eliminar el detalle de compra?</h3>
 <div>
-    <form asp-action="Delete">
+    <form asp-action="DeleteDetail">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Eliminar" class="btn btn-danger" /> |
         <a asp-action="Index" class="btn btn-secondary">Regresar</a>

@@ -1,17 +1,16 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Models.PurchaseDetailViewModel
 
 @{
-    ViewData["Title"] = "Compra";
+    ViewData["Title"] = "Editar";
 }
 
-<h1>Agregar detalle decompra</h1>
-
-<h4>Ingresa los datos</h4>
+<h1>Ingresa los nuevos datos</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateDetail">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
                 <input asp-for="Quantity" class="form-control" />
@@ -34,14 +33,14 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index" class="btn btn-secondary">Regresar a la compras</a>
+    <a asp-action="Index" class="btn btn-secondary">Regresar</a>
 </div>
 
 @section Scripts {

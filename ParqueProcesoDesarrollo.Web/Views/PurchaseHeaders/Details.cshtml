@@ -1,14 +1,10 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.PurchaseDetail
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle";
 }
 
-<h1>Detalles</h1>
-
 <div>
-    <h4>Compra</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-6">
             @Html.DisplayNameFor(model => model.Quantity)
@@ -26,17 +22,19 @@
             @Html.DisplayNameFor(model => model.Supply)
         </dt>
         <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.Supply)
+            @Html.DisplayFor(model => model.Supply.Description)
         </dd>
         <dt class = "col-sm-6">
             @Html.DisplayNameFor(model => model.PurchaseHeader)
         </dt>
         <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.PurchaseHeader)
+            @Html.DisplayFor(model => model.PurchaseHeader.Id)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="EditDetail" asp-route-id="@Model.Id">Editar</a> |
-    <a asp-action="Index" class="btn btn-danger">Regresar</a>
+    <a asp-action="EditDetail" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a> |
+    <a asp-action="DeleteDetail" asp-route-id="@Model.Id" class="btn btn-danger">Eliminar</a> |
+    <a asp-action="Index" class="btn btn-secondary">Regresar</a> |
+    <button class="btn btn-success">Pagar</button>
 </div>

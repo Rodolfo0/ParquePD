@@ -210,7 +210,9 @@
             }
 
             var purchaseDetail = await dataContext.PurchaseDetails
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(pd => pd.Supply)
+                .Include(pd => pd.PurchaseHeader)
+                .FirstOrDefaultAsync(pd => pd.PurchaseHeader.Id == id);
             if (purchaseDetail == null)
             {
                 return NotFound();
@@ -232,8 +234,25 @@
             {
                 return NotFound();
             }
-
             return View(purchaseHeader);
+        }
+
+        // PurchaseDetail
+        public async Task<IActionResult> DeleteDetail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var purchaseDetail = await this.dataContext.PurchaseDetails
+                .FirstOrDefaultAsync(pd => pd.Id == id);
+            if (purchaseDetail == null)
+            {
+                return NotFound();
+            }
+
+            return View(purchaseDetail);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -246,9 +265,26 @@
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProviderExists(int id)
+        // PurchaseDetail
+        [HttpPost, ActionName("DeleteDetail")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmedDetail(int id)
+        {
+            var purchaseDetail = await dataContext.PurchaseDetails.FindAsync(id);
+            dataContext.PurchaseDetails.Remove(purchaseDetail);
+            await dataContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool PurchaseHeader(int id)
         {
             return dataContext.PurchaseHeader.Any(ph => ph.Id == id);
+        }
+
+        // PurchaseDetail
+        private bool PurchaseDetail(int id)
+        {
+            return dataContext.PurchaseDetails.Any(ph => ph.Id == id);
         }
     }
 }
