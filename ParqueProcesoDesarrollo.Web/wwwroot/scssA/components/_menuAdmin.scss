@@ -1,0 +1,260 @@
+.manager{
+    position: fixed;
+    top: 6.5rem;
+    left: 7rem;
+    background: #fff;
+    width: calc(100vw - #{8.4rem});
+    height: calc(100vh - #{9rem});
+    padding: 1.5em;
+    border-radius: 10px;
+    z-index: -1;
+    overflow: scroll;
+    padding-top: 0;
+
+    
+    &::-webkit-scrollbar{
+      background-color: none;
+    }
+
+    &::-webkit-scrollbar-track{
+        box-shadow: none;
+    }
+
+    &__profile
+    {
+        
+        position: absolute;
+        right: 1.4rem;
+        top: 5.6rem;
+        background-color: white;
+        font-family: 'Montserrat', helvetica;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 350px;
+        padding: 2rem .2rem;
+        border-radius: 10px;
+        box-shadow: rgba(0,0,0,0.7) 0px 35px 45px -20px;
+        transition: all linear .3s;
+        &.administrar-perfil--active
+        {
+        display: flex;
+        }
+        &-img
+        {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: .2em;
+        }
+
+        &-option, &-close
+        {
+            text-decoration: none;
+            color: map-get($map: $palette, $key: 'shade-dark');
+        }
+        
+        &-option
+        {
+            padding: .7rem 0;
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+        &-close
+        {
+            margin-top: 20px;
+            background-color: map-get($map: $palette, $key: 'shade-white');
+            border-radius: 10px;
+            padding: .7rem 1rem;
+        }
+    }
+}
+
+.navbar{
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem 0;
+    box-shadow: 0 0 40px rgba(0,0,0,0.03);
+    height: calc(100vh - #{1rem*4});
+    margin: .5rem .2rem;
+    &__toggle{
+        display: none;
+        font-size: 2.3em;
+        color: map-get($map: $palette, $key: 'primary');
+        background-color: white;
+        height: 1rem * 3.5;
+        width: 1rem * 3.5;
+        position: fixed;
+        left: 1rem;
+        top: 1rem;
+        margin: .5rem .7rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        z-index: 10;
+    }
+
+    &__link{
+        position:relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1rem * 3.5;
+        width: 1rem * 3.5;
+        color: map-get($map: $palette, $key: 'primary');
+        transition: 250ms ease all;
+        font-size: 1.5em;
+        margin: .5rem .5rem .8rem;
+        border-radius: 10px;
+
+        span{
+          position: absolute;
+          left: 100%;
+          transform: translate(-(1rem*3));
+          opacity: 0;
+          color: map-get($map: $palette, $key: 'primary');
+          background: #fff;
+          padding: 1rem *0.75;
+          transition: 250ms ease all;
+          border-radius: 10px * 1.75;
+          font-family: 'Montserrat', helvetica;
+          font-size: .6em;
+          visibility: hidden;
+        }
+        
+        &:hover{
+          color: map-get($map: $palette, $key: 'white');
+          background-color: map-get($map: $palette, $key: 'primary');
+          
+          span{
+            visibility: visible;
+            opacity: 1;
+            transform: translate(10px);
+          }
+        }
+    }
+
+
+    &__menu{
+        position: relative;
+        padding: 0;
+        &:first-child{
+            margin-top: 3rem;
+        }
+        
+    }
+    
+    &__item{
+        list-style: none;
+        
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .navbar{
+        display: none;
+
+        &__toggle{
+            display: flex;
+        }
+        &.activeNavbar{
+            display: flex;
+        }
+    }
+}   
+
+.manager-header
+{
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: calc(100vw - #{8.4rem});
+    height: 1rem * 3.5;
+    margin: .5rem .5rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    
+
+    &__perfil{
+        overflow: hidden;
+        
+    }
+
+    &__info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Montserrat', helvetica, arial;
+        font-size: .8em;
+        color: map-get($map: $palette, $key: 'shade-dark');
+        height: fit-content;
+        margin: 0;
+        border-radius: 10px;
+        padding: .1em .3em;
+        transition: .4s;
+        cursor: pointer;
+        &:hover{
+            background-color: map-get($map: $palette, $key: 'shade-white');
+        }
+
+        div {
+            margin: 0 1em 0 .8em;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            
+            h3{
+                margin: 0 0 .2em;
+            }
+            p{
+                color: map-get($map: $palette, $key: 'shade-dark');
+            }
+        }
+
+        &-img{
+            display: inline-block;
+            width: 2.6em;
+            height: 2.6em;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid map-get($map: $palette, $key: 'primary');
+            margin: .2em;
+        }
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .manager-header{
+        width: fit-content;
+        justify-content: right;
+        padding: .5rem;
+        &__title
+        {
+        display: none;
+        }
+    }
+
+    .manager{
+        left: 2rem;
+        width: calc(100vw - #{3.5rem});
+
+        &__profile
+        {
+            width: calc(100vw - #{3.2rem});
+        }
+    }
+    
+}

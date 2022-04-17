@@ -1,0 +1,197 @@
+.manager-table{
+    margin: 30em;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+    font-family: 'Montserrat', helvetica;
+    color: map-get($map: $palette, $key: 'shade-black');
+    table-layout: auto;
+
+    &__top
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: sticky;
+        top: 0;
+        background-color: white;
+        padding: .5rem 1rem;
+        z-index: 40;
+    }
+
+    &__add
+    {
+        background-color: map-get($map: $palette, $key: 'secondary');
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: 20px 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: map-get($map: $palette, $key: 'shade-dark');
+        font-size: 1.1rem;
+    }
+
+    &__caption
+    {
+        font-size: 1.5em;
+        margin: 1em 0 .2em;
+        text-align: left;
+        font-weight: 800;
+        color: map-get($map: $palette, $key: 'shade-dark');
+        font-family: 'Montserrat', helvetica;
+    }
+
+    &__headers
+    {
+      background-color: white;
+      position: sticky;
+      top: 72px;
+    }
+
+    .header-lg
+    {
+      top: 157px;
+    }
+
+    &__row{
+        border-bottom: 1px solid rgba(88, 88, 88, 0.336);
+        padding: .35em;
+        border-radius: 5px;
+        &:nth-child(even){
+          background-color: #f8f8f8b7;
+        }
+    }
+
+    &__header, &__data
+    {
+        padding: 1em;
+
+    }
+
+    &__data
+    {
+      img 
+      {
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+
+
+    &__header{
+      font-size: .85em;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding-bottom: 1.2em;
+  }
+
+    &__option
+    {
+      text-align: center;
+      font-size: 1.5em;
+      cursor: pointer; 
+      
+      a{
+        color: map-get($map: $palette, $key: 'shade-dark');
+        text-decoration: none;
+      }
+
+      i{
+        padding: .6em;
+        border-radius: 10px;
+        transition: all linear .2s;
+        &:hover
+        {
+          background-color: map-get($map: $palette, $key: 'secondary');
+        }
+      }
+      
+    }
+  }
+
+  
+@media screen and (max-width: 600px) {
+    .manager-table{
+      border: 0;
+      
+      &__top
+      {
+        position:unset;
+      }
+      &__caption{
+        font-size: 1.3em;
+      }
+
+      &__headers
+      {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+
+      &__row
+      {
+        border: 3px solid #ddd;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: .625em;
+      }
+
+      &__data
+      {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+        &::before
+        {
+          content: attr(data-label);
+          text-align: left;
+          margin-bottom: .7em;
+          display: block;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        &:last-child
+        {
+          border-bottom: 0;
+        }
+      }
+
+      &__option
+      {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all linear .2s;
+        border-radius: 2px;
+        &::before
+        {
+          margin-bottom: 0;
+        }
+        i{
+          &:hover
+          {
+            background-color: none;
+          }
+        }
+        &:hover
+        {
+          background-color: map-get($map: $palette, $key: 'secondary');
+        }
+      }
+    }
+}

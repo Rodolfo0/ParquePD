@@ -1,0 +1,31 @@
+.inicio
+{
+    background-color: map-get($map: $palette, $key: 'darken');
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 2em;
+    width: fit-content;
+    border-radius: 10px;
+    margin-top: 30px;
+    img
+    {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: nth($list: $breakpoints, $n: 3))
+{
+    .inicio{
+        padding: 1rem;
+
+        h1 
+        {
+            font-size: 22px;
+        }
+        h3
+        {
+            font-size: 20px;
+        }
+    }
+}

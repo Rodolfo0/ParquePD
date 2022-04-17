@@ -1,0 +1,36 @@
+/* ================= General ================= */
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font: $font-primary;
+    background-color: rgb(245, 245, 245);
+    color: map-get($map: $palette, $key: 'shade-dark');
+}
+
+/* ================= Scrollbar ================= */
+::-webkit-scrollbar {
+    width: 0.6vw;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(197, 197, 197);
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: map-get($map: $palette, $key: 'darken');
+    border-radius: 2px;
+    &:active{
+        background-color: map-get($map: $palette, $key: 'environmental');
+    }
+}
+
+/* ================= Selection ================= */
+::selection {
+    color: white;
+    background: map-get($map: $palette, $key: 'complementary');
+    
+}

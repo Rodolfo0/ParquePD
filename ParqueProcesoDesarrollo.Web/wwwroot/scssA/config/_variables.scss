@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ================= Paleta de colores ================= */
+$palette: (
+    'primary': rgb(61, 117, 242),
+    'secondary': rgb(223, 231, 248),
+    'environmental': rgb(89, 141, 255),
+    'complementary': rgb(242, 188, 61),
+    'shade-white': rgb(242, 242, 240),
+    'darken': rgb(50, 58, 77),
+    'shade-dark': rgb(54, 54, 54),
+    'white':white
+);
+
+/* ================= Breakpoints ================= */
+$breakpoints: 1080px, 768px, 480px, 420px;
+
+/* ================= Margins ================= */
+$margins: 2rem, 1.5rem, 1rem, 0.75rem, 0.5rem;
+
+/* ================= Tipografías ================= */
+$font-primary: 'Montserrat';
+
+/* ================= Tamaño Títulos ================= */
+$title-size: (
+    'xs': 20px,
+    'sm': 35px,
+    'md': 45px,
+    'lg': 65px,
+    'xl': 80px
+);
+
+/* ================= Tamaño Textos ================= */
+$text-size: (
+    'xs': 15px,
+    'sm': 20px,
+    'md': 33px,
+    'lg': 45px,
+    'xl': 60px
+);
+
+$transparent: rgba(255, 0, 0, 0)(255, 255, 255);
