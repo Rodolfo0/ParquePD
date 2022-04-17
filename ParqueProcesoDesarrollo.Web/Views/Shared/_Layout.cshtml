@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
+    <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="bi bi-list"></i></a>
     <nav class="navbar" id="navbar">
             <ul class="navbar__menu" id="menu-list">
                 <li class="navbar__item">
@@ -67,42 +68,62 @@
             </ul>
             <div class="menu-bg"></div>
         </nav>
-    <header>
-        <h1 class="title-page"> @ViewData["Title"] </h1>
+
+        <div class="manager-header">
+            <h2 class="nta-title nta-title-xs primary manager-header__title">@ViewData["Title"]</h2>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <div class="manager-header__perfil" id="header-perfil">
+                    <div class="manager-header__info">
+                        <img class="manager-header__info-img" src="../assets/img/webp/antonio-min.webp" alt="">
+                        <div>
+                            <h3>@this.User.Identity.Name</h3>
+                        </div>
+                    </div>
+                </div>
+
+                
+            }
+            else
+            {
+                <div class="manager-header__perfil">
+                    <div class="manager-header__info">
+                        <img class="manager-header__info-img" src="../assets/img/webp/antonio-min.webp" alt="">
+                        <div>
+                            <h3><a asp-area="" asp-controller="Account" asp-action="Login">Iniciar Sesión</a></h3>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
         @if (this.User.Identity.IsAuthenticated)
         {
-            <div class="user-box" style="width: 19%;">
-                <a style="padding-right: 15px;">@this.User.Identity.Name</a>
-                <a asp-area="" asp-controller="Account" asp-action="Logout">
-                <i class="fa-solid fa-right-from-bracket fa-xl"><h3 class="subtitle-page">     Logout</h3></i>
-                </a>
-            </div> 
-         }
-         else
-         {
-            <div class="user-box" style="width: 7%;">
-                <a asp-area="" asp-controller="Account" asp-action="Login">
-                <i class="fa-solid fa-right-to-bracket fa-xl"><h3 class="subtitle-page">     Login</h3></i>
-                </a>
-            </div>
-         }
-        
-    </header>
+            <div class="manager__profile" id="administrar-perfil">
+                    <img class="manager__profile-img" src="../assets/img/webp/antonio-min.webp" alt="">
+                    <h3 class="manager__profile-user">@this.User.Identity.Name</h3>
+                    <a class="manager__profile-option" href="">Administrar perfil</a>
+                    <a class="manager__profile-close" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar Sesión</a>
+                </div>
+        }
+                
 
-    <div class="container" style="margin-top: 25px;">
-        <main role="main" class="pb-3">
+    <div class="manager">
             @RenderBody()
-        </main>
     </div>
 
+    <!--
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - ParqueProcesoDesarrollo.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/menu.js" asp-append-version="true"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
