@@ -1,0 +1,41 @@
+﻿@model ParqueProcesoDesarrollo.Web.Models.TicketSalesViewModel
+
+ @{
+    ViewData["Title"] = "Crear Venta";
+}
+
+<h1>Agregar compra</h1>
+
+<h4>Ingresa los datos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+           @* <div class = "form-group">
+                 <label asp-for="" class="control-label"></label>
+                <input asp-for="Barcode" class="form-control" />
+                <span asp-validation-for="Barcode" class="text-danger"></span>
+
+            </div>*@
+
+@*
+            <div class="form-group">
+                <label asp-for="TypeOfCollars" class="control-label"></label>
+                <select asp-for="TypeOfCollars" asp-items="Model.TypeOfCollars" class="form-control"></select>
+                <span asp-validation-for="TypeOfCollars" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TypeOfWristband" class="control-label"></label>
+                <select asp-for="TypeOfWristband" asp-items="Model.TypeOfWristband" class="form-control"></select>
+                <span asp-validation-for="TypeOfWristband" class="text-danger"></span>
+            </div>
+       *@
+            <div class="form-group">
+                <input type="submit" value="Agregar detalles" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>

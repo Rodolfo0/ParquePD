@@ -114,5 +114,39 @@
 
             return list;
         }
+
+        public IEnumerable<SelectListItem> GetComboWristband()
+        {
+            var list = this.dataContext.TypeOfWristbands.Select(ph => new SelectListItem
+            {
+                Text = ph.Description,
+                Value = $"{ph.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona una Bandita ",
+                Value = "0"
+            });
+
+            return list;
+        }
+
+        public IEnumerable<SelectListItem> GetComboCollarSize()
+        {
+            var list = this.dataContext.CollarSizes.Select(ph => new SelectListItem
+            {
+                Text = ph.Size,
+                Value = $"{ph.Size}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona un collar para tu mascota ",
+                Value = "0"
+            });
+
+            return list;
+        }
     }
 }
