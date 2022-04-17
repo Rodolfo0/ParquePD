@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,14 +55,81 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="CVerificador.cs" />
+    <Compile Include="PA-08-01 Inicio de Sesión.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PA-08-01 Inicio de Sesión.Designer.cs">
+      <DependentUpon>PA-08-01 Inicio de Sesión.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-02 Pantalla Principal Estacionamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-02 Pantalla Principal Estacionamiento.Designer.cs">
+      <DependentUpon>PA-08-02 Pantalla Principal Estacionamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-03 Pantalla Principal Control de Máquinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-03 Pantalla Principal Control de Máquinas.Designer.cs">
+      <DependentUpon>PA-08-03 Pantalla Principal Control de Máquinas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-04 Registrar Dinero Inicial en la Máquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-04 Registrar Dinero Inicial en la Máquina.Designer.cs">
+      <DependentUpon>PA-08-04 Registrar Dinero Inicial en la Máquina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-05 Comprobar Monto Actual de la Máquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-05 Comprobar Monto Actual de la Máquina.Designer.cs">
+      <DependentUpon>PA-08-05 Comprobar Monto Actual de la Máquina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-06 Elegir Máquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-06 Elegir Máquina.Designer.cs">
+      <DependentUpon>PA-08-06 Elegir Máquina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-07 Imprimir Boleto de Estacionamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-07 Imprimir Boleto de Estacionamiento.Designer.cs">
+      <DependentUpon>PA-08-07 Imprimir Boleto de Estacionamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-08 Pagar Boleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-08 Pagar Boleto.Designer.cs">
+      <DependentUpon>PA-08-08 Pagar Boleto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PA-08-01 Inicio de Sesión.resx">
+      <DependentUpon>PA-08-01 Inicio de Sesión.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-02 Pantalla Principal Estacionamiento.resx">
+      <DependentUpon>PA-08-02 Pantalla Principal Estacionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-03 Pantalla Principal Control de Máquinas.resx">
+      <DependentUpon>PA-08-03 Pantalla Principal Control de Máquinas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-04 Registrar Dinero Inicial en la Máquina.resx">
+      <DependentUpon>PA-08-04 Registrar Dinero Inicial en la Máquina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-05 Comprobar Monto Actual de la Máquina.resx">
+      <DependentUpon>PA-08-05 Comprobar Monto Actual de la Máquina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-06 Elegir Máquina.resx">
+      <DependentUpon>PA-08-06 Elegir Máquina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-07 Imprimir Boleto de Estacionamiento.resx">
+      <DependentUpon>PA-08-07 Imprimir Boleto de Estacionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-08 Pagar Boleto.resx">
+      <DependentUpon>PA-08-08 Pagar Boleto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +138,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +153,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Moneda de 5 pesos.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Moneda de 10 pesos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Billete de 50 pesos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Billete de 100 pesos.jfif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
