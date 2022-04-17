@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ParqueProcesoDesarrollo_ParkingLot.Properties
+namespace ParqueProcesoDesarollo_Estacionamiento.Properties
 {
 
 

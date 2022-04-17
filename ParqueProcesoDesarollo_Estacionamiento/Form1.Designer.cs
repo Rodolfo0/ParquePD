@@ -1,4 +1,4 @@
-﻿namespace ParqueProcesoDesarrollo_ParkingLot
+﻿namespace ParqueProcesoDesarollo_Estacionamiento
 {
     partial class Form1
     {

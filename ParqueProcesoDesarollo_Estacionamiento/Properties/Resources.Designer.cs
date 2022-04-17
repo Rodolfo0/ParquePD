@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ParqueProcesoDesarrollo_ParkingLot.Properties
+namespace ParqueProcesoDesarollo_Estacionamiento.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace ParqueProcesoDesarrollo_ParkingLot.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ParqueProcesoDesarrollo_ParkingLot.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ParqueProcesoDesarollo_Estacionamiento.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

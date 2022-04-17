@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ParqueProcesoDesarrollo_ParkingLot
+namespace ParqueProcesoDesarollo_Estacionamiento
 {
     public partial class Form1 : Form
     {

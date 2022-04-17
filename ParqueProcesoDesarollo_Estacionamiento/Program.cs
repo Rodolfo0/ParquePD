@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ParqueProcesoDesarrollo_ParkingLot
+namespace ParqueProcesoDesarollo_Estacionamiento
 {
     internal static class Program
     {
