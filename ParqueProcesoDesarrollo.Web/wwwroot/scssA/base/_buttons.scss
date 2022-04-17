@@ -1,0 +1,37 @@
+@mixin button($name, $pColor) {
+    .nta-btn-#{$name}{
+        
+        background-color: $pColor;
+        border: none;
+        transition: all .2s linear;
+        width: 180px;
+        text-align: center;
+        padding: 15px 25px;
+        border-radius: 10px;
+        user-select: none;
+        text-decoration: none;
+        color: map-get($map: $palette, $key: 'shade-white');
+        font-family: 'montserrat';
+        font-weight: 700;
+        font-size: 1.2em;
+        margin: 10px;
+        
+        &:hover{
+        
+            color: white;
+            transform: scale(1.05);
+            @if $name == 'common' {
+                color: map-get($map: $palette, $key: 'darken');
+            }
+        }
+        @if $name == 'common' {
+            color: map-get($map: $palette, $key: 'darken');
+        }
+    }
+}
+
+@include button('primary', map-get($map: $palette, $key: 'primary'));
+@include button('envieronmental', map-get($map: $palette, $key: 'environmental'));
+@include button('complementary', map-get($map: $palette, $key: 'complementary'));
+@include button('danger', rgb(184, 88, 88));
+@include button('common', map-get($map: $palette, $key: 'shade-white'));

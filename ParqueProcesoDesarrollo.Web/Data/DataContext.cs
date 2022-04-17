@@ -13,12 +13,19 @@
         public DbSet<ConsumableWarehouse> ConsumableWarehouses { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<IvaType> IvaTypes { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<MachineReport> MachineReports { get; set; }
         public DbSet<Maintenance> Maintenances { get; set; }
         public DbSet<NecklaceSaleDetail> NecklaceSaleDetails { get; set; }
+        public DbSet<ParkingTicket> ParkingTickets { get; set; }
+        public DbSet<ParkingTicketPaymentMachine> ParkingTicketPaymentMachines { get; set; }    
+        public DbSet<PaymentMachine> PaymentMachines { get; set; }
+        public DbSet<PrintingMachine> PrintingMachines { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<ProviderContact> ProviderContacts { get; set; }
         public DbSet<PurchaseDetail> PurchaseDetails { get; set; }
         public DbSet<PurchaseHeader> PurchaseHeader { get; set; }
+        public DbSet<ReceivingMachine> ReceivingMachines { get; set; }
         public DbSet<SanitizationProtocol> SanitizationProtocols { get; set; }
         public DbSet<SanitizedGame> SanitizedGames { get; set; }
         public DbSet<Session> Sessions { get; set; }

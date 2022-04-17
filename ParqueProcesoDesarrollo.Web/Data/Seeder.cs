@@ -157,6 +157,18 @@
                 var employee = dataContext.Employees.FirstOrDefault(c => c.Id == 4);
                 await CheckCashBox("192.168.586.544", employee, status);
             }
+        
+            if (!this.dataContext.Locations.Any())
+            {
+                await CheckLocation("Entrada 1");
+                await CheckLocation("Entrada 2");
+                await CheckLocation("Entrada 3");
+                await CheckLocation("Entrada 4");
+                await CheckLocation("Salida 1");
+                await CheckLocation("Salida 2");
+                await CheckLocation("Salida 3");
+                await CheckLocation("Salida 4");
+            }
         }
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
@@ -323,6 +335,15 @@
                 Ip = ip,
                 Employee = employee,
                 Status = status
+            });
+            await this.dataContext.SaveChangesAsync();
+        }
+        
+        public async Task CheckLocation(string place)
+        {
+            this.dataContext.Locations.Add(new Location
+            {
+                Place = place
             });
             await this.dataContext.SaveChangesAsync();
         }

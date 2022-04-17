@@ -1,0 +1,131 @@
+
+.nta-title{
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 800;
+    margin: 0;
+    &-xs{
+        font-size: map-get($map: $title-size, $key: 'xs');
+    }
+    &-sm{
+        font-size: map-get($map: $title-size, $key: 'sm');
+    }
+    &-md{
+        font-size: map-get($map: $title-size, $key: 'md');
+    }
+    &-lg{
+        font-size: map-get($map: $title-size, $key: 'lg');
+    }
+    &-xl{
+        font-size: map-get($map: $title-size, $key: 'xl');
+    }
+}
+
+.nta-text{
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 500;
+    margin-top: 15px;
+    line-height: 1.6;
+    &-xs{
+        font-size: map-get($map: $text-size, $key: 'xs');
+    }
+    &-sm{
+        font-size: map-get($map: $text-size, $key: 'sm');
+    }
+    &-md{
+        font-size: map-get($map: $text-size, $key: 'md');
+    }
+    &-lg{
+        font-size: map-get($map: $text-size, $key: 'lg');
+    }
+    &-xl{
+        font-size: map-get($map: $title-size, $key: 'xl');
+    }
+}
+
+.black{
+    color: map-get($map: $palette, $key: 'shade-dark');
+}
+
+.white{
+    color: map-get($map: $palette, $key: 'shade-white');
+}
+
+.darken{
+    color: map-get($map: $palette, $key: 'darken');
+}
+
+.primary{
+    color: map-get($map: $palette, $key: 'primary');
+}
+
+.complementary{
+    color: map-get($map: $palette, $key: 'complementary');
+}
+
+.center{
+    text-align: center;
+}
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
+}
+
+@media only screen and (max-width: nth($list: $breakpoints, $n: 1)){
+   
+}
+
+@media only screen and (max-width: nth($list: $breakpoints, $n: 2)){
+    .nta-title{
+        &-sm{
+            font-size: map-get($map: $title-size, $key: 'xs');
+        }
+        &-md{
+            font-size: map-get($map: $title-size, $key: 'sm');
+        }
+        &-lg{
+            font-size: map-get($map: $title-size, $key: 'md');
+        }
+        &-xl{
+            font-size: map-get($map: $title-size, $key: 'lg');
+        }
+    }
+    
+    .nta-text{
+        &-sm{
+            font-size: map-get($map: $text-size, $key: 'xs');
+        }
+        &-md{
+            font-size: map-get($map: $text-size, $key: 'sm');
+        }
+        &-lg{
+            font-size: map-get($map: $text-size, $key: 'md');
+        }
+        &-xl{
+            font-size: map-get($map: $title-size, $key: 'lg');
+        }
+    }
+}
+
+@media only screen and (max-width: nth($list: $breakpoints, $n: 3))
+{
+    .nta-title{
+        &-lg{
+            font-size: map-get($map: $title-size, $key: 'sm');
+        }
+        &-xl{
+            font-size: map-get($map: $title-size, $key: 'md');
+        }
+    }
+}
+
+@media only screen and (max-width: nth($list: $breakpoints, $n: 4)){
+    .nta-title{
+        &-xl{
+            font-size: map-get($map: $title-size, $key: 'sm');
+        }
+    }
+}

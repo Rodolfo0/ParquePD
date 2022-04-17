@@ -10,6 +10,12 @@
         [MaxLength(50)] 
         public string Name { get; set; }
 
-        public ICollection<Provider> Providers { get; set; }
+        public ICollection <Provider> Providers { get; set; }
+        public ICollection <ParkingTicket> ParkingTickets { get; set; }
+        public ICollection <CashBox> CashBoxes { get; set; }
+        public ICollection <VrEquipment> VrEquipments { get; set; }
+        public ICollection <Session> Sessions { get; set; }
+        public ICollection <Attraction> Attractions { get; set; }
+        public ICollection <PaymentMachine> PaymentMachines { get; set; }
     }
 }

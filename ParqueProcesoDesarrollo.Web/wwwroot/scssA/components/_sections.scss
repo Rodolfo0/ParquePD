@@ -1,0 +1,95 @@
+.sections
+{
+    font-family: 'Montserrat', helvetica;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1em;
+    max-width: 100%;
+    min-width: none;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    a{
+        text-decoration: none;
+    }
+    &__item
+    {
+        color: map-get($map: $palette, $key: 'white');
+        width: 250px;
+        height: 250px;
+        
+        background: map-get($map: $palette, $key: 'primary');
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all linear .3s;
+        margin-right: 30px;
+        margin-bottom: 20px;
+        i{
+            font-size: 4rem;
+        }
+
+        &:hover
+        {
+            transform: scale(1.05);
+            z-index: 0;
+        }
+    }
+
+    &__title
+    {
+        font-family: 'Montserrat', helvetica;
+        font-size: 1.5em;
+        margin: .2em 0 1.5em;
+        text-align: left;
+        font-weight: 800;
+        color: map-get($map: $palette, $key: 'shade-dark');
+    }
+}
+
+@media screen and (max-width: 778px)
+{
+    .sections
+    {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &__item
+        {
+            margin-right: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 385px)
+{
+    .sections
+    {
+        &__item
+        {
+            width: 200px;
+            height: 200px;
+        }
+    }
+}
+
+@media screen and (max-width: 335px)
+{
+    .sections
+    {
+        &__item
+        {
+            width: 150px;
+            height: 150px;
+            i{
+                font-size: 3rem;
+            }
+            h2{
+                font-size: 1em;
+            }
+        }
+    }
+}
