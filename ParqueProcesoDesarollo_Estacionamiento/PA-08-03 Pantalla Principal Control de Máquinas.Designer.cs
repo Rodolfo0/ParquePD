@@ -87,6 +87,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmPantallaPrincipalControl";
             this.Text = "PA-08-03 Pantalla Principal Control de Máquinas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPantallaPrincipalControl_FormClosed);
             this.Load += new System.EventHandler(this.frmPantallaPrincipalControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

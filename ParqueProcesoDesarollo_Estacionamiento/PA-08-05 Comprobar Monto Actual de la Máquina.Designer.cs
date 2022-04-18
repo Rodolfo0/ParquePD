@@ -213,6 +213,7 @@
             this.btnImprimirReporte.TabIndex = 27;
             this.btnImprimirReporte.Text = "Imprimir Reporte";
             this.btnImprimirReporte.UseSelectable = true;
+            this.btnImprimirReporte.Click += new System.EventHandler(this.btnImprimirReporte_Click);
             // 
             // btnDesactivarMaquina
             // 

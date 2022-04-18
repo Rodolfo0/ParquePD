@@ -95,6 +95,7 @@
             this.btnPagarBoleto.TabIndex = 18;
             this.btnPagarBoleto.Text = "Pagar Boleto";
             this.btnPagarBoleto.UseSelectable = true;
+            this.btnPagarBoleto.Click += new System.EventHandler(this.btnPagarBoleto_Click);
             // 
             // label1
             // 

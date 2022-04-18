@@ -75,6 +75,7 @@
             this.lblRegresar.Size = new System.Drawing.Size(75, 25);
             this.lblRegresar.TabIndex = 12;
             this.lblRegresar.Text = "< Volver";
+            this.lblRegresar.Click += new System.EventHandler(this.lblRegresar_Click);
             // 
             // btnImprimirBoleto
             // 
@@ -84,6 +85,7 @@
             this.btnImprimirBoleto.TabIndex = 11;
             this.btnImprimirBoleto.Text = "Imprimir Boleto";
             this.btnImprimirBoleto.UseSelectable = true;
+            this.btnImprimirBoleto.Click += new System.EventHandler(this.btnImprimirBoleto_Click);
             // 
             // label1
             // 
@@ -109,6 +111,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmImprimirBoletoEstacionamiento";
             this.Text = "PA-08-07 Imprimir Boleto de Estacionamiento";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmImprimirBoletoEstacionamiento_FormClosed);
             this.Load += new System.EventHandler(this.frmImprimirBoletoEstacionamiento_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

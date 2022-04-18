@@ -169,6 +169,52 @@
                 await CheckLocation("Salida 3");
                 await CheckLocation("Salida 4");
             }
+
+            if(!this.dataContext.PaymentMachines.Any())
+            {
+                var location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 1");
+                var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "Inactivo");
+                await CheckPaymentMachines(location,status);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 2");
+                await CheckPaymentMachines(location, status);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 3");
+                await CheckPaymentMachines(location, status);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 4");
+                await CheckPaymentMachines(location, status);
+            }
+
+            if(!this.dataContext.PrintingMachines.Any())
+            {
+                var location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Entrada 1");
+                await CheckPrintingMachines(location);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Entrada 2");
+                await CheckPrintingMachines(location);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Entrada 3");
+                await CheckPrintingMachines(location);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Entrada 4");
+                await CheckPrintingMachines(location);
+            }
+
+            if(!this.dataContext.ReceivingMachines.Any())
+            {
+                var location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 1");
+                await CheckReceivingMachines(location);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 2");
+                await CheckReceivingMachines(location);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 3");
+                await CheckReceivingMachines(location);
+
+                location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 4");
+                await CheckReceivingMachines(location);
+            }
         }
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
@@ -345,6 +391,37 @@
             {
                 Place = place
             });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        private async Task CheckReceivingMachines(Location location)
+        {
+            this.dataContext.ReceivingMachines.Add(new ReceivingMachine
+            {
+                Location = location
+            });
+
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        private async Task CheckPrintingMachines(Location location)
+        {
+            this.dataContext.PrintingMachines.Add(new PrintingMachine
+            {
+                Location = location
+            });
+
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        private async Task CheckPaymentMachines(Location location, Status status)
+        {
+            this.dataContext.PaymentMachines.Add(new PaymentMachine
+            {
+                Location = location,
+                Status = status
+            });
+
             await this.dataContext.SaveChangesAsync();
         }
     }
