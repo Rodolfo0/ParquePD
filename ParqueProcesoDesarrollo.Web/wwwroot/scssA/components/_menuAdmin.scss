@@ -36,6 +36,7 @@
         border-radius: 10px;
         box-shadow: rgba(0,0,0,0.7) 0px 35px 45px -20px;
         transition: all linear .3s;
+        z-index: 1000;
         &.administrar-perfil--active
         {
         display: flex;
