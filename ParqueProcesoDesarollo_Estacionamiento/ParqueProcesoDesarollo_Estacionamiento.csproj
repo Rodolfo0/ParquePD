@@ -104,6 +104,30 @@
     <Compile Include="PA-08-08 Pagar Boleto.Designer.cs">
       <DependentUpon>PA-08-08 Pagar Boleto.cs</DependentUpon>
     </Compile>
+    <Compile Include="PA-08-09 Ingresar Boleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-09 Ingresar Boleto.Designer.cs">
+      <DependentUpon>PA-08-09 Ingresar Boleto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-10 Importe de Pago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-10 Importe de Pago.Designer.cs">
+      <DependentUpon>PA-08-10 Importe de Pago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-11 Pagar Boleto Perdido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-11 Pagar Boleto Perdido.Designer.cs">
+      <DependentUpon>PA-08-11 Pagar Boleto Perdido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PA-08-12 Salida del Estacionamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PA-08-12 Salida del Estacionamiento.Designer.cs">
+      <DependentUpon>PA-08-12 Salida del Estacionamiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="PA-08-01 Inicio de Sesión.resx">
@@ -129,6 +153,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PA-08-08 Pagar Boleto.resx">
       <DependentUpon>PA-08-08 Pagar Boleto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-09 Ingresar Boleto.resx">
+      <DependentUpon>PA-08-09 Ingresar Boleto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-10 Importe de Pago.resx">
+      <DependentUpon>PA-08-10 Importe de Pago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -77,7 +77,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                     connection.Close();
                 }
             }
-            else if(tipoMaquina==1)
+            else if (tipoMaquina == 1)
             {
                 using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=BD_PD;Trusted_Connection=True;MultipleActiveResultSets=true"))
                 {
@@ -95,7 +95,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                     connection.Close();
                 }
             }
-            else if(tipoMaquina==2)
+            else if (tipoMaquina == 2)
             {
                 using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=BD_PD;Trusted_Connection=True;MultipleActiveResultSets=true"))
                 {
@@ -151,7 +151,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                     this.Close();
                 }
             }
-            else if(tipoMaquina==1)
+            else if (tipoMaquina == 1)
             {
                 if (cmbMaquinas.SelectedIndex == 1)
                 {
@@ -215,6 +215,12 @@ namespace ParqueProcesoDesarollo_Estacionamiento
         private void frmElegirMaquina_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
             elegirMaquina = null;
+        }
+
+        private void lblRegresar_Click(object sender, EventArgs e)
+        {
+            frmInicioSesion.ObtenerInstancia().Show();
+            this.Close();
         }
     }
 }

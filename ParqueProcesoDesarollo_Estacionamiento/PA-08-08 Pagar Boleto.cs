@@ -93,9 +93,10 @@ namespace ParqueProcesoDesarollo_Estacionamiento
             frmInicioSesion.ObtenerInstancia().Show();
         }
 
-        //TODO:
         private void btnPagarBoleto_Click(object sender, EventArgs e)
         {
+            frmIngresarBoleto.ObtenerInstancia(maquinaElegida).Show();
+            this.Hide();
 
         }
     }
