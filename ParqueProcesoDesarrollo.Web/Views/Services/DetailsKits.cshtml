@@ -1,0 +1,35 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.Kit
+
+@{
+    ViewData["Title"] = "DetailsKits";
+}
+
+<h1>Detalles de la venta</h1>
+
+<div>
+    <h4>Kit</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfSale)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfSale)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="IndexKits">Regresar</a>
+</div>

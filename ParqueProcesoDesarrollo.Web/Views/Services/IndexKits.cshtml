@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.Kit>
+
+@{
+    ViewData["Title"] = "IndexKits";
+}
+
+<h1>Registro de ventas</h1>
+
+<p>
+    <a asp-action="Index">Regresar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Fecha de venta
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                Total
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfSale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                 @(item.UnitPrice * item.Quantity)
+            </td>
+            <td>
+                <a class="" asp-action="DetailsKits" asp-route-id="@item.Id">Detalles</a> |
+                <a class="" asp-action="DeleteKits" asp-route-id="@item.Id">Borrar</a>
+            </td>
+        </tr>
+
+}     
+    </tbody>
+</table>
+
+<a asp-action="CreateKits">Realizar una venta</a>

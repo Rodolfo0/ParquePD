@@ -1,0 +1,66 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.Kit
+
+@{
+    ViewData["Title"] = "CreateKits";
+}
+
+<h1>Realizar venta de Kit antipandemia</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateKits">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DateOfSale" class="control-label">Fecha de venta</label>
+                <input asp-for="DateOfSale" id="dateOfSale" readonly class="form-control" />
+                <span asp-validation-for="DateOfSale" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">Cantidad de kits</label>
+                <input asp-for="Quantity" id="quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitPrice" class="control-label">Precio unitario</label>
+                <input asp-for="UnitPrice" id="unitPrice" readonly class="form-control" />
+                <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Total</label>
+                <input id="total" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="button" value="Continuar" class="btn btn-primary" id="continuar-venta" />
+            </div>
+
+            <div class="popUp" id="popUp-generico">
+                 <input type="submit" value="Confirmar" class="btn btn-success" id="continuar-venta" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-info" asp-action="IndexKits">Regresar</a>
+</div>
+
+<script>
+    var total = document.getElementById("total");
+    var unitPrice = document.getElementById("unitPrice");
+    var quantity = document.getElementById("quantity");
+
+    let botC = document.getElementById("continuar-venta");
+    let popUp = document.getElementById("popUp-generico");
+
+    quantity.addEventListener("change", function(){
+        total.value = unitPrice.value * quantity.value;
+
+
+    botC.addEventListener("click", function () {
+    popUp.classList.toggle("invisibleP");
+    });
+
+    });
+</script>
