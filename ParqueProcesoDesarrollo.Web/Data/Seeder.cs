@@ -122,6 +122,16 @@
                 await CheckAttraction("Kilawea", status, employee);
             }
 
+            //Tamaños de perros
+            if (!this.dataContext.Sizes.Any())
+            {
+                await CheckSize("Pequeño", 260);
+
+                await CheckSize("Mediano", 310);
+
+                await CheckSize("Grande", 450);
+            }
+
             if (!this.dataContext.TypeOfPayments.Any())
             {
                 await CheckTypeOfPayment("Efectivo");
@@ -323,6 +333,16 @@
                 Employee = employee
             });
             await this.dataContext.SaveChangesAsync();
+        }
+        //Check tamaños perros
+        public async Task CheckSize(string name, double price)
+        {
+            dataContext.Sizes.Add(new Size
+            {
+                Name = name,
+                Price = price
+            });
+            await dataContext.SaveChangesAsync();
         }
 
         public async Task CheckSanitizationProtocol(string description)

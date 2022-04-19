@@ -13,6 +13,7 @@
         public DbSet<ConsumableWarehouse> ConsumableWarehouses { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<IvaType> IvaTypes { get; set; }
+        public DbSet<Kit> Kits { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<MachineReport> MachineReports { get; set; }
         public DbSet<Maintenance> Maintenances { get; set; }
@@ -29,6 +30,7 @@
         public DbSet<SanitizationProtocol> SanitizationProtocols { get; set; }
         public DbSet<SanitizedGame> SanitizedGames { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<Size> Sizes { get; set; }
         public DbSet<SpaRegistration> SpaRegistrations { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Supply> Supplies { get; set; }

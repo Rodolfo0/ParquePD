@@ -20,5 +20,9 @@
         public bool Delivered { get; set; }
 
         public WristbandSaleDetail WristbandSaleDetail { get; set; }
+
+        [Display(Name = "Tamaño")]
+        public Size Size { get; set; }
+
     }
 }
