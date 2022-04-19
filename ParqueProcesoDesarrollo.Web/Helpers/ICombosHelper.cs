@@ -13,5 +13,8 @@
         public IEnumerable<SelectListItem> GetComboPurchaseHeaders();
         public IEnumerable<SelectListItem> GetComboWristband();
         public IEnumerable<SelectListItem> GetComboCollarSize();
+        public IEnumerable<SelectListItem> GetTPMaintenaces();
+        public IEnumerable<SelectListItem> GetAttractions();
+        public IEnumerable<SelectListItem> GetUsers();
     }
 }

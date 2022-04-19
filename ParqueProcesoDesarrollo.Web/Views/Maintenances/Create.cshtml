@@ -1,0 +1,60 @@
+﻿@model ParqueProcesoDesarrollo.Web.Models.MaintenanceViewModel
+
+@{ ViewData["Title"] = "Create"; }
+
+<h1>Create</h1>
+
+<h4>Maintenance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaintenanceDate" class="control-label"></label>
+                <input asp-for="MaintenanceDate" class="form-control" />
+                <span asp-validation-for="MaintenanceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfLastOverhaul" class="control-label"></label>
+                <input asp-for="DateOfLastOverhaul" class="form-control" />
+                <span asp-validation-for="DateOfLastOverhaul" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remarks" class="control-label"></label>
+                <input asp-for="Remarks" class="form-control" />
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" asp-items="Model.Users" class="form-control"></select>
+                <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MaintenanceId" class="control-label"></label>
+                <select asp-for="MaintenanceId" asp-items="Model.TPMaintenances" class="form-control"></select>
+                <span asp-validation-for="TypeOfMaintenance" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AtraccionId" class="control-label"></label>
+                <select asp-for="AtraccionId" asp-items="Model.Atractions" class="form-control"></select>
+                <span asp-validation-for="Attraction" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -148,5 +148,53 @@
 
             return list;
         }
+
+        public IEnumerable<SelectListItem> GetAttractions()
+        {
+            var list = this.dataContext.Attractions.Select(ato => new SelectListItem
+            {
+                Text = ato.Name,
+                Value = $"{ato.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "¿Que Atraccion es?",
+                Value = "0"
+            });
+
+            return list;
+        }
+        public IEnumerable<SelectListItem> GetTPMaintenaces()
+        {
+            var list = this.dataContext.TypeOfMaintenances.Select(tm => new SelectListItem
+            {
+                Text = tm.Description,
+                Value = $"{tm.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "¿Tipo de M?",
+                Value = "0"
+            });
+
+            return list;
+        }
+        public IEnumerable<SelectListItem> GetUsers()
+        {
+            var list = this.dataContext.Users.Select(us => new SelectListItem
+            {
+                Text = us.FirstName,
+                Value = $"{us.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "¿Quien es?",
+                Value = "0"
+            });
+            return list;
+        }
     }
 }
