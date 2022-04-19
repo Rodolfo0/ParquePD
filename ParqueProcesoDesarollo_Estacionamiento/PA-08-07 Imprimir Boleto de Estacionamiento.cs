@@ -168,7 +168,6 @@ namespace ParqueProcesoDesarollo_Estacionamiento
         //<param name="e"> Pasa un objeto específico al evento que se está manejando </param>
         private void frmImprimirBoletoEstacionamiento_FormClosed(object sender, FormClosedEventArgs e)
         {
-            imprimirBoleto = null;
             frmInicioSesion.ObtenerInstancia().Show();
         }
 

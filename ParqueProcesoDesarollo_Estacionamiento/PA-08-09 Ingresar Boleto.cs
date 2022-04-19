@@ -32,7 +32,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
 
         private void frmIngresarBoleto_Load(object sender, EventArgs e)
         {
-
+            txtIngresarBoleto.Text = "";
         }
 
         private void btnIngresarBoleto_Click(object sender, EventArgs e)
@@ -53,6 +53,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                         {
                             txtIngresarBoleto.Text = folio;
                             frmImportePago.ObtenerInstancia(folio,maquinaEscogida).Show();
+                            txtIngresarBoleto.Text = "";
                             this.Hide();
                         }
                     }
@@ -83,8 +84,8 @@ namespace ParqueProcesoDesarollo_Estacionamiento
 
         private void frmIngresarBoleto_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ingresarBoleto = null;
             frmPagarBoleto.ObtenerInstancia(maquinaEscogida).Show();
+            ingresarBoleto = null;
         }
     }
 }

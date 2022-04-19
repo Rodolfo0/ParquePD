@@ -38,7 +38,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
             DateTime horaEntrada = new DateTime();
             txtFolio.Text = "Folio del boleto: " + idBoletoAPagar;
             txtFechaActual.Text = DateTime.Now.Date.ToString("d");
-            txtHoraSalida.Text = "Hora de salida: "+DateTime.Now.ToString("hh:mm:ss tt");
+            txtHoraSalida.Text = "Hora de salida: " + DateTime.Now.ToString("hh:mm:ss tt");
             double diferencia = 0.0;
             int total = 0;
 
@@ -56,16 +56,28 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                 if (reader.Read())
                 {
                     horaEntrada = Convert.ToDateTime(reader["TimeOfEntry"]);
-                    txtHoraEntrada.Text = "Hora de Entrada: "+horaEntrada.ToString("hh:mm:ss tt");
+                    txtHoraEntrada.Text = "Hora de Entrada: " + horaEntrada.ToString("hh:mm:ss tt");
                 }
 
-                diferencia = DateTime.Now.Date == Convert.ToDateTime(reader["DateOfEntry"]) ?
-                    Convert.ToDouble(Math.Abs(horaEntrada.TimeOfDay.Minutes - DateTime.Now.TimeOfDay.Minutes) / 60 
-                    + Convert.ToDouble(horaEntrada.TimeOfDay.Hours - DateTime.Now.TimeOfDay.Hours)) : 
-                    Convert.ToDouble(Math.Abs(horaEntrada.TimeOfDay.Minutes - DateTime.Now.TimeOfDay.Minutes) / 60 
-                    + Convert.ToDouble((24 - horaEntrada.TimeOfDay.Hours) + DateTime.Now.TimeOfDay.Hours));
+                if (DateTime.Now.Date == Convert.ToDateTime(reader["DateOfEntry"]).Date)
+                {
+                    if (DateTime.Now.TimeOfDay.Hours == Convert.ToDateTime(reader["TimeOfEntry"]).TimeOfDay.Hours)
+                    {
+                        diferencia = Math.Abs(horaEntrada.TimeOfDay.Minutes - DateTime.Now.TimeOfDay.Minutes) / 60;
+                    }
+                    else
+                    {
+                        diferencia =(Math.Abs(horaEntrada.TimeOfDay.Minutes - DateTime.Now.TimeOfDay.Minutes)/60)
+                            + (Math.Abs(Convert.ToDateTime(reader["TimeOfEntry"]).TimeOfDay.Hours- DateTime.Now.TimeOfDay.Hours));
+                    }
+                }
+                else
+                {
+                    diferencia=Convert.ToDouble(Math.Abs(horaEntrada.TimeOfDay.Minutes - DateTime.Now.TimeOfDay.Minutes) / 60
+                    + Convert.ToDouble(Math.Abs((24 - horaEntrada.TimeOfDay.Hours) + DateTime.Now.TimeOfDay.Hours)));
+                }
 
-                if (diferencia > 0 && diferencia <= .25)
+                if (diferencia >= 0 && diferencia <= .25)
                 {
                     lblTotal.Text = "$0";
                     MetroMessageBox.Show(this, "Vuelva Pronto", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -77,7 +89,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                 else
                 {
                     total = 20 + (((int)diferencia - 3) * 10);
-                    lblTotal.Text = "$"+total.ToString();
+                    lblTotal.Text = "$" + total.ToString();
                 }
 
                 reader.Close();
@@ -115,7 +127,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if(MetroMessageBox.Show(this,"¿Está seguro de que quiere cancelar el pago del boleto","Advertencia",MessageBoxButtons.OKCancel,MessageBoxIcon.Error)==DialogResult.OK)
+            if (MetroMessageBox.Show(this, "¿Está seguro de que quiere cancelar el pago del boleto", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
                 this.Close();
             }

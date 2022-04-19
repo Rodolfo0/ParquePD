@@ -96,7 +96,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                     // string password = Convert.ToString(dataReader["contrasenia"]);
 
                     //Se valida si el usuario existe
-                    if (txtUsuario.Text == user)
+                    if (txtUsuario.Text == user && txtContraseña.Text== "12345")
                     {
                         frmPantallaPrincipal.ObtenerInstancia().Show();
                         Hide();

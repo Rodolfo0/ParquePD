@@ -77,7 +77,6 @@ namespace ParqueProcesoDesarollo_Estacionamiento
         //<param name="e"> Pasa un objeto específico al evento que se está manejando </param>
         private void lblRegresar_Click(object sender, EventArgs e)
         {
-            pagarBoleto = null;
             this.Close();
         }
 
@@ -90,6 +89,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
         //<param name="e"> Pasa un objeto específico al evento que se está manejando </param>
         private void frmPagarBoleto_FormClosed(object sender, FormClosedEventArgs e)
         {
+            pagarBoleto = null;
             frmInicioSesion.ObtenerInstancia().Show();
         }
 
