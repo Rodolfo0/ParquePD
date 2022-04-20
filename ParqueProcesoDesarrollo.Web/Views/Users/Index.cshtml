@@ -4,46 +4,56 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Usuarios</h1>
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Usuarios</h3>
+    
+</div>
 
-<p>
-    <a asp-action="Create" class="button">Agregar</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.MaternalSurname)
+            </th>
+            <th class="manager-table__header" scope="col">
+                Ver
+            </th>
+            <th class="manager-table__header" scope="col">
+                Editar
             </th>
 
         </tr>
     </thead>
-    <tbody>
+    <tbody class="manager-table__body">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
+            <tr class="manager-table__row">
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.FirstName)>
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
-                <td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Email)>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
-                <td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.MaternalSurname)>
                     @Html.DisplayFor(modelItem => item.MaternalSurname)
                 </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">editar</a>
-                    <a asp-action="Details" asp-route-id="@item.Id">detalle</a>
+                <td class="manager-table__data manager-table__option" data-label="Ver">
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </td>
+                <td class="manager-table__data manager-table__option" data-label="Editar">
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<a asp-action="Create" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
 

@@ -30,6 +30,15 @@
         max-width: 700px;
         line-height: 1.6rem;
     }
+
+    &__search
+    {
+        font-family: $font-primary;
+        max-width: 300px;
+        margin-bottom: 0 !important;
+        margin-left: 20px;
+    }
+
     &__input, textarea{
                 
         border: 0;
@@ -87,6 +96,22 @@
     }
 }
 
+.country__list-item
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    i 
+    {
+        margin-bottom: 20px;
+        color: map-get($map: $palette, $key: 'primary');
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+}
+
 @media only screen and (max-width: 1200px)
 {
     .view__container
@@ -132,4 +157,22 @@
             margin-top: 15px;
         }
     }
+
+    .manager-table__list-country{
+        margin-top: 0;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+
+    .country__list-item
+    {
+        gap: 20px;
+
+        i 
+        {
+            font-size: 1.2rem;
+        }
+    }
+
+
 }

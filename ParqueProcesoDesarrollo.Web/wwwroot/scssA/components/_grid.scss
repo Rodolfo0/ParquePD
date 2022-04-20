@@ -25,15 +25,38 @@
     {
         background-color: map-get($map: $palette, $key: 'secondary');
         display: block;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         margin: 20px 0 15px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         color: map-get($map: $palette, $key: 'shade-dark');
-        font-size: 1.1rem;
+        font-size: 2rem;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        
+    }
+
+    &__list-country
+    {
+      border: 0;
+      margin-top: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      display: block;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      p 
+      {
+        margin-right: 10px;
+      }
     }
 
     &__caption
@@ -46,16 +69,26 @@
         font-family: 'Montserrat', helvetica;
     }
 
+    &__sub-caption
+    {
+      font-size: 1.2em;
+      margin: 1em 0 .2em;
+      text-align: left;
+      font-weight: 500;
+      color: map-get($map: $palette, $key: 'shade-dark');
+      font-family: 'Montserrat', helvetica;
+    }
+
     &__headers
     {
       background-color: white;
       position: sticky;
-      top: 72px;
+      top: 73px;
     }
 
     .header-lg
     {
-      top: 157px;
+      top: 154px;
     }
 
     &__row{
@@ -65,16 +98,30 @@
         &:nth-child(even){
           background-color: #f8f8f8b7;
         }
+
+        &.invisible
+        {
+          display: none;
+        }
+    }
+
+    &__search-container
+    {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     &__header, &__data
     {
-        padding: 1em;
+        padding: .5em;
 
     }
 
     &__data
     {
+        text-align: center;
       img 
       {
         width: 200px;
@@ -89,6 +136,7 @@
       letter-spacing: .1em;
       text-transform: uppercase;
       padding-bottom: 1.2em;
+      text-align: center;
   }
 
     &__option
@@ -122,6 +170,7 @@
       
       &__top
       {
+        padding: 0;
         position:unset;
       }
       &__caption{
@@ -155,6 +204,7 @@
         display: block;
         font-size: .8em;
         text-align: right;
+        
         &::before
         {
           content: attr(data-label);
@@ -178,6 +228,18 @@
         align-items: center;
         transition: all linear .2s;
         border-radius: 2px;
+        position: relative;
+        a 
+        {
+          position: absolute;
+          display: block;
+          width: 100%;
+          i 
+          {
+            visibility: hidden;
+          }
+        }
+
         &::before
         {
           margin-bottom: 0;

@@ -397,7 +397,6 @@ body {
           box-shadow: rgba(0, 0, 0, 0.7) 0px 35px 45px -20px;
   -webkit-transition: all linear 0.3s;
   transition: all linear 0.3s;
-  z-index: 1000;
 }
 .manager__profile.administrar-perfil--active {
   display: -webkit-box;
@@ -684,12 +683,48 @@ body {
   border-radius: 50%;
   color: #363636;
   font-size: 1.1rem;
+  position: absolute;
+}
+.manager-table__list-country {
+  border: 0;
+  margin-top: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: block;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.manager-table__list-country p {
+  margin-right: 10px;
 }
 .manager-table__caption {
   font-size: 1.5em;
   margin: 1em 0 0.2em;
   text-align: left;
   font-weight: 800;
+  color: #363636;
+  font-family: "Montserrat", helvetica;
+}
+.manager-table__sub-caption {
+  font-size: 1.2em;
+  margin: 1em 0 0.2em;
+  text-align: left;
+  font-weight: 500;
   color: #363636;
   font-family: "Montserrat", helvetica;
 }
@@ -708,6 +743,22 @@ body {
 }
 .manager-table__row:nth-child(even) {
   background-color: #f8f8f8b7;
+}
+.manager-table__row.invisible {
+  display: none;
+}
+.manager-table__search-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .manager-table__header, .manager-table__data {
   padding: 1em;
@@ -747,6 +798,7 @@ body {
     border: 0;
   }
   .manager-table__top {
+    padding: 0;
     position: unset;
   }
   .manager-table__caption {
@@ -798,6 +850,15 @@ body {
     -webkit-transition: all linear 0.2s;
     transition: all linear 0.2s;
     border-radius: 2px;
+    position: relative;
+  }
+  .manager-table__option a {
+    position: absolute;
+    display: block;
+    width: 100%;
+  }
+  .manager-table__option a i {
+    visibility: hidden;
   }
   .manager-table__option::before {
     margin-bottom: 0;
@@ -832,6 +893,12 @@ body {
 .view__data {
   max-width: 700px;
   line-height: 1.6rem;
+}
+.view__search {
+  font-family: "Montserrat";
+  max-width: 300px;
+  margin-bottom: 0 !important;
+  margin-left: 20px;
 }
 .view__input, .view textarea {
   border: 0;
@@ -885,6 +952,25 @@ body {
   height: fit-content;
 }
 
+.country__list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 30px;
+}
+.country__list-item i {
+  margin-bottom: 20px;
+  color: #3d75f2;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 1200px) {
   .view__container {
     -webkit-box-orient: vertical;
@@ -913,6 +999,19 @@ body {
     display: block;
     width: 100%;
     margin-top: 15px;
+  }
+
+  .manager-table__list-country {
+    margin-top: 0;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  .country__list-item {
+    gap: 20px;
+  }
+  .country__list-item i {
+    font-size: 1.2rem;
   }
 }
 .sections {
