@@ -191,7 +191,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(addDogViewModel model)
+        public async Task<IActionResult> CreateSpa(addDogViewModel model)
         {
             if (ModelState.IsValid)
             {
