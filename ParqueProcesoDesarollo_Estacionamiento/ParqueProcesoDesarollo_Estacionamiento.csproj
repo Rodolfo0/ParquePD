@@ -160,6 +160,9 @@
     <EmbeddedResource Include="PA-08-10 Importe de Pago.resx">
       <DependentUpon>PA-08-10 Importe de Pago.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-12 Salida del Estacionamiento.resx">
+      <DependentUpon>PA-08-12 Salida del Estacionamiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -121,6 +121,7 @@
             this.Controls.Add(this.btnPagarBoleto);
             this.Controls.Add(this.label1);
             this.Name = "frmPagarBoleto";
+            this.Resizable = false;
             this.Text = "PA-08-08 Pagar Boleto";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPagarBoleto_FormClosed);
             this.Load += new System.EventHandler(this.frmPagarBoleto_Load);

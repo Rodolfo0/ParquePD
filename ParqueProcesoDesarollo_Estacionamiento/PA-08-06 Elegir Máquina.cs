@@ -101,7 +101,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                 {
                     connection.Open();
 
-                    SqlCommand command = new SqlCommand("SELECT Id FROM PrintingMachines", connection);
+                    SqlCommand command = new SqlCommand("SELECT Id FROM ReceivingMachines", connection);
                     SqlDataReader dataReader = command.ExecuteReader();
 
                     while (dataReader.Read())
@@ -181,25 +181,25 @@ namespace ParqueProcesoDesarollo_Estacionamiento
             {
                 if (cmbMaquinas.SelectedIndex == 1)
                 {
-                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(1).Show();
+                    frmSalidaEstacionamiento.ObtenerInstancia(1).Show();
                     this.Close();
                 }
 
                 if (cmbMaquinas.SelectedIndex == 2)
                 {
-                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(2).Show();
+                    frmSalidaEstacionamiento.ObtenerInstancia(2).Show();
                     this.Close();
                 }
 
                 if (cmbMaquinas.SelectedIndex == 3)
                 {
-                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(3).Show();
+                    frmSalidaEstacionamiento.ObtenerInstancia(3).Show();
                     this.Close();
                 }
 
                 if (cmbMaquinas.SelectedIndex == 4)
                 {
-                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(4).Show();
+                    frmSalidaEstacionamiento.ObtenerInstancia(4).Show();
                     this.Close();
                 }
             }

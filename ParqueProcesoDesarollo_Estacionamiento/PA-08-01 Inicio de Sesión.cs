@@ -120,5 +120,10 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                 }
             }
         }
+
+        private void txtUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

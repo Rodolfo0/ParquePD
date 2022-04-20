@@ -273,6 +273,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmComprobarMonto";
+            this.Resizable = false;
             this.Text = "PA-08-05 Comprobar Monto Actual de la Máquina";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmComprobarMonto_FormClosed);
             this.Load += new System.EventHandler(this.frmComprobarMonto_Load);

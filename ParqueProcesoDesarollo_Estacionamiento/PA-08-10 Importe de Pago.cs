@@ -132,5 +132,10 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                 this.Close();
             }
         }
+
+        private void btnConfirmarPago_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

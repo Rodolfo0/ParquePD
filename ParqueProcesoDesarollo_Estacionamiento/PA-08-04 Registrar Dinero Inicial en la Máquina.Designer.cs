@@ -261,6 +261,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmDineroInicial";
+            this.Resizable = false;
             this.Text = "PA-08-04 Registrar Dinero Inicial en la Máquina";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDineroInicial_FormClosed);
             this.Load += new System.EventHandler(this.frmDineroInicial_Load);

@@ -25,7 +25,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
         private Timer horaActual;
 
         //Campo que representa el número de autos dentro del estacionamiento
-        private static int numAutos;
+        public static int numAutos;
 
         //Constructor de la clase
         //Autor: Alejandro Barroeta Martínez

@@ -198,7 +198,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
         {
             if (cmbMaquinas.SelectedIndex != 0)
             {
-                if (MetroMessageBox.Show(this, "¿Está seguro que quiere deshabilitar esta máquina", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MetroMessageBox.Show(this, "¿Está seguro que quiere deshabilitar esta máquina?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=BD_PD;Trusted_Connection=True;MultipleActiveResultSets=true"))
                     {
@@ -270,8 +270,8 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                             int billetes50Ingresado = Convert.ToInt16(reader["BillEntered50"]);
                             int billetes100Ingresado = Convert.ToInt16(reader["BillEntered100"]);
 
-                            int montoInicial = monedas5Inicial + monedas10Inicial + billetes50Inicial + billetes100Inicial;
-                            int montoActual = montoInicial + monedas5Ingresado + monedas10Ingresado + billetes50Ingresado + billetes100Ingresado;
+                            int montoInicial = monedas5Inicial*5 + monedas10Inicial*10 + billetes50Inicial*50 + billetes100Inicial*100;
+                            int montoActual = montoInicial + monedas5Ingresado*5 + monedas10Ingresado*10 + billetes50Ingresado*50 + billetes100Ingresado*100;
 
 
                             reporteNuevo.WriteLine("Fecha de Impresión: " + DateTime.Now.ToString("d"));

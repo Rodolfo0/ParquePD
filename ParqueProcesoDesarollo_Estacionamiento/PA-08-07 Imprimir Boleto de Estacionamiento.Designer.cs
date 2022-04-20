@@ -110,6 +110,7 @@
             this.Controls.Add(this.btnImprimirBoleto);
             this.Controls.Add(this.label1);
             this.Name = "frmImprimirBoletoEstacionamiento";
+            this.Resizable = false;
             this.Text = "PA-08-07 Imprimir Boleto de Estacionamiento";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmImprimirBoletoEstacionamiento_FormClosed);
             this.Load += new System.EventHandler(this.frmImprimirBoletoEstacionamiento_Load);

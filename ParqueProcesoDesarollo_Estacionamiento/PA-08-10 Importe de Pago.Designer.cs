@@ -109,6 +109,7 @@
             this.btnConfirmarPago.TabIndex = 21;
             this.btnConfirmarPago.Text = "Confirmar Pago";
             this.btnConfirmarPago.UseSelectable = true;
+            this.btnConfirmarPago.Click += new System.EventHandler(this.btnConfirmarPago_Click);
             // 
             // btnImprimirRecibo
             // 
@@ -143,6 +144,7 @@
             this.txtMonedas10.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtMonedas10.CustomButton.UseSelectable = true;
             this.txtMonedas10.CustomButton.Visible = false;
+            this.txtMonedas10.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtMonedas10.Lines = new string[0];
             this.txtMonedas10.Location = new System.Drawing.Point(270, 272);
             this.txtMonedas10.MaxLength = 32767;
@@ -214,6 +216,7 @@
             this.txtMonedas5.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtMonedas5.CustomButton.UseSelectable = true;
             this.txtMonedas5.CustomButton.Visible = false;
+            this.txtMonedas5.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtMonedas5.Lines = new string[0];
             this.txtMonedas5.Location = new System.Drawing.Point(112, 272);
             this.txtMonedas5.MaxLength = 32767;
@@ -245,6 +248,7 @@
             this.txtBilletes50.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtBilletes50.CustomButton.UseSelectable = true;
             this.txtBilletes50.CustomButton.Visible = false;
+            this.txtBilletes50.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtBilletes50.Lines = new string[0];
             this.txtBilletes50.Location = new System.Drawing.Point(467, 272);
             this.txtBilletes50.MaxLength = 32767;
@@ -276,6 +280,7 @@
             this.txtBilletes100.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtBilletes100.CustomButton.UseSelectable = true;
             this.txtBilletes100.CustomButton.Visible = false;
+            this.txtBilletes100.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtBilletes100.Lines = new string[0];
             this.txtBilletes100.Location = new System.Drawing.Point(661, 272);
             this.txtBilletes100.MaxLength = 32767;
@@ -315,6 +320,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblTotal);
             this.Name = "frmImportePago";
+            this.Resizable = false;
             this.Text = "PA-08-10 Importe de Pago";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmImportePago_FormClosed);
             this.Load += new System.EventHandler(this.frmImportePago_Load);

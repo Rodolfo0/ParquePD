@@ -62,6 +62,7 @@
             this.Controls.Add(this.lblRegresar);
             this.Controls.Add(this.cmbMaquinas);
             this.Name = "frmElegirMaquina";
+            this.Resizable = false;
             this.Text = "PA-08-06 Elegir Máquina";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmElegirMaquina_FormClosed);
             this.Load += new System.EventHandler(this.frmElegirMaquina_Load);

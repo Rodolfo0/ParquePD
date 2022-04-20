@@ -88,6 +88,7 @@
             this.Controls.Add(this.tlMaquinaCobro);
             this.Controls.Add(this.tlControlMaquinasCobro);
             this.Name = "frmPantallaPrincipal";
+            this.Resizable = false;
             this.Text = "PA-08-02 Pantalla Principal Estacionamiento";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPantallaPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.frmPantallaPrincipal_Load);
