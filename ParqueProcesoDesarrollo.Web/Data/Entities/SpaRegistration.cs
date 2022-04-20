@@ -19,6 +19,9 @@
         [Display(Name = "Entregado")]
         public bool Delivered { get; set; }
 
+        [Display(Name = "Dueño")]
+        [MaxLength(100)]
+        public string Owner { get; set; }
         public WristbandSaleDetail WristbandSaleDetail { get; set; }
 
         [Display(Name = "Tamaño")]

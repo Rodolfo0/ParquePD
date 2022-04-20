@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.SpaRegistration>
+
+@{
+    ViewData["Title"] = "IndexSpa";
+}
+
+<h1>Registro de Spa para perros</h1>
+
+<p>
+    <a asp-action="Index">Regresar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+
+            <th>
+                Id Pulsera
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfCheckInTime)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfCheckInTime)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Size.Price)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Delivered)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.WristbandSaleDetail.Id)
+            </td>
+
+            <th>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </th>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfCheckInTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfCheckOutTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Size.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivered)
+            </td>
+
+            <td>
+                <a class="" asp-action="DetailsSpa" asp-route-id="@item.Id">Detalles</a> |
+                <a class="" asp-action="DeleteSpa" asp-route-id="@item.Id">Borrar</a>
+            </td>
+        </tr>
+
+}     
+    </tbody>
+</table>
+
+<a asp-action="CreateSpa">Realizar un nuevo registro</a>

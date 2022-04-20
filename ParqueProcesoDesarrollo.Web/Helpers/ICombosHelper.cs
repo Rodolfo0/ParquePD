@@ -16,5 +16,6 @@
         public IEnumerable<SelectListItem> GetTPMaintenaces();
         public IEnumerable<SelectListItem> GetAttractions();
         public IEnumerable<SelectListItem> GetUsers();
+        public IEnumerable<SelectListItem> GetSizes();
     }
 }

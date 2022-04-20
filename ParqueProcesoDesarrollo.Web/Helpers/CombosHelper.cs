@@ -196,5 +196,22 @@
             });
             return list;
         }
+
+        public IEnumerable<SelectListItem> GetSizes()
+        {
+            var list = dataContext.Sizes.Select(sz => new SelectListItem
+            {
+                Text = sz.Name,
+                Value = $"{sz.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Seleccione el tamaño del perro ",
+                Value = "0"
+            });
+
+            return list;
+        }
     }
 }
