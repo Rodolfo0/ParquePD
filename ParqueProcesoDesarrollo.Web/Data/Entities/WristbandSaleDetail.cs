@@ -9,7 +9,7 @@
 
         [Required(ErrorMessage = "{0} es obligatorio")]
         [Display(Name = "Cantidad")]
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
@@ -19,5 +19,11 @@
         public TypeOfWristband TypeOfWristband { get; set; }
         public TicketSale TicketSale { get; set; } 
         public ICollection <SpaRegistration> SpaRegistrations { get; set; }
+
+        public double UnitPrice { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+
+        public double Amount { get { return this.UnitPrice * this.Quantity; } }
     }
 }

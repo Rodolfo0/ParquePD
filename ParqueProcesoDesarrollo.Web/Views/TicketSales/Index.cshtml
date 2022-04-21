@@ -1,11 +1,47 @@
 ﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.TicketSale>
-
- @{
-    ViewData["Title"] = "Index";
+@{
+    ViewData["Title"] = "Ventas";
 }
 
-<h1>Venta de Boleto</h1>
+<h1>Ordenes</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Agregar</a>
+    <a asp-action="CreateWristband" class="btn btn-dark" >Nueva orden </a>
 </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfIssue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfIssue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subtotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                      @if (this.User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Eliminar</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

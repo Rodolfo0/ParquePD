@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.WristbandSaleDetailTemp>
+@{
+    ViewData["Title"] = "Nueva orden";
+}
+
+<h1>Nueva Orden</h1>
+
+<p>
+    <a asp-action="addWristband" class="btn btn-dark">Agregar pulsera</a>
+    <a asp-action="ConfirmOrder" class="btn btn-dark">Confirmar orden</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfWristband.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfPersonInCharge)
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfWristband.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfPersonInCharge)
+            </td>
+            <td>
+                <a asp-action="IncreaseWristband" asp-route-id="@item.Id" class="btn btn-outline-dark">Aumentar</a>
+                <a asp-action="DecreaseWristband" asp-route-id="@item.Id" class="btn btn-outline-info">Disminuir</a>
+                
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

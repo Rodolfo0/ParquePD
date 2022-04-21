@@ -372,7 +372,7 @@
             });
             await this.dataContext.SaveChangesAsync();
         }
-        
+        ///
         public async Task CheckTypeOfWristband(string description, string colour, double price)
         {
             this.dataContext.TypeOfWristbands.Add(new TypeOfWristband

@@ -12,7 +12,7 @@
         [Display(Name = "Descripción")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "{0} es obligatorio")]
+
         [Display(Name = "Descripción")]
         public double InterestRate { get; set; }
 

@@ -18,6 +18,7 @@
         public DbSet<MachineReport> MachineReports { get; set; }
         public DbSet<Maintenance> Maintenances { get; set; }
         public DbSet<NecklaceSaleDetail> NecklaceSaleDetails { get; set; }
+        public DbSet<NecklaceSaleDetailTemp> NecklaceSaleDetailTemps { get; set; }
         public DbSet<ParkingTicket> ParkingTickets { get; set; }
         public DbSet<ParkingTicketPaymentMachine> ParkingTicketPaymentMachines { get; set; }    
         public DbSet<PaymentMachine> PaymentMachines { get; set; }
@@ -42,6 +43,7 @@
         public DbSet<VisitorSession> VisitorSessions { get; set; }
         public DbSet<VrEquipment> VrEquipments { get; set; }
         public DbSet<WristbandSaleDetail> WristbandsSaleDetail { get; set; }
+        public DbSet<WristbandSaleDetailTemp> WristbandSaleDetailTemps { get; set; }
 
         //public DbSet<Entidad> Entidades
         public DataContext(DbContextOptions<DataContext> options) : base(options)

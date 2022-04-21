@@ -1,14 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-    using System;
-    using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
-    using ParqueProcesoDesarrollo.Web.Data;
-    using ParqueProcesoDesarrollo.Web.Data.Entities;
-    using ParqueProcesoDesarrollo.Web.Helpers;
-    using ParqueProcesoDesarrollo.Web.Models;
+using Microsoft.EntityFrameworkCore;
+using ParqueProcesoDesarrollo.Web.Data;
+using ParqueProcesoDesarrollo.Web.Helpers;
+using System.Threading.Tasks;
 
 namespace ParqueProcesoDesarrollo.Web.Controllers
 {
@@ -17,7 +11,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         private readonly DataContext _context;
         private readonly ICombosHelper combosHelper;
 
-        public DetailCollarController(DataContext context,ICombosHelper combosHelper)
+        public DetailCollarController(DataContext context, ICombosHelper combosHelper)
         {
             _context = context;
             this.combosHelper = combosHelper;
