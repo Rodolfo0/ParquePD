@@ -34,7 +34,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 .ToListAsync());
         }
 
-        // Chacar lso detalles
+        //Detalles de los mantenimietos 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,11 +52,13 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(maintenance);
         }
 
-        // GET: Maintenances/Create
+        //Get 
         public IActionResult Create()
         {
             var model = new MaintenanceViewModel
             {
+                MaintenanceDate = DateTime.Now,
+                DateOfLastOverhaul=DateTime.Now,
                 Users = this.combosHelper.GetUsers(),
                 TPMaintenances = this.combosHelper.GetTPMaintenaces(),
                 Atractions = this.combosHelper.GetAttractions(),
@@ -80,7 +82,6 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     TypeOfMaintenance = await this.datacontext.TypeOfMaintenances.FindAsync(model.MaintenanceId),
                     Attraction = await this.datacontext.Attractions.FindAsync(model.AtraccionId),
                     Status=await this.datacontext.Statuses.FindAsync(model.StatusId)
-                    //Status = await _context.Statuses.FindAsync(model.StatusId)
                 };
 
                 datacontext.Add(maintenance);
@@ -150,7 +151,6 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     TypeOfMaintenance = await datacontext.TypeOfMaintenances.FindAsync(model.MaintenanceId),
                     Attraction = await datacontext.Attractions.FindAsync(model.AtraccionId),
                     Status=await this.datacontext.Statuses.FindAsync(model.StatusId)
-                    //Status = await _context.Statuses.FindAsync(model.StatusId)
                 };
                 datacontext.Update(maintenance);
                 await datacontext.SaveChangesAsync();
@@ -159,7 +159,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(model);
         }
 
-        // GET: Maintenances/Delete/5
+        //eliminar Registro
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
