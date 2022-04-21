@@ -5,7 +5,7 @@ html{
 
 body{
     font: $font-primary;
-    background-color: rgb(245, 245, 245);
+    background-color: white;
     color: map-get($map: $palette, $key: 'shade-dark');
 }
 

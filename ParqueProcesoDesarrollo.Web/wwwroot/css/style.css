@@ -14,7 +14,7 @@ html {
 
 body {
   font: "Montserrat";
-  background-color: whitesmoke;
+  background-color: white;
   color: #363636;
 }
 
@@ -68,7 +68,7 @@ body {
 }
 /* ================= Base ================= */
 .nta-btn-primary {
-  background-color: #3d75f2;
+  background-color: #253575;
   border: none;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
@@ -433,7 +433,7 @@ body {
   position: fixed;
   top: 1rem;
   left: 1rem;
-  background: #fff;
+  background: #253575;
   border-radius: 10px;
   padding: 1rem 0;
   -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
@@ -444,8 +444,8 @@ body {
 .navbar__toggle {
   display: none;
   font-size: 2.3em;
-  color: #3d75f2;
-  background-color: white;
+  color: white;
+  background-color: #253575;
   height: 3.5rem;
   width: 3.5rem;
   position: fixed;
@@ -461,6 +461,9 @@ body {
   border-radius: 10px;
   z-index: 10;
 }
+.navbar__toggle:hover {
+  color: white;
+}
 .navbar__link {
   position: relative;
   display: -webkit-box;
@@ -474,7 +477,7 @@ body {
           justify-content: center;
   height: 3.5rem;
   width: 3.5rem;
-  color: #3d75f2;
+  color: white;
   -webkit-transition: 250ms ease all;
   transition: 250ms ease all;
   font-size: 1.5em;
@@ -487,7 +490,7 @@ body {
   -webkit-transform: translate(-3rem);
           transform: translate(-3rem);
   opacity: 0;
-  color: #3d75f2;
+  color: #253575;
   background: #fff;
   padding: 0.75rem;
   -webkit-transition: 250ms ease all;
@@ -498,8 +501,8 @@ body {
   visibility: hidden;
 }
 .navbar__link:hover {
-  color: white;
-  background-color: #3d75f2;
+  color: #253575;
+  background-color: white;
 }
 .navbar__link:hover span {
   visibility: visible;
@@ -512,7 +515,7 @@ body {
   padding: 0;
 }
 .navbar__menu:first-child {
-  margin-top: 0;
+  margin-top: 3rem;
 }
 .navbar__item {
   list-style: none;
@@ -612,7 +615,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #3d75f2;
+  border: 3px solid #253575;
   margin: 0.2em;
 }
 
@@ -666,7 +669,7 @@ body {
   z-index: 40;
 }
 .manager-table__add {
-  background-color: #dfe7f8;
+  background-color: #D43878;
   display: block;
   width: 60px;
   height: 60px;
@@ -681,11 +684,18 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 50%;
-  color: #363636;
+  color: white;
   font-size: 2rem;
   position: fixed;
   bottom: 50px;
   right: 50px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.manager-table__add:hover {
+  color: white;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 .manager-table__list-country {
   border: 0;
@@ -716,7 +726,7 @@ body {
 }
 .manager-table__caption {
   font-size: 1.5em;
-  margin: 1em 0 0.2em;
+  margin: 0 0.2em 0.5em;
   text-align: left;
   font-weight: 800;
   color: #363636;
@@ -733,7 +743,7 @@ body {
 .manager-table__headers {
   background-color: white;
   position: sticky;
-  top: 73px;
+  top: 57px;
 }
 .manager-table .header-lg {
   top: 154px;
@@ -796,7 +806,7 @@ body {
   transition: all linear 0.2s;
 }
 .manager-table__option i:hover {
-  background-color: #dfe7f8;
+  background-color: #D43878;
 }
 
 @media screen and (max-width: 600px) {
@@ -873,7 +883,7 @@ body {
     background-color: none;
   }
   .manager-table__option:hover {
-    background-color: #dfe7f8;
+    background-color: #D43878;
   }
 }
 .view {
@@ -972,7 +982,7 @@ body {
 }
 .country__list-item i {
   margin-bottom: 20px;
-  color: #3d75f2;
+  color: #253575;
   cursor: pointer;
   font-size: 1.5rem;
 }
@@ -1045,7 +1055,7 @@ body {
   color: white;
   width: 250px;
   height: 250px;
-  background: #3d75f2;
+  background: #253575;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1205,7 +1215,7 @@ body {
 }
 
 .primary {
-  color: #3d75f2;
+  color: #253575;
 }
 
 .complementary {
