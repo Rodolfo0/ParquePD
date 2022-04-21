@@ -16,5 +16,6 @@
         public IEnumerable<SelectListItem> GetAttractions();
         public IEnumerable<SelectListItem> GetUsers();
         public IEnumerable<SelectListItem> GetSizes();
+        public IEnumerable<SelectListItem> GetVisitors();
     }
 }

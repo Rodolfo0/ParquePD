@@ -7,6 +7,8 @@
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Nombre de estado obligatorio")]
+        [Display(Name = "Estado")]
         [MaxLength(50)] 
         public string Name { get; set; }
 

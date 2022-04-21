@@ -29,7 +29,7 @@
             await userHelper.CheckRoleAsync("Guardia");
             await userHelper.CheckRoleAsync("Encargado del juego");
 
-            if(!this.dataContext.Employees.Any())
+            if (!this.dataContext.Employees.Any())
             {
                 var user = await CheckUser("Axel", "Rodríguez", "Pérez", "153689", "FAB245", "peraxe@gmail.com"
                     , DateTime.Now, 4500, null, "12345");
@@ -153,21 +153,21 @@
                 await CheckTypeOfWristband("Niño VIP", "Verde con Amarillo", 500);
                 await CheckTypeOfWristband("Adulto Mayor VIP", "Azul con Amarillo", 400);
             }
-        
+
             if (!this.dataContext.CollarSizes.Any())
             {
                 await CheckCollarSize("Pequeña", 100);
                 await CheckCollarSize("Mediana", 150);
                 await CheckCollarSize("Grande", 200);
             }
-        
+
             if (!this.dataContext.CashBoxes.Any())
             {
                 var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
                 var employee = dataContext.Employees.FirstOrDefault(c => c.Id == 4);
                 await CheckCashBox("192.168.586.544", employee, status);
             }
-        
+
             if (!this.dataContext.Locations.Any())
             {
                 await CheckLocation("Entrada 1");
@@ -180,11 +180,11 @@
                 await CheckLocation("Salida 4");
             }
 
-            if(!this.dataContext.PaymentMachines.Any())
+            if (!this.dataContext.PaymentMachines.Any())
             {
                 var location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 1");
                 var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "Inactivo");
-                await CheckPaymentMachines(location,status);
+                await CheckPaymentMachines(location, status);
 
                 location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 2");
                 await CheckPaymentMachines(location, status);
@@ -196,7 +196,7 @@
                 await CheckPaymentMachines(location, status);
             }
 
-            if(!this.dataContext.PrintingMachines.Any())
+            if (!this.dataContext.PrintingMachines.Any())
             {
                 var location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Entrada 1");
                 await CheckPrintingMachines(location);
@@ -211,7 +211,7 @@
                 await CheckPrintingMachines(location);
             }
 
-            if(!this.dataContext.ReceivingMachines.Any())
+            if (!this.dataContext.ReceivingMachines.Any())
             {
                 var location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 1");
                 await CheckReceivingMachines(location);
@@ -224,6 +224,28 @@
 
                 location = this.dataContext.Locations.FirstOrDefault(l => l.Place == "Salida 4");
                 await CheckReceivingMachines(location);
+            }
+
+            if (!this.dataContext.Sessions.Any())
+            {
+                var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "En espera");
+                await CheckSession(DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, status);
+            }
+
+            if (!this.dataContext.VrEquipments.Any())
+            {
+                var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "Activo");
+
+                await CheckVrEquipment("Quest 2", "Oculus", DateTime.Today, status);
+                await CheckVrEquipment("Quest 2", "Oculus", DateTime.Today, status);
+                await CheckVrEquipment("Quest 2", "Oculus", DateTime.Today, status);
+                await CheckVrEquipment("Quest 2", "Oculus", DateTime.Today, status);
+                await CheckVrEquipment("Quest 2", "Oculus", DateTime.Today, status);
+                await CheckVrEquipment("Quest 2", "Oculus", DateTime.Today, status);
+                await CheckVrEquipment("Quest 2", "Oculus", DateTime.Today, status);
+                await CheckVrEquipment("Vive", "HTC", DateTime.Today, status);
+                await CheckVrEquipment("Vive", "HTC", DateTime.Today, status);
+                await CheckVrEquipment("Vive", "HTC", DateTime.Today, status);
             }
         }
 
@@ -443,6 +465,30 @@
             });
 
             await this.dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckSession(DateTime sessionDate, DateTime startTime, DateTime finishTime, Status status)
+        {
+            dataContext.Sessions.Add(new Session
+            {
+                SessionDate = sessionDate,
+                StartTime = startTime,
+                FinishTime = finishTime,
+                Status = status
+            });
+            await dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckVrEquipment(string model, string brand, DateTime dateOfPurchase, Status status)
+        {
+            dataContext.VrEquipments.Add(new VrEquipment
+            {
+                Model = model, 
+                Brand = brand,
+                DateOfPurchase = dateOfPurchase,
+                Status = status
+            });
+            await dataContext.SaveChangesAsync();
         }
     }
 }

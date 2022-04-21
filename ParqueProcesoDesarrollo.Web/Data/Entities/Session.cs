@@ -10,21 +10,23 @@
 
         [Required(ErrorMessage = "{0} es obligatorio")]
         [Display(Name = "Hora de inicio")]
-        public DateTime StartTime { get; set; }
-
-        [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Hora de fin")]
-        public DateTime FinishTime { get; set; }
-
-        [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Hora de inicio")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime SessionDate { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Sesión interrumpida")]
-        public bool SessionInterrupted { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:hh:mm:ss tt}")]
+        [Display(Name = "Hora de inicio")]
+        public DateTime StartTime { get; set; }
+
+        [Required(ErrorMessage = "{0} es obligatorio")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:hh:mm:ss tt}")]
+        [Display(Name = "Hora de fin")]
+        public DateTime FinishTime { get; set; }
 
         public Status Status { get; set; }
-        public ICollection <VisitorSession> VisitorSessions { get; set; }
+
+        public ICollection<VisitorSession> VisitorSession { get; set; }
+
+        public ICollection<VisitorNextSession> VisitorNextSession { get; set; }
     }
 }

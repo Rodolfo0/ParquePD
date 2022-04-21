@@ -178,5 +178,22 @@
 
             return list;
         }
+
+        public IEnumerable<SelectListItem> GetVisitors()
+        {
+            var list = dataContext.WristbandsSaleDetail.Select(wsd => new SelectListItem
+            {
+                Text = wsd.NameOfPersonInCharge,
+                Value = $"{wsd.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Seleccione un visitante",
+                Value = "0"
+            });
+
+            return list;
+        }
     }
 }

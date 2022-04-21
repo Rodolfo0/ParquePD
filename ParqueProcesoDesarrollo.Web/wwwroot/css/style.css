@@ -512,7 +512,7 @@ body {
   padding: 0;
 }
 .navbar__menu:first-child {
-  margin-top: 3rem;
+  margin-top: 0;
 }
 .navbar__item {
   list-style: none;

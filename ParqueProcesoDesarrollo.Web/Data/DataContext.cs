@@ -41,6 +41,7 @@
         public DbSet<TypeOfWristband> TypeOfWristbands { get; set; }
         public override DbSet<User> Users { get; set; }
         public DbSet<VisitorSession> VisitorSessions { get; set; }
+        public DbSet<VisitorNextSession> VisitorNextSessions { get; set; }
         public DbSet<VrEquipment> VrEquipments { get; set; }
         public DbSet<WristbandSaleDetail> WristbandsSaleDetail { get; set; }
         public DbSet<WristbandSaleDetailTemp> WristbandSaleDetailTemps { get; set; }
