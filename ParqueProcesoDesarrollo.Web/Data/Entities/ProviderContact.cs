@@ -42,5 +42,8 @@
         public string BusinessHours { get; set; }
 
         public Provider Provider { get; set; }
+
+        [Display(Name = "Nombre Completo")]
+        public string FullName { get { return this.Name +" "+ this.PaternalSurname +" "+ this.MaternalSurname; } }
     }
 }
