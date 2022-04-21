@@ -12,7 +12,7 @@ namespace ParqueProcesoDesarrollo.Web.Models
     public class MaintenanceViewModel : Maintenance
     {
         [Display(Name = "Responsable")]
-        public int UserId { get; set; }
+        public string UserId { get; set; }//Cambio de entero a string
 
         public IEnumerable<SelectListItem> Users { get; set; }
 
@@ -25,5 +25,10 @@ namespace ParqueProcesoDesarrollo.Web.Models
         public int AtraccionId { get; set; }
 
         public IEnumerable<SelectListItem> Atractions { get; set; }
+
+        [Display(Name = "Estado")]
+        public int StatusId { get; set; }
+
+        public IEnumerable<SelectListItem> Statuses { get; set; }
     }
 }

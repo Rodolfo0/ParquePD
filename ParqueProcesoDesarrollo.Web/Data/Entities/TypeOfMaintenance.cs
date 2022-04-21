@@ -9,7 +9,7 @@
 
         [Required(ErrorMessage = "{0} es obligatorio")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
-        [Display(Name = "Descripción")]
+        [Display(Name = "T.Mantenimiento")]
         public string Description{ get; set; }
 
         public ICollection <Maintenance> Maintenances { get; set; }
