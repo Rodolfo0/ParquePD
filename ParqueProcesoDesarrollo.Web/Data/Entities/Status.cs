@@ -19,5 +19,7 @@
         public ICollection <Session> Sessions { get; set; }
         public ICollection <Attraction> Attractions { get; set; }
         public ICollection <PaymentMachine> PaymentMachines { get; set; }
+        public ICollection <User> Users { get; set; }
+        public ICollection <Maintenance> Maintenances { get; set; }
     }
 }

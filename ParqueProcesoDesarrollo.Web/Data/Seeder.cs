@@ -31,32 +31,33 @@
 
             if (!this.dataContext.Employees.Any())
             {
+                var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
                 var user = await CheckUser("Axel", "Rodríguez", "Pérez", "153689", "FAB245", "peraxe@gmail.com"
-                    , DateTime.Now, 4500, null, "12345");
+                    , DateTime.Now, 4500, null, "12345", status);
                 await CheckEmployee(user, "Gerente General");
 
                 user = await CheckUser("Alex", "Roque", "Bautista", "153689", "FAB845", "roqueba@gmail.com"
-                    , DateTime.Now, 4500, null, "12345");
+                    , DateTime.Now, 4500, null, "12345", status);
                 await CheckEmployee(user, "Gerente Administrativo");
 
                 user = await CheckUser("Jesse", "Vélez", "Alatorre", "153689", "FAB245", "jesseve@gmail.com"
-                    , DateTime.Now, 6500, null, "12345");
+                    , DateTime.Now, 6500, null, "12345", status);
                 await CheckEmployee(user, "Gerente Compras");
 
                 user = await CheckUser("Yael", "Valadez", "Pérez", "153689", "FAB245", "yaelva@gmail.com"
-                    , DateTime.Now, 4500, null, "12345");
+                    , DateTime.Now, 4500, null, "12345", status);
                 await CheckEmployee(user, "Cajero");
 
                 user = await CheckUser("Dariel", "Ruiz", "Pérez", "153689", "FAB245", "ruizda@gmail.com"
-                    , DateTime.Now, 4500, null, "12345");
+                    , DateTime.Now, 4500, null, "12345", status);
                 await CheckEmployee(user, "Responsable Mantenimiento");
 
                 user = await CheckUser("Antonio", "Rodríguez", "Ruiz", "153689", "FAB245", "tonyr@gmail.com"
-                    , DateTime.Now, 4500, null, "12345");
+                    , DateTime.Now, 4500, null, "12345", status);
                 await CheckEmployee(user, "Guardia");
 
                 user = await CheckUser("Manuel", "Parra", "Pérez", "153689", "FAB245", "manupar@gmail.com"
-                    , DateTime.Now, 4500, null, "12345");
+                    , DateTime.Now, 4500, null, "12345", status);
                 await CheckEmployee(user, "Encargado del juego");
             }
 
@@ -251,7 +252,7 @@
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
             string phone, string rfc, string email, DateTime hiringDate, int salary, string imageUrl,
-            string password)
+            string password, Status status)
         {
             var user = await userHelper.GetUserByEmailAsync(email);
             if (user == null)
@@ -267,7 +268,8 @@
                     Email = email,
                     HiringDate = hiringDate,
                     Salary = salary,
-                    ImageUrl = imageUrl == null ? $"~/images/_default.jpeg" : imageUrl
+                    ImageUrl = imageUrl == null ? $"~/images/_default.jpeg" : imageUrl,
+                    Status = status
                 };
                 var result = await userHelper.AddUserAsync(user, password);
                 if (result != IdentityResult.Success)
