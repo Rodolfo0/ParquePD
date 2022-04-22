@@ -72,6 +72,12 @@
         margin: 10px auto;
         margin-right: 15px;
         cursor: pointer;
+
+        &-container
+        {
+            display: flex;
+            justify-content:flex-end;
+        }
     }
 
     &__transparency{

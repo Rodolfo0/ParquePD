@@ -807,6 +807,7 @@ body {
 }
 .manager-table__option i:hover {
   background-color: #D43878;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
@@ -946,6 +947,14 @@ body {
   margin: 10px auto;
   margin-right: 15px;
   cursor: pointer;
+}
+.view__button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 .view__transparency {
   color: rgba(0, 0, 0, 0.329);

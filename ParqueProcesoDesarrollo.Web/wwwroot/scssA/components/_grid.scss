@@ -36,6 +36,7 @@
         bottom: 50px;
         right: 50px;
         transition: all .2s linear;
+
         &:hover {
             color: map-get($map: $palette, $key: 'white');
             transform: scale(1.1);
@@ -149,6 +150,7 @@
 
             &:hover {
                 background-color: map-get($map: $palette, $key: 'secondary');
+                color: map-get($map: $palette, $key: 'white');
             }
         }
     }
