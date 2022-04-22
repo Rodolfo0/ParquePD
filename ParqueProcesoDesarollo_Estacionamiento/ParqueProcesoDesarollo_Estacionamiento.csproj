@@ -160,6 +160,9 @@
     <EmbeddedResource Include="PA-08-10 Importe de Pago.resx">
       <DependentUpon>PA-08-10 Importe de Pago.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PA-08-11 Pagar Boleto Perdido.resx">
+      <DependentUpon>PA-08-11 Pagar Boleto Perdido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PA-08-12 Salida del Estacionamiento.resx">
       <DependentUpon>PA-08-12 Salida del Estacionamiento.cs</DependentUpon>
     </EmbeddedResource>

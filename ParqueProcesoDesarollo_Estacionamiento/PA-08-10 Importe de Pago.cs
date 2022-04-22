@@ -7,6 +7,11 @@ using System.Windows.Forms;
 
 namespace ParqueProcesoDesarollo_Estacionamiento
 {
+    //Clase de la forma frmImportePago
+    //Autor: Alejandro Barroeta Martínez
+    //Fecha: -abril-2022
+    //Versión: 1.0
+    //Modificación: -abril-2022
     public partial class frmImportePago : MetroForm
     {
         private static frmImportePago importePago;
