@@ -41,59 +41,69 @@
 </table>
 
 <br />
-<br />
 @*Falta poner los titulos y las tablas una al lado de la otra*@
-<h3 class="manager-table__caption">Participantes en Sesión</h3>
-<h3 class="manager-table__caption">Fila de Espera</h3>
+<div class="grid">
+    <h3 class="manager-table__caption">Participantes en Sesión</h3>
+    <h3 class="manager-table__caption">Fila de Espera</h3>
+</div>
 
-<table class="manager-table" style="display: block;">
-    <thead class="manager-table__headers">
-        <tr class="manager-table__row">
-            <th class="manager-table__header" scope="col">
-                @Html.DisplayNameForInnerType((VisitorSession session) => session.WristbandSaleDetail)
-            </th>
-            <th class="manager-table__header" scope="col">
-                @Html.DisplayNameForInnerType((VisitorSession session) => session.VrEquipment)
-            </th>
-        </tr>
-    </thead>
-    <tbody class="manager-table__body">
-        @foreach (var item in Model.VisitorSession)
-        {
+<div class="grid">
+    <table class="manager-table">
+        <thead class="manager-table__headers">
             <tr class="manager-table__row">
-                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
-                    @Html.DisplayFor(modelItem => item.WristbandSaleDetail)
-                </td>
-                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.VrEquipment)>
-                    @Html.DisplayFor(modelItem => item.VrEquipment)
-                </td>
+                <th class="manager-table__header" scope="col">
+                    @Html.DisplayNameForInnerType((VisitorSession session) => session.WristbandSaleDetail)
+                </th>
+                <th class="manager-table__header" scope="col">
+                    @Html.DisplayNameForInnerType((VisitorSession session) => session.VrEquipment)
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody class="manager-table__body">
+            @foreach (var item in Model.VisitorSession)
+            {
+                <tr class="manager-table__row">
+                    <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
+                        @Html.DisplayFor(modelItem => item.WristbandSaleDetail.NameOfPersonInCharge)
+                    </td>
+                    <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.VrEquipment)>
+                        @Html.DisplayFor(modelItem => item.VrEquipment.Id)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<table class="manager-table" style="display: block;">
-    <thead class="manager-table__headers">
-        <tr class="manager-table__row">
-            <th class="manager-table__header" scope="col">
-                @Html.DisplayNameForInnerType((VisitorNextSession session) => session.WristbandSaleDetail)
-            </th>
-        </tr>
-    </thead>
-    <tbody class="manager-table__body">
-        @foreach (var item in Model.VisitorNextSession)
-        {
+    <table class="manager-table">
+        <thead class="manager-table__headers">
             <tr class="manager-table__row">
-                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
-                    @Html.DisplayFor(modelItem => item.WristbandSaleDetail)
-                </td>
+                <th class="manager-table__header" scope="col">
+                    @Html.DisplayNameForInnerType((VisitorNextSession session) => session.WristbandSaleDetail)
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody class="manager-table__body">
+            @foreach (var item in Model.VisitorNextSession)
+            {
+                <tr class="manager-table__row">
+                    <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
+                        @Html.DisplayFor(modelItem => item.WristbandSaleDetail.NameOfPersonInCharge)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-@*Faltan botones para iniciar y terminar sesion*@
-@*<a asp-action="Create" class="manager-table__options"><i class="fa-solid fa-minus"></i></a>*@
+<br />
+<br />
+<br />
+<a asp-action="StartSession" class="btn btn-primary">
+    <i class="fa-solid fa-circle-play fa-xl"></i>  Iniciar Sesión
+</a>
+<a asp-action="InterruptSession" class="btn btn-secondary">
+    <i class="fa-solid fa-circle-stop fa-xl"></i>  Interrumpir Sesión
+</a>
 
 @*Agregar nuevo visitante*@
 <a asp-action="AddVisitor" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>

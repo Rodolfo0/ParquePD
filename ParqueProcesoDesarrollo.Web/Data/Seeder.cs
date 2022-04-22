@@ -248,6 +248,31 @@
                 await CheckVrEquipment("Vive", "HTC", DateTime.Today, status);
                 await CheckVrEquipment("Vive", "HTC", DateTime.Today, status);
             }
+
+            //if (!this.dataContext.TicketSales.Any())
+            //{
+            //    var cashBox = this.dataContext.CashBoxes.FirstOrDefault(cb => cb.Id == 1 );
+            //    var iva = this.dataContext.IvaTypes.FirstOrDefault(i => i.Id == 1);
+            //    var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "Emitida");
+            //    await CheckTicketSale(cashBox, DateTime.MinValue, iva, status);
+            //    await CheckTicketSale(cashBox, DateTime.Today, iva, status);
+            //    await CheckTicketSale(cashBox, new DateTime(2001,01,15), iva, status);
+            //}
+
+            //if (!this.dataContext.WristbandsSaleDetail.Any())
+            //{
+            //    var type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 4);
+            //    var sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 1);
+            //    await CheckWrisbandSaleDetail(1.0, "Pepe Pecas", type, sale, 600.0);
+
+            //    type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 3);
+            //    sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 2);
+            //    await CheckWrisbandSaleDetail(1.0, "Rosa Sanchez", type, sale, 300.0);
+
+            //    type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 4);
+            //    sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 3);
+            //    await CheckWrisbandSaleDetail(1.0, "Jose Manuel", type, sale, 600.0);
+            //}
         }
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
@@ -489,6 +514,31 @@
                 Brand = brand,
                 DateOfPurchase = dateOfPurchase,
                 Status = status
+            });
+            await dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckTicketSale(CashBox cashBox, DateTime date, IvaType iva, Status status)
+        {
+            dataContext.TicketSales.Add(new TicketSale
+            {
+                CashBox = cashBox,
+                DateOfIssue = date,
+                IvaTypes = iva,
+                Status = status
+            });
+            await dataContext.SaveChangesAsync();
+        }
+
+        public async Task CheckWrisbandSaleDetail(double quantity, string name, TypeOfWristband type, TicketSale sale, double unitPrice)
+        {
+            dataContext.WristbandsSaleDetail.Add(new WristbandSaleDetail
+            {
+                Quantity = quantity,
+                NameOfPersonInCharge = name,
+                TypeOfWristband = type,
+                TicketSale = sale,
+                UnitPrice = unitPrice
             });
             await dataContext.SaveChangesAsync();
         }

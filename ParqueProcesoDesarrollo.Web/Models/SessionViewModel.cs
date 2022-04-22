@@ -13,6 +13,8 @@ namespace ParqueProcesoDesarrollo.Web.Models
     {
         [Required(ErrorMessage = "Por favor, seleccione un visitante")]
         [Display(Name = "Visitantes")]
+        public int VisitorId { get; set; }
+
         public IEnumerable<SelectListItem> Visitors { get; set; }
     }
 }
