@@ -1,6 +1,7 @@
 ﻿namespace ParqueProcesoDesarrollo.Web.Data.Entities
 {
     using System.ComponentModel.DataAnnotations;
+
     
     public class NecklaceSaleDetail : IEntity
     {
@@ -10,9 +11,13 @@
         [Display(Name = "Cantidad")]
         public int Quantity { get; set; }
 
-        [Required(ErrorMessage = "{0} es obligatorio")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
-        [Display(Name = "Cantidad")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public double UnitPrice { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+
+        public double Amount { get { return this.UnitPrice * this.Quantity; } }
         public string FixedIpAddress { get; set; }
 
         public CollarSize CollarSize { get; set; }

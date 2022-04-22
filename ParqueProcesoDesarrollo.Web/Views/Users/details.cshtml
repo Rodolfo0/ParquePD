@@ -1,93 +1,88 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.User
 @{
-    ViewData["Title"] = "Detalles";
+    ViewData["Title"] = "Usuarios";
 }
-<h1>Detalles</h1>
 
-<hr/>
-<div class="row">
-    <div class="col-md-4">
-        <dl class="row">
-            <dt class="col-sm-6">
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Detalles</h3>
+    </div>
+
+    <div class="view__container">
+        <div>
+            <dl>
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.FirstName)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.FirstName)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.ParentalSurname)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.ParentalSurname)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.MaternalSurname)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.MaternalSurname)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.PhoneNumber)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.RFC)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.RFC)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.Salary)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.Salary)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.HiringDate)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.HiringDate)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.Email)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.Email)
             </dd>
 
-            <dt class="col-sm-6">
+            <dt class="view__label">
                 @Html.DisplayNameFor(model => model.Role.Name)
             </dt>
-            <dd class="col-sm-6">
+            <dd class="view__data">
                 @Html.DisplayFor(model => model.Role.Name)
             </dd>
-
-
-        </dl>
-
-    </div>
-    <div class="col-md-7 offset-md-1">
-        <div class="form-group">
+            </dl>
+        </div>
+        <div>
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
-                <img src="@Url.Content(Model.ImageUrl)" style="width:100%" />
+                <img class="view__img" src="@Url.Content(Model.ImageUrl)" style="width:100%" />
             }
         </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index" class="button"><i class="bi bi-arrow-return-left"></i></a>
+<div class="view__button-container">
+<a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
 </div>
-
-
-

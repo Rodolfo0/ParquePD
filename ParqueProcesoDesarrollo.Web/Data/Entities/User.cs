@@ -51,5 +51,7 @@
 
         [Display(Name = "Nombre")]
         public string FullName => $"{ParentalSurname} {MaternalSurname} {FirstName}";
+        
+        public Status Status { get; set; }
     }
 }

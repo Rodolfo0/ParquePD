@@ -1,15 +1,16 @@
-﻿namespace ParqueProcesoDesarrollo.Web.Controllers
+﻿
+
+namespace ParqueProcesoDesarrollo.Web.Controllers
 {
-    using System;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using ParqueProcesoDesarrollo.Web.Data;
     using ParqueProcesoDesarrollo.Web.Data.Entities;
     using ParqueProcesoDesarrollo.Web.Helpers;
     using ParqueProcesoDesarrollo.Web.Models;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class TicketSalesController : Controller
     {
@@ -30,141 +31,205 @@
                 .ThenInclude(o => o.TypeOfWristband)
                 .Include(w => w.NecklaceSaleDetails)
                 .ThenInclude(q => q.CollarSize)
-                .Include(e => e.IvaType)
+                .Include(e => e.IvaTypes)
                 .ToListAsync());
         }
 
-        public IActionResult Create()
+        public IActionResult CreateWristband()
         {
-            var model = new TicketSalesViewModel
+            var model = this._context.WristbandSaleDetailTemps
+                .Include(o => o.TypeOfWristband);
+                
+
+            return View(model);
+        }
+
+        public IActionResult addWristband()
+        {
+            var model = new AddItemViewModel
             {
-                //TypeOfWristband = this.combosHelper.GetComboWristband(),
-                //TypeOfCollars = this.combosHelper.GetComboCollarSize()
+                Quantity = 1,
+                TypeOfWristband = this.combosHelper.GetComboWristband(),
+                NameOfPersonInCharge = ""
             };
             return View(model);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TicketSalesViewModel model)
+        public async Task<IActionResult> addWristband(AddItemViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var ticketSale = new TicketSale
+
+                var wristband = await this._context.TypeOfWristbands.FindAsync(model.WristbandId);
+
+                if (wristband == null)
                 {
-                    //Ticket = await _context.TicketSales.FindAsync(model.StatusId),
+                    return NotFound();
+                }
 
-                    //SocialReason = model.SocialReason,
-                    //RFC = model.RFC,
-                    //Address = model.Address,
-                    //Email = model.Email,
-                    //Phone = model.Phone,
-                    //Status = await _context.Statuses.FindAsync(model.StatusId)
-                    //ProviderContacts = model.ProviderContacts
+                var WristbandSaleDetailTemp = await this._context.WristbandSaleDetailTemps.Where(odt =>
+                 odt.TypeOfWristband == wristband).FirstOrDefaultAsync();
 
-                };
+                if (WristbandSaleDetailTemp == null)
+                {
+                    WristbandSaleDetailTemp = new Data.Entities.WristbandSaleDetailTemp
+                    {
+                        TypeOfWristband = wristband,
+                        Quantity = model.Quantity,
+                        UnitPrice = wristband.Price,
+                        NameOfPersonInCharge = model.NameOfPersonInCharge
+                    };
+                    this._context.WristbandSaleDetailTemps.Add(WristbandSaleDetailTemp);
 
-                _context.Add(ticketSale);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    WristbandSaleDetailTemp.Quantity += model.Quantity;
+                    this._context.WristbandSaleDetailTemps.Update(WristbandSaleDetailTemp);
+                }
+
+                await this._context.SaveChangesAsync();
+
+                return this.RedirectToAction("CreateWristband");
+
             }
-            return View(model);
+            return this.View(model);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> DeleteWristband(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var provider = await _context.Providers
-        //        .Include(p => p.Status)
+            var wristbandSaleDetailTemp = await this._context.WristbandSaleDetailTemps.FindAsync(id);
 
-        //        .FirstOrDefaultAsync(p => p.Id == id);
+            if (wristbandSaleDetailTemp == null)
+            {
+                return NotFound();
+            }
 
-        //    if (provider == null)
-        //    {
-        //        return NotFound();
-        //    }
+            this._context.WristbandSaleDetailTemps.Remove(wristbandSaleDetailTemp);
+            await this._context.SaveChangesAsync();
+            return this.RedirectToAction("CreateWristband");
+        }
 
-        //    var model = new ProviderViewModel
-        //    {
-        //        SocialReason = provider.SocialReason,
-        //        RFC = provider.RFC,
-        //        Address = provider.Address,
-        //        Email = provider.Email,
-        //        Phone = provider.Phone,
-        //        Status = provider.Status,
-        //        StatusId = provider.Status.Id,
-        //        Statuses = this.combosHelper.GetComboStatus(),
+        public async Task<IActionResult> IncreaseWristband(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //        //
-        //        //ProviderContacts = provider2.ProviderContacts
+            var wristbandSaleDetailTemp = await this._context.WristbandSaleDetailTemps.FindAsync(id);
 
+            if (wristbandSaleDetailTemp == null)
+            {
+                return NotFound();
+            }
+            wristbandSaleDetailTemp.Quantity += 1;
+            this._context.WristbandSaleDetailTemps.Update(wristbandSaleDetailTemp);
+            await this._context.SaveChangesAsync();
+            return this.RedirectToAction("CreateWristband");
+        }
 
-        //    };
-        //    return View(model);
-        //}
+        public async Task<IActionResult> DecreaseWristband(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(ProviderViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var provider = new Provider
-        //        {
-        //            Id = model.Id,
-        //            SocialReason = model.SocialReason,
-        //            RFC = model.RFC,
-        //            Address = model.Address,
-        //            Email = model.Email,
-        //            Phone = model.Phone,
-        //            Status = await _context.Statuses.FindAsync(model.StatusId)
+            var wristbandSaleDetailTemp = await this._context.WristbandSaleDetailTemps.FindAsync(id);
 
+            if (wristbandSaleDetailTemp == null)
+            {
+                return NotFound();
+            }
+            wristbandSaleDetailTemp.Quantity -= 1;
+            if (wristbandSaleDetailTemp.Quantity > 0)
+            {
+                this._context.WristbandSaleDetailTemps.Update(wristbandSaleDetailTemp);
+                await this._context.SaveChangesAsync();
+            }
+            return this.RedirectToAction("CreateWristband");
+        }
 
-        //        };
+        public async Task<IActionResult> ConfirmOrder()
+        {
+            var wristbandDetailTemp = await this._context.WristbandSaleDetailTemps
+                .Include(odt => odt.TypeOfWristband)
+                .ToListAsync();
 
-        //        _context.Update(provider);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
+            if (wristbandDetailTemp == null || wristbandDetailTemp.Count == 0)
+            {
+                return NotFound();
+            }
 
-        //    return View(model);
-        //}
+            var details = wristbandDetailTemp.Select(odt => new WristbandSaleDetail
+            {
+                UnitPrice = odt.UnitPrice,
+                TypeOfWristband = odt.TypeOfWristband,
+                Quantity = odt.Quantity,
+                NameOfPersonInCharge = odt.NameOfPersonInCharge
 
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+            }).ToList();
 
-        //    var provider = await _context.Providers
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (provider == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var order = new TicketSale
+            {
+                DateOfIssue = DateTime.UtcNow,
+                WristbandSaleDetails = details
+            };
 
-        //    return View(provider);
-        //}
+            this._context.TicketSales.Add(order);
+            this._context.WristbandSaleDetailTemps.RemoveRange(wristbandDetailTemp);
+            await this._context.SaveChangesAsync();
+            return this.RedirectToAction("Index");
 
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var provider = await _context.Providers.FindAsync(id);
-        //    _context.Providers.Remove(provider);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //private bool ProviderExists(int id)
-        //{
-        //    return _context.Providers.Any(e => e.Id == id);
-        //}
+        }
     }
 }
+
+//    return View(model);
+//}
+
+//[Authorize(Roles = "Admin")]
+//public async Task<IActionResult> Delete(int? id)
+//{
+//    var user = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
+//    if (user == null)
+//    {
+//        return NotFound();
+//    }
+
+//    if (id == null)
+//    {
+//        return NotFound();
+//    }
+
+//    var order = await datacontext.Orders.Where(u => u.User == user)
+
+//        .FirstOrDefaultAsync(m => m.Id == id);
+//    if (order == null)
+//    {
+//        return NotFound();
+//    }
+
+//    return View(order);
+//}
+
+//[HttpPost, ActionName("Delete")]
+//[ValidateAntiForgeryToken]
+//public async Task<IActionResult> DeleteConfirmed(int id)
+//{
+//    var order = await datacontext.Orders.FindAsync(id);
+//    datacontext.Orders.Remove(order);
+//    await datacontext.SaveChangesAsync();
+//    return RedirectToAction(nameof(Index));
+//}
+//private bool OrderExists(int id)
+//{
+//    return datacontext.Orders.Any(e => e.Id == id);
+//}

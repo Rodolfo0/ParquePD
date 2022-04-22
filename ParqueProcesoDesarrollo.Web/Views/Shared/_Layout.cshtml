@@ -8,11 +8,12 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/95642045a2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/normalize.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="bi bi-list"></i></a>
+    <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="fa-solid fa-bars"></i></a>
     <nav class="navbar" id="navbar">
             <ul class="navbar__menu" id="menu-list">
                 <li class="navbar__item">
@@ -51,7 +52,7 @@
                     </a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link">
+                    <a class="navbar__link" asp-area="" asp-controller="Maintenances" asp-action="Index">
                         <i class="fa-solid fa-gears"></i>
                     </a>
                 </li>

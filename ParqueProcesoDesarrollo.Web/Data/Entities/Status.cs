@@ -7,6 +7,8 @@
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Nombre de estado obligatorio")]
+        [Display(Name = "Estado")]
         [MaxLength(50)] 
         public string Name { get; set; }
 
@@ -17,5 +19,7 @@
         public ICollection <Session> Sessions { get; set; }
         public ICollection <Attraction> Attractions { get; set; }
         public ICollection <PaymentMachine> PaymentMachines { get; set; }
+        public ICollection <User> Users { get; set; }
+        public ICollection <Maintenance> Maintenances { get; set; }
     }
 }

@@ -17,7 +17,6 @@
         [Display(Name = "Color")]
         public string Colour { get; set; }
 
-        [Required(ErrorMessage = "{0} es obligatorio")]
         [Display(Name = "Precio")]
         public double Price{ get; set; }
 

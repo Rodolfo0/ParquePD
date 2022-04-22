@@ -30,10 +30,11 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 .Include(p => p.User)
                 .Include(x => x.TypeOfMaintenance)
                 .Include(y => y.Attraction)
+                .Include(s => s.Status)
                 .ToListAsync());
         }
 
-        // GET: Maintenances/Details/5
+        //Detalles de los mantenimietos 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -51,14 +52,17 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(maintenance);
         }
 
-        // GET: Maintenances/Create
+        //Get 
         public IActionResult Create()
         {
             var model = new MaintenanceViewModel
             {
+                MaintenanceDate = DateTime.Now,
+                DateOfLastOverhaul=DateTime.Now,
                 Users = this.combosHelper.GetUsers(),
                 TPMaintenances = this.combosHelper.GetTPMaintenaces(),
-                Atractions = this.combosHelper.GetAttractions()
+                Atractions = this.combosHelper.GetAttractions(),
+                Statuses = this.combosHelper.GetComboStatus()
             };
             return View(model);
         }
@@ -76,7 +80,8 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Remarks = model.Remarks,
                     User = await this.datacontext.Users.FindAsync(model.UserId),
                     TypeOfMaintenance = await this.datacontext.TypeOfMaintenances.FindAsync(model.MaintenanceId),
-                    Attraction = await this.datacontext.Attractions.FindAsync(model.AtraccionId)
+                    Attraction = await this.datacontext.Attractions.FindAsync(model.AtraccionId),
+                    Status=await this.datacontext.Statuses.FindAsync(model.StatusId)
                 };
 
                 datacontext.Add(maintenance);
@@ -95,9 +100,10 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             }
 
             var maintenance = await datacontext.Maintenances
-                .Include(p => p.User)
-                .Include(p => p.TypeOfMaintenance)
-                .Include(p => p.Attraction)
+                .Include(u => u.User)
+                .Include(t => t.TypeOfMaintenance)
+                .Include(a => a.Attraction)
+                .Include(s => s.Status)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (maintenance == null)
@@ -109,15 +115,22 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 MaintenanceDate = maintenance.MaintenanceDate,
                 DateOfLastOverhaul = maintenance.DateOfLastOverhaul,
                 Remarks = maintenance.Remarks,
+
                 User = maintenance.User,
-                //UserId=maintenance.User.Id,
-                Users = this.combosHelper.GetComboRoles(),
+                UserId=maintenance.User.Id,
+                Users = this.combosHelper.GetUsers(),
+
                 TypeOfMaintenance = maintenance.TypeOfMaintenance,
-                //MaintenanceId=maintenance.TypeOfMaintenance.Id,
+                MaintenanceId=maintenance.TypeOfMaintenance.Id,
                 TPMaintenances = this.combosHelper.GetTPMaintenaces(),
+
                 Attraction = maintenance.Attraction,
                 AtraccionId = maintenance.Attraction.Id,
-                Atractions = this.combosHelper.GetAttractions()
+                Atractions = this.combosHelper.GetAttractions(),
+
+                Status = maintenance.Status,
+                StatusId = maintenance.Status.Id,
+                Statuses = this.combosHelper.GetComboStatus(),
             };
             return View(model);
         }
@@ -136,7 +149,8 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Remarks = model.Remarks,
                     User = await datacontext.Users.FindAsync(model.UserId),
                     TypeOfMaintenance = await datacontext.TypeOfMaintenances.FindAsync(model.MaintenanceId),
-                    Attraction = await datacontext.Attractions.FindAsync(model.AtraccionId)
+                    Attraction = await datacontext.Attractions.FindAsync(model.AtraccionId),
+                    Status=await this.datacontext.Statuses.FindAsync(model.StatusId)
                 };
                 datacontext.Update(maintenance);
                 await datacontext.SaveChangesAsync();
@@ -145,7 +159,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(model);
         }
 
-        // GET: Maintenances/Delete/5
+        //eliminar Registro
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

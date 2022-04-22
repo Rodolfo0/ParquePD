@@ -1,68 +1,86 @@
 ﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.Provider>
 
 @{
-    ViewData["Title"] = "Index";
+  
 }
 
-<h1>Proveedores</h1>
 
-<p>
-    <a asp-action="Create">Agregar</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Proveedores</h3>
+
+</div>
+
+<a asp-action="Create" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
+
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.SocialReason)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.RFC)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
+            </th class="manager-table__header" scope="col">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
+            </th class="manager-table__header" scope="col">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Phone)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Status.Name)
             </th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="manager-table__body">
 @foreach (var item in Model) {
-        <tr>
-            <td>
+        <tr class="manager-table__row">
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.SocialReason)>
                 @Html.DisplayFor(modelItem => item.SocialReason)
             </td>
-            <td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.RFC)>
                 @Html.DisplayFor(modelItem => item.RFC)
             </td>
-            <td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Address)>
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
-            <td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Email)>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Phone)>
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
-            <td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Status.Name)>
                 @Html.DisplayFor(modelItem => item.Status.Name)
             </td>
             <td>
-               
-              @*  <a asp-action="Index" asp-controller="ProvidersContact" asp-route-id="@item.Id">Ver Contactos Asignados</a>*@
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
 
             </td>
+              <td class="manager-table__data manager-table__option" data-label="Ver">
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+              </td>
+              <td class="manager-table__data manager-table__option" data-label="Editar">
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+            </td>
+          
         </tr>
 }
     </tbody>
 </table>
+<br />
+<br />
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Contactos</h3>
+
+</div>
+
+ <div style="width:fit-content">
+       <a class="ripple" asp-area="" asp-controller="ProvidersContact" asp-action="Index2">
+            <img src="/images/providers/Contact.png" alt="Contacto Proveedor" style="width:250px; padding:33px">
+        </a>
+ </div>
+  

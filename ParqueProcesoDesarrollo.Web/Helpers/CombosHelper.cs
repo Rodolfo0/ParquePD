@@ -80,41 +80,6 @@
 
             return list;
         }
-
-        public IEnumerable<SelectListItem> GetComboSupplies()
-        {
-            var list = this.dataContext.Supplies.Select(s => new SelectListItem
-            {
-                Text = s.Description,
-                Value = $"{s.Id}"
-            }).ToList();
-
-            list.Insert(0, new SelectListItem
-            {
-                Text = "Selecciona un consumible",
-                Value = "0"
-            });
-
-            return list;
-        }
-
-        public IEnumerable<SelectListItem> GetComboPurchaseHeaders()
-        {
-            var list = this.dataContext.PurchaseHeader.Select(ph => new SelectListItem
-            {
-                Text = ph.Provider.SocialReason,
-                Value = $"{ph.Id}"
-            }).ToList();
-
-            list.Insert(0, new SelectListItem
-            {
-                Text = "Selecciona una orden de compra de un proveedor",
-                Value = "0"
-            });
-
-            return list;
-        }
-
         public IEnumerable<SelectListItem> GetComboWristband()
         {
             var list = this.dataContext.TypeOfWristbands.Select(ph => new SelectListItem
@@ -125,7 +90,7 @@
 
             list.Insert(0, new SelectListItem
             {
-                Text = "Selecciona una Bandita ",
+                Text = "Selecciona una Pulsera ",
                 Value = "0"
             });
 
@@ -137,7 +102,7 @@
             var list = this.dataContext.CollarSizes.Select(ph => new SelectListItem
             {
                 Text = ph.Size,
-                Value = $"{ph.Size}"
+                Value = $"{ph.Id}"
             }).ToList();
 
             list.Insert(0, new SelectListItem
@@ -208,6 +173,23 @@
             list.Insert(0, new SelectListItem
             {
                 Text = "Seleccione el tamaño del perro ",
+                Value = "0"
+            });
+
+            return list;
+        }
+
+        public IEnumerable<SelectListItem> GetVisitors()
+        {
+            var list = dataContext.WristbandsSaleDetail.Select(wsd => new SelectListItem
+            {
+                Text = wsd.NameOfPersonInCharge,
+                Value = $"{wsd.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Seleccione un visitante",
                 Value = "0"
             });
 

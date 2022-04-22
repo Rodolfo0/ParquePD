@@ -1,0 +1,99 @@
+﻿@using ParqueProcesoDesarrollo.Web.Data.Entities
+@model ParqueProcesoDesarrollo.Web.Data.Entities.Session
+
+@{
+    ViewData["Title"] = "Área de Realidad Virtual";
+}
+
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Sesión:</h3>
+</div>
+
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.Status.Name)
+            </th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.FinishTime)
+            </th>
+        </tr>
+    </thead>
+    <tbody class="manager-table__body">
+        <tr class="manager-table__row">
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Status.Name)>
+                @Html.DisplayFor(model => model.Status.Name)
+            </td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.StartTime)>
+                @if((DateTime.Compare(DateTime.MinValue, Model.StartTime)) != 0)
+                    @Html.DisplayFor(model => model.StartTime)
+            </td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.FinishTime)>
+                @if((DateTime.Compare(DateTime.MinValue, Model.StartTime)) != 0)
+                    @Html.DisplayFor(model => model.FinishTime)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+<br />
+@*Falta poner los titulos y las tablas una al lado de la otra*@
+<h3 class="manager-table__caption">Participantes en Sesión</h3>
+<h3 class="manager-table__caption">Fila de Espera</h3>
+
+<table class="manager-table" style="display: block;">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameForInnerType((VisitorSession session) => session.WristbandSaleDetail)
+            </th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameForInnerType((VisitorSession session) => session.VrEquipment)
+            </th>
+        </tr>
+    </thead>
+    <tbody class="manager-table__body">
+        @foreach (var item in Model.VisitorSession)
+        {
+            <tr class="manager-table__row">
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
+                    @Html.DisplayFor(modelItem => item.WristbandSaleDetail)
+                </td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.VrEquipment)>
+                    @Html.DisplayFor(modelItem => item.VrEquipment)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="manager-table" style="display: block;">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameForInnerType((VisitorNextSession session) => session.WristbandSaleDetail)
+            </th>
+        </tr>
+    </thead>
+    <tbody class="manager-table__body">
+        @foreach (var item in Model.VisitorNextSession)
+        {
+            <tr class="manager-table__row">
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
+                    @Html.DisplayFor(modelItem => item.WristbandSaleDetail)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*Faltan botones para iniciar y terminar sesion*@
+@*<a asp-action="Create" class="manager-table__options"><i class="fa-solid fa-minus"></i></a>*@
+
+@*Agregar nuevo visitante*@
+<a asp-action="AddVisitor" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>

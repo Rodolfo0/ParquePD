@@ -23,5 +23,6 @@
         public User User { get; set; }
         public TypeOfMaintenance TypeOfMaintenance { get; set; }
         public Attraction Attraction { get; set; }
+        public Status Status { get; set; }
     }
 }

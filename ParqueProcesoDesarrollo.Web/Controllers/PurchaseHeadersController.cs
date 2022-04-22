@@ -43,16 +43,16 @@
 
         // PurchaseDetail
         [HttpGet]
-        public IActionResult CreateDetail()
-        {
-            var model = new PurchaseDetailViewModel
-            {
-                Supplies = this.combosHelper.GetComboSupplies(),
+        //public IActionResult CreateDetail()
+        //{
+        //    var model = new PurchaseDetailViewModel
+        //    {
+        //        Supplies = this.combosHelper.GetComboSupplies(),
 
-                PurchaseHeaders = this.combosHelper.GetComboPurchaseHeaders()
-            };
-            return View(model);
-        }
+        //        PurchaseHeaders = this.combosHelper.GetComboPurchaseHeaders()
+        //    };
+        //    return View(model);
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Create(PurchaseHeaderViewModel model)
@@ -127,36 +127,36 @@
 
         // PurchaseDetail
         [HttpGet]
-        public async Task<IActionResult> EditDetail(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> EditDetail(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var purchaseDetail = await this.dataContext.PurchaseDetails
-                .Include(pd => pd.Supply)
-                .Include(pd => pd.PurchaseHeader)
-                .FirstOrDefaultAsync(ph => ph.Id == id);
+        //    var purchaseDetail = await this.dataContext.PurchaseDetails
+        //        .Include(pd => pd.Supply)
+        //        .Include(pd => pd.PurchaseHeader)
+        //        .FirstOrDefaultAsync(ph => ph.Id == id);
 
-            if (purchaseDetail == null)
-            {
-                return NotFound();
-            }
-            var model = new PurchaseDetailViewModel
-            {
-                Id = purchaseDetail.Id,
-                Quantity = purchaseDetail.Quantity,
-                UnitPrice = purchaseDetail.UnitPrice,
-                Supply = purchaseDetail.Supply,
-                SupplyId = purchaseDetail.Supply.Id,
-                Supplies = this.combosHelper.GetComboSupplies(),
-                PurchaseHeader = purchaseDetail.PurchaseHeader,
-                PurchaseHeaderId = purchaseDetail.PurchaseHeader.Id,
-                PurchaseHeaders = this.combosHelper.GetComboPurchaseHeaders(),
-            };
-            return View(model);
-        }
+        //    if (purchaseDetail == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var model = new PurchaseDetailViewModel
+        //    {
+        //        Id = purchaseDetail.Id,
+        //        Quantity = purchaseDetail.Quantity,
+        //        UnitPrice = purchaseDetail.UnitPrice,
+        //        Supply = purchaseDetail.Supply,
+        //        SupplyId = purchaseDetail.Supply.Id,
+        //        Supplies = this.combosHelper.GetComboSupplies(),
+        //        PurchaseHeader = purchaseDetail.PurchaseHeader,
+        //        PurchaseHeaderId = purchaseDetail.PurchaseHeader.Id,
+        //        PurchaseHeaders = this.combosHelper.GetComboPurchaseHeaders(),
+        //    };
+        //    return View(model);
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
