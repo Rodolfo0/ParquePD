@@ -11,6 +11,8 @@ namespace ParqueProcesoDesarrollo.Web.Models
 {
     public class SessionViewModel : Session
     {
+        public int StatusId { get; set; }
+
         [Required(ErrorMessage = "Por favor, seleccione un visitante")]
         [Display(Name = "Visitantes")]
         public int VisitorId { get; set; }

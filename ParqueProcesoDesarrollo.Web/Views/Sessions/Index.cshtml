@@ -32,7 +32,7 @@
                 @if((DateTime.Compare(DateTime.MinValue, Model.StartTime)) != 0)
                     @Html.DisplayFor(model => model.StartTime)
             </td>
-            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.FinishTime)>
+            <td class="manager-table__data" id="FinishTime" scope="row" data-label=@Html.DisplayNameFor(model => model.FinishTime)>
                 @if((DateTime.Compare(DateTime.MinValue, Model.StartTime)) != 0)
                     @Html.DisplayFor(model => model.FinishTime)
             </td>
@@ -42,12 +42,12 @@
 
 <br />
 @*Falta poner los titulos y las tablas una al lado de la otra*@
-<div class="grid">
+<div class="_grid">
     <h3 class="manager-table__caption">Participantes en Sesión</h3>
     <h3 class="manager-table__caption">Fila de Espera</h3>
 </div>
 
-<div class="grid">
+<div class="_grid">
     <table class="manager-table">
         <thead class="manager-table__headers">
             <tr class="manager-table__row">
@@ -98,12 +98,74 @@
 <br />
 <br />
 <br />
-<a asp-action="StartSession" class="btn btn-primary">
-    <i class="fa-solid fa-circle-play fa-xl"></i>  Iniciar Sesión
-</a>
-<a asp-action="InterruptSession" class="btn btn-secondary">
-    <i class="fa-solid fa-circle-stop fa-xl"></i>  Interrumpir Sesión
-</a>
+@if(Model.Status.Id == 5)
+{
+    <button onclick="StartConfirmation()" class="btn btn-primary">
+        <i class="fa-solid fa-circle-play fa-xl"></i>  Iniciar Sesión
+    </button>
+    <button onclick="InterruptConfirmation()" class="btn btn-secondary" disabled>
+        <i class="fa-solid fa-circle-stop fa-xl"></i>  Interrumpir Sesión
+    </button>
+}
+else if(Model.Status.Id == 6)
+{
+    <button onclick="StartConfirmation()" class="btn btn-secondary" disabled>
+        <i class="fa-solid fa-circle-play fa-xl"></i>  Iniciar Sesión
+    </button>
+    <button onclick="InterruptConfirmation()" class="btn btn-primary">
+        <i class="fa-solid fa-circle-stop fa-xl"></i>  Interrumpir Sesión
+    </button>
+}
 
 @*Agregar nuevo visitante*@
 <a asp-action="AddVisitor" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
+
+<script>
+    function checkTime(){
+        var current = new Date();
+        var currentHour = current.getHours();
+        var currentMinute = current.getMinutes();
+        var currentSecond = current.getSeconds();
+        var currentTime = new Date().setHours(currentHour, currentMinute, currentSecond, 0);
+
+        @*console.log(currentTime);*@
+        if(currentHour < 11 || currentHour >= 24){
+            ExitModule();
+        }
+            var finish = document.getElementById("FinishTime").textContent;
+            if(finish != ""){
+                finish = finish.trim();
+                var finishHour = parseInt(finish.substring(0,2));
+                var finishMinute = parseInt(finish.substring(3,5));
+                var finishSecond = parseInt(finish.substring(6,8));
+                var finishTime = new Date().setHours(finishHour, finishMinute, finishSecond, 0);
+
+                @*console.log(finishTime);*@
+                if (currentTime >= finishTime){
+                    window.location.href = '@Url.Action("InterruptSession", "Sessions")';
+                    @*console.log("I'm in!");*@
+            }
+        }
+    }
+
+    function StartConfirmation() {
+      var txt;
+      if (confirm("¿Esta seguro que quiere iniciar la sesión?")) {
+        window.location.href = '@Url.Action("StartSession", "Sessions")';
+      }
+    }
+
+    function InterruptConfirmation() {
+      var txt;
+      if (confirm("¿Esta seguro que quiere terminar la sesión?")) {
+        window.location.href = '@Url.Action("InterruptSession", "Sessions")';
+      }
+    }
+
+    function ExitModule(){
+        alert("Lo siento, este módulo no esta disponible en este momento.");
+        window.location.href = '@Url.Action("Index", "Home")';
+    }
+
+    setInterval(checkTime, 1000);
+</script>

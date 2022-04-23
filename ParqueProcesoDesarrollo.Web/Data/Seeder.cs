@@ -251,12 +251,12 @@
 
             //if (!this.dataContext.TicketSales.Any())
             //{
-            //    var cashBox = this.dataContext.CashBoxes.FirstOrDefault(cb => cb.Id == 1 );
+            //    var cashBox = this.dataContext.CashBoxes.FirstOrDefault(cb => cb.Id == 1);
             //    var iva = this.dataContext.IvaTypes.FirstOrDefault(i => i.Id == 1);
             //    var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "Emitida");
             //    await CheckTicketSale(cashBox, DateTime.MinValue, iva, status);
             //    await CheckTicketSale(cashBox, DateTime.Today, iva, status);
-            //    await CheckTicketSale(cashBox, new DateTime(2001,01,15), iva, status);
+            //    await CheckTicketSale(cashBox, new DateTime(2001, 01, 15), iva, status);
             //}
 
             //if (!this.dataContext.WristbandsSaleDetail.Any())
