@@ -14,12 +14,12 @@
         public DateTime SessionDate { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:hh:mm:ss tt}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:HH:mm:ss}")]
         [Display(Name = "Hora de inicio")]
         public DateTime StartTime { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:hh:mm:ss tt}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:HH:mm:ss}")]
         [Display(Name = "Hora de fin")]
         public DateTime FinishTime { get; set; }
 

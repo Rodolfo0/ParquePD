@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="fa-solid fa-bars"></i></a>
+    <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="bi bi-list"></i></a>
+     @*@if (this.User.Identity.IsAuthenticated)
+    {*@
     <nav class="navbar" id="navbar">
             <ul class="navbar__menu" id="menu-list">
                 <li class="navbar__item">
@@ -69,7 +71,8 @@
             </ul>
             <div class="menu-bg"></div>
         </nav>
-
+    @*}*@
+    
         <div class="manager-header">
             <h2 class="nta-title nta-title-xs primary manager-header__title">@ViewData["Title"]</h2>
             @if (this.User.Identity.IsAuthenticated)
