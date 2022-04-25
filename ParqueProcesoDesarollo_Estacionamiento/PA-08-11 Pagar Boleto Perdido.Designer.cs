@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.txtHoraActual = new MetroFramework.Controls.MetroLabel();
             this.txtFechaActual = new MetroFramework.Controls.MetroLabel();
             this.txtNumeroMaquina = new MetroFramework.Controls.MetroLabel();
@@ -39,16 +38,6 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Location = new System.Drawing.Point(1353, 871);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(456, 125);
-            this.metroButton1.TabIndex = 30;
-            this.metroButton1.Text = "He Perdido Mi Boleto";
-            this.metroButton1.UseSelectable = true;
             // 
             // txtHoraActual
             // 
@@ -157,7 +146,6 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.txtHoraActual);
             this.Controls.Add(this.txtFechaActual);
             this.Controls.Add(this.txtNumeroMaquina);
@@ -172,8 +160,6 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLabel txtHoraActual;
         private MetroFramework.Controls.MetroLabel txtFechaActual;
         private MetroFramework.Controls.MetroLabel txtNumeroMaquina;
