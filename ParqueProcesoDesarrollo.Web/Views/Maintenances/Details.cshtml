@@ -1,55 +1,60 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.Maintenance
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Mantenimiento";
 }
 
 <div class="manager-table__top">
-    <h3 class="manager-table__caption">Detalles de Mantenimiento</h3>
+    <h3 class="manager-table__caption">Detalles</h3>
 </div>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-6">
-            @Html.DisplayNameFor(model => model.MaintenanceDate)
-        </dt>
-        <dd class="col-sm-6">
-            @Html.DisplayFor(model => model.MaintenanceDate)
-        </dd>
-        <dt class="col-sm-6">
-            @Html.DisplayNameFor(model => model.DateOfLastOverhaul)
-        </dt>
-        <dd class="col-sm-6">
-            @Html.DisplayFor(model => model.DateOfLastOverhaul)
-        </dd>
-        <dt class="col-sm-6">
-            @Html.DisplayNameFor(model => model.Remarks)
-        </dt>
-        <dd class="col-sm-6">
-            @Html.DisplayFor(model => model.Remarks)
-        </dd>
-        <dt class="col-sm-6">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class="col-sm-6">
-            @Html.DisplayFor(model => model.User.FirstName)
-        </dd>
-        <dt class="col-sm-6">
-            @Html.DisplayNameFor(model => model.TypeOfMaintenance)
-        </dt>
-        <dd class="col-sm-6">
-            @Html.DisplayFor(model => model.TypeOfMaintenance.Description)
-        </dd>
-        <dt class="col-sm-6">
-            @Html.DisplayNameFor(model => model.Attraction)
-        </dt>
-        <dd class="col-sm-6">
-            @Html.DisplayNameFor(model => model.Attraction.Name)
-        </dd>
 
-    </dl>
+<div class="view__container">
+    <div>
+        <dl>
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.MaintenanceDate)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.MaintenanceDate)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.DateOfLastOverhaul)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.DateOfLastOverhaul)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.Remarks)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.Remarks)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.User.FirstName)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.TypeOfMaintenance)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.TypeOfMaintenance.Description)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.Attraction)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.Attraction.Name)
+            </dd>
+        </dl>
+    </div>  
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="view__button-container">
+        <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+    </div>
