@@ -202,5 +202,8 @@
   <ItemGroup>
     <None Include="Resources\Billete de 100 pesos.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
