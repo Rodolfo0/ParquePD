@@ -1,49 +1,53 @@
 ﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.Kit>
 
 @{
-    ViewData["Title"] = "IndexKits";
+    ViewData["Title"] = "Kits";
 }
 
-<h1>Registro de ventas</h1>
 
-<p>
-    <a asp-action="Index">Regresar</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Registros</h3>
+    
+</div>
+
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.DateOfSale)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 Total
             </th>
-            <th></th>
+            <th class="manager-table__header" scope="col">
+                Ver
+            </th>
+
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfSale)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                 @(item.UnitPrice * item.Quantity)
-            </td>
-            <td>
-                <a class="" asp-action="DetailsKits" asp-route-id="@item.Id">Detalles</a> |
-                <a class="" asp-action="DeleteKits" asp-route-id="@item.Id">Borrar</a>
-            </td>
-        </tr>
+    <tbody class="manager-table__body">
+        @foreach (var item in Model)
+        {
+            <tr class="manager-table__row">
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.DateOfSale)>
+                    @Html.DisplayFor(modelItem => item.DateOfSale)
+                </td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Quantity)>
+                    @Html.DisplayFor(modelItem => item. Quantity)
+                </td>
+                <td class="manager-table__data" scope="row" data-label=Total>
+                    Total
+                </td>
 
-}     
+                <td class="manager-table__data manager-table__option" data-label="Ver">
+                    <a asp-action="DetailsKits" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
-<a asp-action="CreateKits">Realizar una venta</a>
+<a asp-action="CreateKits" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>

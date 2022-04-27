@@ -1,7 +1,7 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Models.addDogViewModel
 
 @{
-    ViewData["Title"] = "CreateSpa";
+    ViewData["Title"] = "Spa";
 }
 
 <h1>Realizar un registro</h1>
@@ -13,26 +13,29 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <label asp-for="WristbandSaleDetail.Id" class="control-label">Id pulsera</label>
-                <input asp-for="WristbandSaleDetail.Id" id="owner-id" class="form-control" />
-                <span asp-validation-for="WristbandSaleDetail.Id" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Owner" class="control-label">Encargado</label>
-                <input asp-for="Owner" id="owner-name" readonly class="form-control" />
-                <span asp-validation-for="Owner" class="text-danger"></span>
+                <label asp-for="IdClient" class="control-label">Seleccione el cliente</label>
+                <select asp-for="IdClient" class="form-control" asp-items="Model.Wristbands"></select>
+                <span asp-validation-for="IdClient" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="idSize" class="control-label"></label>
-                <select asp-for="idSize" id="size" class="form-control" asp-items="Model.Sizes"></select>
+                <select asp-for="idSize" id="sizep" class="form-control" asp-items="Model.Sizes"></select>
                 <span asp-validation-for="idSize" class="text-danger"></span>
             </div>
+
+            <input type="hidden" asp-for="Size.Name" id="size-name" />
+
             <div class="form-group">
                 <label asp-for="Size.Price" class="control-label">Total</label>
-                <input asp-for="Size.Price" id="price" readonly class="form-control" />
+                <input asp-for="Size.Price" id="pricex" readonly class="form-control" />
                 <span asp-validation-for="Size.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfCheckInTime" class="control-label">Fecha y hora de entrada</label>
+                <input asp-for="DateOfCheckInTime" readonly class="form-control" />
+                <span asp-validation-for="DateOfCheckInTime" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -51,15 +54,22 @@
 </div>
 
 <script>
-    let botC = document.getElementById("continuar-venta");
-    let popUp = document.getElementById("popUp-generico");
+    let idSize = document.getElementById("sizep");
+    let price = document.getElementById("pricex");
+    let sizeName = document.getElementById("size-name");
 
-    let price = document.getElementById("price");
-    let size = document.getElementById("size");
-
-    botC.addEventListener("click", function () {
-    popUp.classList.toggle("invisibleP");
-    });
-
+    idSize.addEventListener("change", function(){
+        if(idSize.value == 1){
+            price.value = 260;
+            sizeName.value = "Pequeño";
+        }
+        if(idSize.value == 2){
+            price.value = 310;
+            sizeName.value = "Mediano";
+        }
+        if(idSize.value == 3){
+            price.value = 450;
+            sizeName.value = "Grande";
+        }
     });
 </script>

@@ -1,7 +1,7 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.Kit
 
 @{
-    ViewData["Title"] = "CreateKits";
+    ViewData["Title"] = "Kits";
 }
 
 <h1>Realizar venta de Kit antipandemia</h1>
@@ -56,11 +56,11 @@
 
     quantity.addEventListener("change", function(){
         total.value = unitPrice.value * quantity.value;
-
+    });
 
     botC.addEventListener("click", function () {
     popUp.classList.toggle("invisibleP");
     });
 
-    });
+    
 </script>

@@ -41,58 +41,61 @@
 </table>
 
 <br />
-@*Falta poner los titulos y las tablas una al lado de la otra*@
-<div class="_grid">
-    <h3 class="manager-table__caption">Participantes en Sesión</h3>
-    <h3 class="manager-table__caption">Fila de Espera</h3>
-</div>
+<br />
 
-<div class="_grid">
-    <table class="manager-table">
-        <thead class="manager-table__headers">
-            <tr class="manager-table__row">
-                <th class="manager-table__header" scope="col">
-                    @Html.DisplayNameForInnerType((VisitorSession session) => session.WristbandSaleDetail)
-                </th>
-                <th class="manager-table__header" scope="col">
-                    @Html.DisplayNameForInnerType((VisitorSession session) => session.VrEquipment)
-                </th>
-            </tr>
-        </thead>
-        <tbody class="manager-table__body">
-            @foreach (var item in Model.VisitorSession)
-            {
+<div class="view__container">
+    <div>
+        <h3 class="manager-table__caption center">Participantes en Sesión</h3>
+        <br />
+        <table class="manager-table">
+            <thead class="manager-table__headers">
                 <tr class="manager-table__row">
-                    <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
-                        @Html.DisplayFor(modelItem => item.WristbandSaleDetail.NameOfPersonInCharge)
-                    </td>
-                    <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.VrEquipment)>
-                        @Html.DisplayFor(modelItem => item.VrEquipment.Id)
-                    </td>
+                    <th class="manager-table__header" scope="col">
+                        @Html.DisplayNameForInnerType((VisitorSession session) => session.WristbandSaleDetail)
+                    </th>
+                    <th class="manager-table__header" scope="col">
+                        @Html.DisplayNameForInnerType((VisitorSession session) => session.VrEquipment)
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
-
-    <table class="manager-table">
-        <thead class="manager-table__headers">
-            <tr class="manager-table__row">
-                <th class="manager-table__header" scope="col">
-                    @Html.DisplayNameForInnerType((VisitorNextSession session) => session.WristbandSaleDetail)
-                </th>
-            </tr>
-        </thead>
-        <tbody class="manager-table__body">
-            @foreach (var item in Model.VisitorNextSession)
-            {
+            </thead>
+            <tbody class="manager-table__body">
+                @foreach (var item in Model.VisitorSession)
+                {
+                    <tr class="manager-table__row">
+                        <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
+                            @Html.DisplayFor(modelItem => item.WristbandSaleDetail.NameOfPersonInCharge)
+                        </td>
+                        <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.VrEquipment)>
+                            @Html.DisplayFor(modelItem => item.VrEquipment.Id)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3 class="manager-table__caption center">Fila de Espera</h3>
+        <br />
+        <table class="manager-table">
+            <thead class="manager-table__headers">
                 <tr class="manager-table__row">
-                    <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
-                        @Html.DisplayFor(modelItem => item.WristbandSaleDetail.NameOfPersonInCharge)
-                    </td>
+                    <th class="manager-table__header" scope="col">
+                        @Html.DisplayNameForInnerType((VisitorNextSession session) => session.WristbandSaleDetail)
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="manager-table__body">
+                @foreach (var item in Model.VisitorNextSession)
+                {
+                    <tr class="manager-table__row">
+                        <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(modelItem => item.WristbandSaleDetail)>
+                            @Html.DisplayFor(modelItem => item.WristbandSaleDetail.NameOfPersonInCharge)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <br />
@@ -116,7 +119,6 @@ else if(Model.Status.Id == 6)
         <i class="fa-solid fa-circle-stop fa-xl"></i>  Interrumpir Sesión
     </button>
 }
-
 @*Agregar nuevo visitante*@
 <a asp-action="AddVisitor" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
 
@@ -129,7 +131,7 @@ else if(Model.Status.Id == 6)
         var currentTime = new Date().setHours(currentHour, currentMinute, currentSecond, 0);
 
         @*console.log(currentTime);*@
-        if(currentHour < 11 || currentHour >= 24){
+        if(currentHour < 11 || currentHour >= 18){
             ExitModule();
         }
             var finish = document.getElementById("FinishTime").textContent;

@@ -87,9 +87,10 @@ namespace ParqueProcesoDesarollo_Estacionamiento
 
         private void btnPagarBoletoPerdido_Click(object sender, EventArgs e)
         {
-            frmIngresarBoleto.ObtenerInstancia(maquinaElegida).Show();
-            this.Hide();
 
+
+            frmPagarBoletoPerdido.ObtenerInstancia(maquinaElegida).Show();
+            this.Hide();
         }
     }
 }
