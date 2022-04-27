@@ -11,5 +11,9 @@
         public int idSize { get; set; }
 
         public IEnumerable<SelectListItem> Sizes { get; set; }
+
+        public int IdClient { get; set; }
+
+        public IEnumerable<SelectListItem> Wristbands { get; set; }
     }
 }

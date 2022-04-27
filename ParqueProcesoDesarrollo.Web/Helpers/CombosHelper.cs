@@ -195,5 +195,21 @@
 
             return list;
         }
+
+        public IEnumerable<SelectListItem> GetSanitizationProtocols()
+        {
+            var list = dataContext.SanitizationProtocols.Select(sp => new SelectListItem
+            {
+                Text = sp.Description,
+                Value = $"{sp.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona un protocolo de sanitización",
+                Value = "0"
+            });
+            return list;
+        }
     }
 }

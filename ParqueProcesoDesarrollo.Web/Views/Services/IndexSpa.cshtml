@@ -1,87 +1,101 @@
-﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.SpaRegistration>
+﻿    @model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.SpaRegistration>
 
 @{
-    ViewData["Title"] = "IndexSpa";
+    ViewData["Title"] = "Spa";
 }
 
-<h1>Registro de Spa para perros</h1>
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Registros</h3>
+    
+</div>
 
-<p>
-    <a asp-action="Index">Regresar</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-
-            <th>
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
                 Id Pulsera
             </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Owner)
+            <th class="manager-table__header" scope="col">
+                Responsable
             </th>
-
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.DateOfCheckInTime)
             </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfCheckInTime)
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.DateOfCheckOutTime)
             </th>
 
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Size.Price)
             </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Delivered)
+            <th class="manager-table__header" scope="col">
+                Ver
             </th>
 
-            <th></th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.Delivered)
+            </th>
+            
+            <th class="manager-table__header" scope="col">
+                Entregar
+            </th>
+
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
+    <tbody class="manager-table__body">
+        @foreach (var item in Model)
+        {
+            <tr class="manager-table__row">
 
-            <td>
+            <td class="manager-table__data" scope="row" data-label= "Id pulsera">
                 @Html.DisplayFor(modelItem => item.WristbandSaleDetail.Id)
             </td>
 
-            <th>
-                @Html.DisplayFor(modelItem => item.Owner)
+            <th class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.WristbandSaleDetail.NameOfPersonInCharge)>
+                @Html.DisplayFor(modelItem => item.WristbandSaleDetail.NameOfPersonInCharge)
             </th>
 
-            <td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.DateOfCheckInTime)>
                 @Html.DisplayFor(modelItem => item.DateOfCheckInTime)
             </td>
 
-            <td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.DateOfCheckOutTime)>
+                @if((DateTime.Compare(DateTime.MinValue, item.DateOfCheckOutTime)) != 0)
                 @Html.DisplayFor(modelItem => item.DateOfCheckOutTime)
             </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Size.Price)
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Size.Price)>
+                $ @Html.DisplayFor(modelItem => item.Size.Price)
             </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Delivered)
-            </td>
+            <td class="manager-table__data manager-table__option" data-label="Ver">
+                    <a asp-action="DetailsSpa" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </td>
 
-            <td>
-                <a class="" asp-action="DetailsSpa" asp-route-id="@item.Id">Detalles</a> |
-                <a class="" asp-action="DeleteSpa" asp-route-id="@item.Id">Borrar</a>
-            </td>
-        </tr>
+                 @if(item.Delivered == true)
+                {
+                    <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Delivered)>
+                        <i class="fa-solid fa-square-check"></i>
+                    </td>
+                } else
+                {
+                    <td>
 
-}     
+                    </td>
+                }
+
+                    @if(item.Delivered == false)
+                {
+                    <td class="manager-table__data manager-table__option" data-label="Entregar">
+                    <a asp-action="DeliveredSpa" asp-route-id="@item.Id"><i class="fa-solid fa-dog"></i></a>
+                </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>
 
-<a asp-action="CreateSpa">Realizar un nuevo registro</a>
+<a asp-action="CreateSpa" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
+
