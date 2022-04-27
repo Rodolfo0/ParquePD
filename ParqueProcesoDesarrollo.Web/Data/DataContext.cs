@@ -10,7 +10,6 @@
         public DbSet<Attraction> Attractions { get; set; }
         public DbSet<CashBox> CashBoxes { get; set; }
         public DbSet<CollarSize> CollarSizes { get; set; }
-        public DbSet<ConsumableWarehouse> ConsumableWarehouses { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<IvaType> IvaTypes { get; set; }
         public DbSet<Kit> Kits { get; set; }
