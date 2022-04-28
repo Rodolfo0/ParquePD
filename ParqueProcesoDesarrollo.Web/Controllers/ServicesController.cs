@@ -110,7 +110,10 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
 
         public async Task<IActionResult> IndexSpa()
         {
-            return View(await _context.SpaRegistrations.ToListAsync());
+            return View(await _context.SpaRegistrations
+                .Include(w => w.WristbandSaleDetail)
+                .Include(s => s.Size)
+                .ToListAsync());
         }
 
         public async Task<IActionResult> DetailsSpa(int? id)
@@ -120,7 +123,10 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return NotFound();
             }
 
-            var regist = await _context.SpaRegistrations.Include(b => b.Size).FirstOrDefaultAsync(m => m.Id == id);
+            var regist = await _context.SpaRegistrations
+                .Include(s => s.Size)
+                .Include(w => w.WristbandSaleDetail)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (regist == null)
             {
                 return NotFound();
@@ -129,83 +135,91 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(regist);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> EditSpa(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpGet]
+        public async Task<IActionResult> DeliveredSpa(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var regist = await _context.SpaRegistrations
-        //        .Include(p => p.Size)
-        //        .FirstOrDefaultAsync(p => p.Id == id);
-        //    if (regist == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var model = new addDogViewModel
-        //    {
-        //        Id = regist.Id,
-        //        WristbandSaleDetail = regist.WristbandSaleDetail,
-        //        DateOfCheckInTime = regist.DateOfCheckInTime,
-        //        DateOfCheckOutTime = regist.DateOfCheckOutTime,
-        //        idSize = regist.Size.Id,
-        //        Size = regist.Size,
-        //        sizes = combosHelper.GetSizes(),
-        //        Delivered = regist.Delivered
-        //    };
-        //    return View(model);
-        //}
+            var regist = await _context.SpaRegistrations
+                .FirstOrDefaultAsync(p => p.Id == id);
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> EditSpa(SpaRegistration model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new User
-        //        {
+            if (regist == null)
+            {
+                return NotFound();
+            }
+            var spa = new SpaRegistration
+            {
+                Id = regist.Id,
+                DateOfCheckInTime = regist.DateOfCheckInTime,
+                DateOfCheckOutTime = regist.DateOfCheckOutTime,
+                Delivered = regist.Delivered,
+                Size = regist.Size,
+                Owner = regist.Owner,
+                WristbandSaleDetail = regist.WristbandSaleDetail
+            };
+            return View(spa);
+        }
 
-        //        };
-        //        var result = await userHelper.UpdateUserAsync(user);
-        //        //var result = await UserManager.UpdateAsync(user);
-        //        if (result != IdentityResult.Success)
-        //        {
-        //            throw new InvalidOperationException("No se ha podido añadir el usuario");
-        //        }
-        //        await userHelper.AddUserToRoleAsync(user, user.Role.Name);
-        //        //await this.dataContext.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(model);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeliveredSpa(SpaRegistration regist)
+        {
+            if (ModelState.IsValid)
+            {
+                var spa = new SpaRegistration
+                {
+                    Id = regist.Id,
+                    DateOfCheckInTime = regist.DateOfCheckInTime,
+                    DateOfCheckOutTime = DateTime.Now,
+                    Delivered = regist.Delivered,
+                    Size = regist.Size,
+                    Owner = regist.Owner,
+                    WristbandSaleDetail = regist.WristbandSaleDetail
+                };
+
+
+                _context.Update(spa);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(IndexSpa));
+            }
+            return View(regist);
+        }
 
         public IActionResult CreateSpa()
         {
             var model = new addDogViewModel
             {
                 Sizes = combosHelper.GetSizes(),
+                Wristbands = combosHelper.GetVisitors(),
+                DateOfCheckInTime = DateTime.Now,
+                DateOfCheckOutTime = DateTime.MinValue,
+                Delivered = false,
             };
             return View(model);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateSpa(addDogViewModel model)
         {
+
             if (ModelState.IsValid)
             {
-                var regist = await _context.SpaRegistrations.Include(b => b.Size).SingleOrDefaultAsync();
-                    regist = new SpaRegistration
+                var spa = new SpaRegistration
                 {
-                    Id = regist.Id,
-                    WristbandSaleDetail = regist.WristbandSaleDetail,
-                    DateOfCheckInTime = regist.DateOfCheckInTime,
-                    DateOfCheckOutTime = regist.DateOfCheckOutTime,
-                    Owner = regist.Owner,
+                    Id = model.Id,
+                    WristbandSaleDetail = await _context.WristbandsSaleDetail.FindAsync(model.IdClient),
+                    DateOfCheckInTime = model.DateOfCheckInTime,
+                    DateOfCheckOutTime = model.DateOfCheckOutTime,
+                    Delivered = model.Delivered,
+                    Owner = model.Owner,
                     Size = await _context.Sizes.FindAsync(model.idSize),
-                    Delivered = regist.Delivered
                 };
+                _context.Add(spa);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(CreateSpa));
             }
             return View(model);

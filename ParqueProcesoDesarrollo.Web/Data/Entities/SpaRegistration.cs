@@ -5,13 +5,15 @@
 
     public class SpaRegistration : IEntity
     {
+        [Key]
+        [Required]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Fecha de hora de entrada")]
+        [Display(Name = "Fecha y hora de entrada")]
         public DateTime DateOfCheckInTime { get; set; }
 
-        [Display(Name = "Fecha de hora de salida")]
+        [Display(Name = "Fecha y hora de salida")]
         public DateTime DateOfCheckOutTime { get; set; }
 
         [Display(Name = "Entregado")]

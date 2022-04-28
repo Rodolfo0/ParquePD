@@ -25,7 +25,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await dataContext.Supplies.ToListAsync());
+            return View(await dataContext.Supplies.Include(p=>p.Provider).ToListAsync());
         }
 
         public IActionResult Create()
@@ -47,7 +47,8 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Barcode = model.Barcode,
                     UnitPrice = model.UnitPrice,
                     Description = model.Description,
-                    Provider = await this.dataContext.Providers.FindAsync(model.ProviderId)
+                    Provider = await this.dataContext.Providers.FindAsync(model.ProviderId),
+                    Quantity=model.Quantity
                 };
                 this.dataContext.Add(supply);
                 await this.dataContext.SaveChangesAsync();
@@ -92,6 +93,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 Barcode=supply.Barcode,
                 UnitPrice=supply.UnitPrice,
                 Description=supply.Description,
+                Quantity=supply.Quantity,
                 Provider=supply.Provider,
                 ProviderId=supply.Provider.Id,
                 Providers=this.combosHelper.GetComboProviders()
@@ -111,6 +113,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Barcode = model.Barcode,
                     UnitPrice = model.UnitPrice,
                     Description = model.Description,
+                    Quantity=model.Quantity,
                     Provider= await dataContext.Providers.FindAsync(model.ProviderId)
                 };
                 this.dataContext.Update(supply);
@@ -119,39 +122,42 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             }
             return View(model);
         }
+        //TODO Agregar método para cambiar estado a inactivo
 
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var product = await dataContext.Supplies
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            var model = new Supply
-            {
-                Id = product.Id,
-                Barcode = product.Barcode,
-                UnitPrice = product.UnitPrice,
-                Description = product.Description
-            };
+        //    var supply = await dataContext.Supplies
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (supply == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var model = new Supply
+        //    {
+        //        Id = supply.Id,
+        //        Barcode = supply.Barcode,
+        //        UnitPrice = supply.UnitPrice,
+        //        Description = supply.Description,
+        //        Quantity = supply.Quantity,
+        //    };
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var product = await this.dataContext.Supplies.FindAsync(id);
-            dataContext.Supplies.Remove(product);
-            await dataContext.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    
+        //    var supply = await this.dataContext.Supplies.FindAsync(id);
+        //    dataContext.Supplies.Remove(supply);
+        //    await dataContext.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
     }
 }

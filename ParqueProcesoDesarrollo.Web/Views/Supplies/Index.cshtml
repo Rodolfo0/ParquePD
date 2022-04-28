@@ -6,44 +6,64 @@
 
 <h1>Consumibles</h1>
 
-<p>
-    <a asp-action="Create" class="button">Agregar</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Barcode)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.UnitPrice)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th class="manager-table__header" scope="col">
+                Proveedor
+            </th>
+            <th class="manager-table__header" scope="col">
+                Ver
+            </th>
+            <th class="manager-table__header" scope="col">
+                Editar
             </th>
 
         </tr>
     </thead>
-    <tbody>
+    <tbody class="manager-table__body">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
+            <tr class="manager-table__row">
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Barcode)>
                     @Html.DisplayFor(modelItem => item.Barcode)
                 </td>
-                <td>
-                    $ @Html.DisplayFor(modelItem => item.UnitPrice)
-                </td>
-                <td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Description)>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.UnitPrice)>
+                    $ @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Quantity)>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td class="manager-table__data" scope="row" data-label="Proveedor">
+                    @Html.DisplayFor(modelItem => item.Provider.SocialReason)
+                </td>
+
+                <td class="manager-table__data manager-table__option" data-label="Ver">
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </td>
+                <td class="manager-table__data manager-table__option" data-label="Editar">
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<a asp-action="Create" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
 

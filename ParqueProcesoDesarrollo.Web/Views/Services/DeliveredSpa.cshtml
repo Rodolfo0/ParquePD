@@ -1,0 +1,38 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.SpaRegistration
+
+@{
+    
+}
+
+<h1>Entregar perro</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeliveredSpa">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="DateOfCheckInTime" class="control-label"></label>
+                <input asp-for="DateOfCheckInTime" readonly class="form-control" />
+                <span asp-validation-for="DateOfCheckInTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Delivered" class="control-label"></label>
+                <input asp-for="Delivered" class="form-control" />
+                <span asp-validation-for="Delivered" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Entregar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="IndexSpa">Regresar</a>
+</div>
