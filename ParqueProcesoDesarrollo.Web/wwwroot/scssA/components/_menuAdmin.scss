@@ -125,7 +125,7 @@
             transform: translate(-(1rem*3));
             opacity: 0;
             color: map-get($map: $palette, $key: 'primary');
-            background: #fff;
+            background: map-get($map: $palette, $key: 'shade-white');
             padding: 1rem *0.75;
             transition: 250ms ease all;
             border-radius: 10px * 1.75;

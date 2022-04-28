@@ -529,7 +529,7 @@ body {
           transform: translate(-3rem);
   opacity: 0;
   color: #253575;
-  background: #fff;
+  background: #f2f2f0;
   padding: 0.75rem;
   -webkit-transition: 250ms ease all;
   transition: 250ms ease all;
