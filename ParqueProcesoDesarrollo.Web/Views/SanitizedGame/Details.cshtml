@@ -1,0 +1,50 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.SanitizedGame
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Detalles del Sanitizado del Juego</h3>
+</div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.SanitizationDate)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.SanitizationDate)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Attraction)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Attraction.Name)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.SanitizationProtocol)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayNameFor(model => model.SanitizationProtocol.Description)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+

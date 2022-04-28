@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.SanitizedGame>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Juegos Sanitizados</h3>
+
+</div>
+
+<a asp-action="Create" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
+
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.SanitizationDate)
+            </th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.User.FullName)
+            </th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.Attraction.Name)
+            </th>
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.SanitizationProtocol.Description)
+            </th>
+            <th class="manager-table__header" scope="col">
+                Ver
+            </th>
+            <th class="manager-table__header" scope="col">
+                Editar
+            </th>
+            <th class="manager-table__header" scope="col">
+                Eliminar
+            </th>
+
+        </tr>
+    </thead>
+    <tbody class="manager-table__body">
+        @foreach (var item in Model)
+        {
+        <tr class="manager-table__row">
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Remarks)>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.SanitizationDate)>
+                @Html.DisplayFor(modelItem => item.SanitizationDate)
+            </td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.User.FullName)>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Attraction.Name)>
+                @Html.DisplayFor(modelItem => item.Attraction.Name)
+            </td>
+            <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.SanitizationProtocol.Description)>
+                @Html.DisplayFor(modelItem => item.SanitizationProtocol.Description)
+            </td>
+
+            <td class="manager-table__data manager-table__option" data-label="Ver">
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </td>
+            <td class="manager-table__data manager-table__option" data-label="Editar">
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+            </td>
+            <td class="manager-table__data manager-table__option" data-label="Eliminar">
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
