@@ -211,5 +211,39 @@
             });
             return list;
         }
+
+        public IEnumerable<SelectListItem> GetComboSupplies()
+        {
+            var list = this.dataContext.Supplies.Select(s => new SelectListItem
+            {
+                Text = s.Description,
+                Value = $"{s.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona un consumible",
+                Value = "0"
+            });
+
+            return list;
+        }
+
+        public IEnumerable<SelectListItem> GetComboPurchaseHeaders()
+        {
+            var list = this.dataContext.PurchaseHeader.Select(ph => new SelectListItem
+            {
+                Text = ph.Provider.SocialReason,
+                Value = $"{ph.Id}"
+            }).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona una orden de compra de un proveedor",
+                Value = "0"
+            });
+
+            return list;
+        }
     }
 }
