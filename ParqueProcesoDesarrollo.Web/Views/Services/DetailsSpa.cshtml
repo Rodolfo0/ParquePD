@@ -1,0 +1,47 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.SpaRegistration
+
+@{
+    ViewData["Title"] = "Spa";
+}
+
+<h1>Detalles de la venta</h1>
+
+<div>
+    <h4>Kit</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WristbandSaleDetail.NameOfPersonInCharge)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WristbandSaleDetail.NameOfPersonInCharge)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfCheckInTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfCheckInTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfCheckOutTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfCheckOutTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Size.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Size.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="IndexSpa">Regresar</a>
+</div>

@@ -13,6 +13,10 @@
 <table class="manager-table">
     <thead class="manager-table__headers">
         <tr class="manager-table__row">
+
+            <th class="manager-table__header" scope="col">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.DateOfSale)
             </th>
@@ -32,6 +36,10 @@
         @foreach (var item in Model)
         {
             <tr class="manager-table__row">
+
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Id)>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
                 <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.DateOfSale)>
                     @Html.DisplayFor(modelItem => item.DateOfSale)
                 </td>

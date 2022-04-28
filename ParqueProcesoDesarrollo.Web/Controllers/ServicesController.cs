@@ -73,38 +73,38 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(kit);
         }
 
-        public async Task<IActionResult> DeleteKits(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> DeleteKits(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var kit = await _context.Kits
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (kit == null)
-            {
-                return NotFound();
-            }
+        //    var kit = await _context.Kits
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (kit == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(kit);
-        }
+        //    return View(kit);
+        //}
 
-        // POST: Kits/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmedKits(int id)
-        {
-            var kit = await _context.Kits.FindAsync(id);
-            _context.Kits.Remove(kit);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(IndexKits));
-        }
+        //// POST: Kits/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmedKits(int id)
+        //{
+        //    var kit = await _context.Kits.FindAsync(id);
+        //    _context.Kits.Remove(kit);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(IndexKits));
+        //}
 
-        private bool KitExists(int id)
-        {
-            return _context.Kits.Any(e => e.Id == id);
-        }
+        //private bool KitExists(int id)
+        //{
+        //    return _context.Kits.Any(e => e.Id == id);
+        //}
         //------------------------------------------------------------
         //Registros Spa
 
