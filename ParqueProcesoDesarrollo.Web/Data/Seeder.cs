@@ -74,7 +74,7 @@
                 await CheckStatus("Vacía");
                 await CheckStatus("Llena");
                 await CheckStatus("Emitida");
-                await CheckStatus("Perdido");
+                await CheckStatus("Pagado");
                 await CheckStatus("Impreso");
             }
 
