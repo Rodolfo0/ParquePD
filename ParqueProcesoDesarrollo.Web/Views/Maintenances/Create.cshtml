@@ -2,65 +2,50 @@
 
 @{ ViewData["Title"] = "Mantenimiento"; }
 
-<h1>Nuevo Mantenimiento</h1>
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Agregar Nuevo</h3>
+    </div>
 
-@*<h4>Mantenimiento</h4>*@
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MaintenanceDate" class="control-label"></label>
-                <input asp-for="MaintenanceDate" class="form-control" />
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div class="view__container">
+            <div>
+                <label asp-for="MaintenanceDate" class="view__label"></label>
+                <input asp-for="MaintenanceDate" class="view__input" />
                 <span asp-validation-for="MaintenanceDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateOfLastOverhaul" class="control-label"></label>
-                <input asp-for="DateOfLastOverhaul" class="form-control" />
+
+                <label asp-for="DateOfLastOverhaul" class="view__label"></label>
+                <input asp-for="DateOfLastOverhaul" class="view__input" />
                 <span asp-validation-for="DateOfLastOverhaul" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Remarks" class="control-label"></label>
-                <input asp-for="Remarks" class="form-control" />
+
+                <label asp-for="Remarks" class="view__label"></label>
+                <input asp-for="Remarks" class="view__input" />
                 <span asp-validation-for="Remarks" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" asp-items="Model.Users" class="form-control"></select>
+                <label asp-for="UserId" class="view__label"></label>
+                <select asp-for="UserId" asp-items="Model.Users" class="view__input"></select>
                 <span asp-validation-for="User" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="MaintenanceId" class="control-label"></label>
-                <select asp-for="MaintenanceId" asp-items="Model.TPMaintenances" class="form-control"></select>
+                <label asp-for="MaintenanceId" class="view__label"></label>
+                <select asp-for="MaintenanceId" asp-items="Model.TPMaintenances" class="view__input"></select>
                 <span asp-validation-for="TypeOfMaintenance" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="AtraccionId" class="control-label"></label>
-                <select asp-for="AtraccionId" asp-items="Model.Atractions" class="form-control"></select>
+                <label asp-for="AtraccionId" class="view__label"></label>
+                <select asp-for="AtraccionId" asp-items="Model.Atractions" class="view__input"></select>
                 <span asp-validation-for="Attraction" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="StatusId" class="control-label"></label>
-                <select asp-for="StatusId" asp-items="Model.Statuses" class="form-control"></select>
+                <label asp-for="StatusId" class="view__label"></label>
+                <select asp-for="StatusId" asp-items="Model.Statuses" class="view__input"></select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
+        </div>
+        <div class="view__button-container">
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Agregar" class="nta-btn-secondary" />
+        </div>
+    </form>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+                  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+              }
