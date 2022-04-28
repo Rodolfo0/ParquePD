@@ -4,37 +4,46 @@
     ViewData["Title"] = "Detalle";
 }
 
-<div>
-    <dl class="row">
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.Supply)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.Supply.Description)
-        </dd>
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.PurchaseHeader)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.PurchaseHeader.Id)
-        </dd>
-    </dl>
+<hr />
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Detalles</h3>
+    </div>
+
+    <div class="view__container">
+        <div>
+            <dl>
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.UnitPrice)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.Supply)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.Supply.Description)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.PurchaseHeader)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.PurchaseHeader.Id)
+            </dd>           
+            </dl>
+        </div>     
+    </div>
 </div>
-<div>
-    <a asp-action="EditDetail" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a> |
-    <a asp-action="DeleteDetail" asp-route-id="@Model.Id" class="btn btn-danger">Eliminar</a> |
-    <a asp-action="Index" class="btn btn-secondary">Regresar</a> |
-    <button class="btn btn-success">Pagar</button>
+<div class="view__button-container">
+<a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
 </div>

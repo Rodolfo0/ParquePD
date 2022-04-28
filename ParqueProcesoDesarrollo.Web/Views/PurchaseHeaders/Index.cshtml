@@ -4,49 +4,66 @@
     ViewData["Title"] = "Compra";
 }
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Agregar</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+<div class="manager-table__top">
+    <h3 class="manager-table__caption">Compra</h3>
+    
+</div>
+
+<table class="manager-table">
+    <thead class="manager-table__headers">
+        <tr class="manager-table__row">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.IssueDate)
             </th>
-            <th>
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.DateofPayment)
-            </th>
+            </th class="manager-table__header" scope="col">
             <th>
                 @Html.DisplayNameFor(model => model.Provider.SocialReason)
-            </th>
-            <th>
+            </th class="manager-table__header" scope="col">
+            <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.TypeOfPayment.Description)
             </th>
-            <th></th>
+            <th class="manager-table__header" scope="col">
+                Ver
+            </th>
+            <th class="manager-table__header" scope="col">
+                Editar
+            </th>
+            <th class="manager-table__header" scope="col">
+                Eliminar
+            </th>
         </tr>
-    </thead>
-    <tbody>
+    </>
+    <tbody class="manager-table__body">
         @foreach(var item in Model)
         {
-            <tr>
-                <td>
+            <tr class="manager-table__row">
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.IssueDate)>
                 @Html.DisplayFor(modelItem => item.IssueDate)
                 </td>
-                <td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.DateofPayment)>
                 @Html.DisplayFor(modelItem => item.DateofPayment)
                 </td>
-                <td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Provider.SocialReason)>
                 @Html.DisplayFor(modelItem => item.Provider.SocialReason)
                 </td>
-                <td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.TypeOfPayment.Description)>
                 @Html.DisplayFor(modelItem => item.TypeOfPayment.Description)
                 </td>
-                <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+
+                <td class="manager-table__data manager-table__option" data-label="Ver">
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </td>
+                <td class="manager-table__data manager-table__option" data-label="Editar">
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+                </td>
+                <td class="manager-table__data manager-table__option" data-label="Eliminar">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="nta btn-danger">Eliminar</a>
                 </td>
             </tr>  
         }
     </tbody>
 </table>
+
+<a asp-action="Create" class="manager-table__add"><i class="fa-solid fa-plus"></i></a>
