@@ -2,48 +2,56 @@
 @{
     ViewData["Title"] = "Detalles";
 }
-<h1>Detalles</h1>
-
 <hr/>
-<div class="row">
-    <div class="col-md-4">
-        <dl class="row">
-            <dt class="col-sm-6">
-                @Html.DisplayNameFor(model => model.Barcode)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.Barcode)
-            </dd>
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Detalles</h3>
+    </div>
 
-            <dt class="col-sm-6">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
+    <div class="view__container">
+        <div>
+            <dl>
+                <dt class="view__label">
+                    @Html.DisplayNameFor(model => model.Barcode)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.Barcode)
+                </dd>
 
-            <dt class="col-sm-6">
-                @Html.DisplayNameFor(model => model.UnitPrice)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.UnitPrice)
-            </dd>
+                <dt class="view__label">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
 
+                <dt class="view__label">
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.UnitPrice)
+                </dd>
+    
+                <dt class="view__label">
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.Quantity)
+                </dd>
 
-            <dt class="col-sm-6">
-                Proveedor / @Html.DisplayNameFor(model => model.Provider.SocialReason)
-            </dt>
-            <dd class="col-sm-6">
-                @Html.DisplayFor(model => model.Provider.SocialReason)
-            </dd>
-        </dl>
+                <dt class="view__label">
+                    Proveedor / @Html.DisplayNameFor(model => model.Provider.SocialReason)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.Provider.SocialReason)
+                </dd>
+            </dl>
 
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index" class="button"><i class="bi bi-arrow-return-left"></i></a>
+<div class="view__button-container">
+<a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
 </div>
-
 
 

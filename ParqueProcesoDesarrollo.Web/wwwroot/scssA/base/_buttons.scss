@@ -1,6 +1,6 @@
 @mixin button($name, $pColor) {
     .nta-btn-#{$name}{
-        
+        display: block;
         background-color: $pColor;
         border: none;
         transition: all .2s linear;
@@ -15,7 +15,7 @@
         font-weight: 700;
         font-size: 1.2em;
         margin: 10px;
-        
+        cursor:pointer;
         &:hover{
         
             color: white;
@@ -31,6 +31,7 @@
 }
 
 @include button('primary', map-get($map: $palette, $key: 'primary'));
+@include button('secondary', map-get($map: $palette, $key: 'secondary'));
 @include button('envieronmental', map-get($map: $palette, $key: 'environmental'));
 @include button('complementary', map-get($map: $palette, $key: 'complementary'));
 @include button('danger', rgb(184, 88, 88));
