@@ -119,16 +119,6 @@
             this.btnConfirmarPago.UseSelectable = true;
             this.btnConfirmarPago.Click += new System.EventHandler(this.btnConfirmarPago_Click);
             // 
-            // btnImprimirRecibo
-            // 
-            this.btnImprimirRecibo.Location = new System.Drawing.Point(947, 971);
-            this.btnImprimirRecibo.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.btnImprimirRecibo.Name = "btnImprimirRecibo";
-            this.btnImprimirRecibo.Size = new System.Drawing.Size(456, 125);
-            this.btnImprimirRecibo.TabIndex = 22;
-            this.btnImprimirRecibo.Text = "Imprimir Recibo";
-            this.btnImprimirRecibo.UseSelectable = true;
-            // 
             // txtHoraSalida
             // 
             this.txtHoraSalida.AutoSize = true;
