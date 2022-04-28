@@ -59,6 +59,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 271);
+            this.ControlBox = false;
             this.Controls.Add(this.lblRegresar);
             this.Controls.Add(this.cmbMaquinas);
             this.Name = "frmElegirMaquina";

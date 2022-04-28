@@ -155,32 +155,6 @@ namespace ParqueProcesoDesarollo_Estacionamiento
             {
                 if (cmbMaquinas.SelectedIndex == 1)
                 {
-                    frmPagarBoleto.ObtenerInstancia(1).Show();
-                    this.Close();
-                }
-
-                if (cmbMaquinas.SelectedIndex == 2)
-                {
-                    frmPagarBoleto.ObtenerInstancia(2).Show();
-                    this.Close();
-                }
-
-                if (cmbMaquinas.SelectedIndex == 3)
-                {
-                    frmPagarBoleto.ObtenerInstancia(3).Show();
-                    this.Close();
-                }
-
-                if (cmbMaquinas.SelectedIndex == 4)
-                {
-                    frmPagarBoleto.ObtenerInstancia(4).Show();
-                    this.Close();
-                }
-            }
-            else
-            {
-                if (cmbMaquinas.SelectedIndex == 1)
-                {
                     frmSalidaEstacionamiento.ObtenerInstancia(1).Show();
                     this.Close();
                 }
@@ -203,6 +177,32 @@ namespace ParqueProcesoDesarollo_Estacionamiento
                     this.Close();
                 }
             }
+            else
+            {
+                if (cmbMaquinas.SelectedIndex == 1)
+                {
+                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(1).Show();
+                    this.Close();
+                }
+
+                if (cmbMaquinas.SelectedIndex == 2)
+                {
+                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(2).Show();
+                    this.Close();
+                }
+
+                if (cmbMaquinas.SelectedIndex == 3)
+                {
+                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(3).Show();
+                    this.Close();
+                }
+
+                if (cmbMaquinas.SelectedIndex == 4)
+                {
+                    frmImprimirBoletoEstacionamiento.ObtenerInstancia(4).Show();
+                    this.Close();
+                }
+            }
         }
 
         //Método invocado cuando se cierra la forma
@@ -219,8 +219,8 @@ namespace ParqueProcesoDesarollo_Estacionamiento
 
         private void lblRegresar_Click(object sender, EventArgs e)
         {
-            frmInicioSesion.ObtenerInstancia().Show();
             this.Close();
+            frmInicioSesion.ObtenerInstancia().Show();
         }
     }
 }

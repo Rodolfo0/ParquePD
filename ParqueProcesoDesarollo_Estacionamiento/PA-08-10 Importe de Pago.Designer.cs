@@ -34,7 +34,6 @@
             this.btnCancelar = new MetroFramework.Controls.MetroButton();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnConfirmarPago = new MetroFramework.Controls.MetroButton();
-            this.btnImprimirRecibo = new MetroFramework.Controls.MetroButton();
             this.txtHoraSalida = new MetroFramework.Controls.MetroLabel();
             this.txtMonedas10 = new MetroFramework.Controls.MetroTextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -110,15 +109,6 @@
             this.btnConfirmarPago.Text = "Confirmar Pago";
             this.btnConfirmarPago.UseSelectable = true;
             this.btnConfirmarPago.Click += new System.EventHandler(this.btnConfirmarPago_Click);
-            // 
-            // btnImprimirRecibo
-            // 
-            this.btnImprimirRecibo.Location = new System.Drawing.Point(299, 341);
-            this.btnImprimirRecibo.Name = "btnImprimirRecibo";
-            this.btnImprimirRecibo.Size = new System.Drawing.Size(144, 44);
-            this.btnImprimirRecibo.TabIndex = 22;
-            this.btnImprimirRecibo.Text = "Imprimir Recibo";
-            this.btnImprimirRecibo.UseSelectable = true;
             // 
             // txtHoraSalida
             // 
@@ -312,7 +302,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtMonedas10);
             this.Controls.Add(this.txtHoraSalida);
-            this.Controls.Add(this.btnImprimirRecibo);
             this.Controls.Add(this.btnConfirmarPago);
             this.Controls.Add(this.txtFolio);
             this.Controls.Add(this.txtFechaActual);
@@ -341,7 +330,6 @@
         private MetroFramework.Controls.MetroButton btnCancelar;
         private System.Windows.Forms.Label lblTotal;
         private MetroFramework.Controls.MetroButton btnConfirmarPago;
-        private MetroFramework.Controls.MetroButton btnImprimirRecibo;
         private MetroFramework.Controls.MetroLabel txtHoraSalida;
         private MetroFramework.Controls.MetroTextBox txtMonedas10;
         private System.Windows.Forms.PictureBox pictureBox3;

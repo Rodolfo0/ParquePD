@@ -1,5 +1,8 @@
-﻿using MetroFramework.Forms;
+﻿using MetroFramework;
+using MetroFramework.Forms;
 using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -51,10 +54,50 @@ namespace ParqueProcesoDesarollo_Estacionamiento
 
                         if (folio != "")
                         {
-                            txtIngresarBoleto.Text = folio;
-                            frmImportePago.ObtenerInstancia(folio,maquinaEscogida).Show();
-                            txtIngresarBoleto.Text = "";
-                            this.Hide();
+                            using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=BD_PD;Trusted_Connection=True;MultipleActiveResultSets=true"))
+                            {
+                                connection.Open();
+
+                                //Se crea el registro del boleto en la base de datos
+                                SqlCommand command = new SqlCommand("IF(SELECT COUNT(Id) FROM ParkingTickets WHERE Id=@id)=0" +
+                                    "BEGIN " +
+                                    "SELECT 2 AS 'RESULTADO' " +
+                                    "END " +
+                                    "ELSE" +
+                                    " BEGIN " +
+                                    "IF (SELECT StatusId FROM ParkingTickets WHERE Id=@id)=1 " +
+                                    "BEGIN " +
+                                    "SELECT 0 AS 'RESULTADO' " +
+                                    "END " +
+                                    "ELSE " +
+                                    "BEGIN SELECT 1 AS 'RESULTADO' " +
+                                    "END " +
+                                    "END", connection);
+
+                                command.Parameters.Add("@id", SqlDbType.Int);
+                                command.Parameters["@id"].Value = Convert.ToInt16(folio);
+
+                                SqlDataReader reader = command.ExecuteReader();
+
+                                reader.Read();
+                                if (Convert.ToInt16(reader["RESULTADO"]) == 2)
+                                {
+                                    MetroMessageBox.Show(this, "Boleto no existente o no válido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    if (Convert.ToInt16(reader["RESULTADO"]) == 0)
+                                        MetroMessageBox.Show(this, "El boleto ingresado ya ha sido pagado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    else
+                                    {
+                                        txtIngresarBoleto.Text = folio;
+                                        frmImportePago.ObtenerInstancia(folio, maquinaEscogida).Show();
+                                        txtIngresarBoleto.Text = "";
+                                        this.Hide();
+                                    }
+                                }
+
+                            }
                         }
                     }
                 }
@@ -70,7 +113,7 @@ namespace ParqueProcesoDesarollo_Estacionamiento
             {
                 if (i == File.ReadAllLines(fileName).Count())
                 {
-                    linea = File.ReadAllLines(fileName)[i-1];
+                    linea = File.ReadAllLines(fileName)[i - 1];
                     return linea;
                 }
             }
