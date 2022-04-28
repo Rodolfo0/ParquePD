@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="bi bi-list"></i></a>
+    <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="fa-solid fa-bars"></i></a>
      @*@if (this.User.Identity.IsAuthenticated)
     {*@
     <nav class="navbar" id="navbar">
@@ -55,7 +55,7 @@
                 </li>
                 <li class="navbar__item">
                     <a class="navbar__link" asp-area="" asp-controller="Supplies" asp-action="Index">
-                        <i class="fa-solid fa-box-open-full"></i>
+                        <i class="fa-solid fa-box-open"></i>
                     </a>
                 </li>
             </ul>
@@ -71,7 +71,7 @@
                     <div class="manager-header__info">
                         <img class="manager-header__info-img" src="../assets/img/webp/antonio-min.webp" alt="">
                         <div>
-                            <h3>@this.User.Identity.Name</h3>
+                            <p>@this.User.Identity.Name</p>
                         </div>
                     </div>
                 </div>

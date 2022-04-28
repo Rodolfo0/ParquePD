@@ -68,6 +68,7 @@ body {
 }
 /* ================= Base ================= */
 .nta-btn-primary {
+  display: block;
   background-color: #253575;
   border: none;
   -webkit-transition: all 0.2s linear;
@@ -86,6 +87,7 @@ body {
   font-weight: 700;
   font-size: 1.2em;
   margin: 10px;
+  cursor: pointer;
 }
 .nta-btn-primary:hover {
   color: white;
@@ -93,7 +95,36 @@ body {
           transform: scale(1.05);
 }
 
+.nta-btn-secondary {
+  display: block;
+  background-color: #D43878;
+  border: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  width: 180px;
+  text-align: center;
+  padding: 15px 25px;
+  border-radius: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-decoration: none;
+  color: #f2f2f0;
+  font-family: "montserrat";
+  font-weight: 700;
+  font-size: 1.2em;
+  margin: 10px;
+  cursor: pointer;
+}
+.nta-btn-secondary:hover {
+  color: white;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
 .nta-btn-envieronmental {
+  display: block;
   background-color: #598dff;
   border: none;
   -webkit-transition: all 0.2s linear;
@@ -112,6 +143,7 @@ body {
   font-weight: 700;
   font-size: 1.2em;
   margin: 10px;
+  cursor: pointer;
 }
 .nta-btn-envieronmental:hover {
   color: white;
@@ -120,6 +152,7 @@ body {
 }
 
 .nta-btn-complementary {
+  display: block;
   background-color: #f2bc3d;
   border: none;
   -webkit-transition: all 0.2s linear;
@@ -138,6 +171,7 @@ body {
   font-weight: 700;
   font-size: 1.2em;
   margin: 10px;
+  cursor: pointer;
 }
 .nta-btn-complementary:hover {
   color: white;
@@ -146,6 +180,7 @@ body {
 }
 
 .nta-btn-danger {
+  display: block;
   background-color: #b85858;
   border: none;
   -webkit-transition: all 0.2s linear;
@@ -164,6 +199,7 @@ body {
   font-weight: 700;
   font-size: 1.2em;
   margin: 10px;
+  cursor: pointer;
 }
 .nta-btn-danger:hover {
   color: white;
@@ -172,6 +208,7 @@ body {
 }
 
 .nta-btn-common {
+  display: block;
   background-color: #f2f2f0;
   border: none;
   -webkit-transition: all 0.2s linear;
@@ -190,6 +227,7 @@ body {
   font-weight: 700;
   font-size: 1.2em;
   margin: 10px;
+  cursor: pointer;
   color: #323a4d;
 }
 .nta-btn-common:hover {
@@ -515,7 +553,7 @@ body {
   padding: 0;
 }
 .navbar__menu:first-child {
-  margin-top: 3rem;
+  margin-top: 0;
 }
 .navbar__item {
   list-style: none;

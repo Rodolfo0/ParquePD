@@ -1,75 +1,63 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Models.addUserViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Usuarios";
 }
 
-<h1>Agregar usuario</h1>
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Agregar nuevo</h3>
+    </div>
 
-<h4>Ingresa los datos</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div class="view__container">
+            <div>
+                <label asp-for="FirstName" class="view__label"></label>
+                <input asp-for="FirstName" class="view__input"/>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ParentalSurname" class="control-label"></label>
-                <input asp-for="ParentalSurname" class="form-control" />
+                
+                <label asp-for="ParentalSurname" class="view__label"></label>
+                <input asp-for="ParentalSurname" class="view__input" />
                 <span asp-validation-for="ParentalSurname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaternalSurname" class="control-label"></label>
-                <input asp-for="MaternalSurname" class="form-control" />
+                
+                <label asp-for="MaternalSurname" class="view__label"></label>
+                <input asp-for="MaternalSurname" class="view__input" />
                 <span asp-validation-for="MaternalSurname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
+                
+                <label asp-for="PhoneNumber" class="view__label"></label>
+                <input asp-for="PhoneNumber" class="view__input" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RFC" class="control-label"></label>
-                <input asp-for="RFC" class="form-control" />
+                
+                <label asp-for="RFC" class="view__label"></label>
+                <input asp-for="RFC" class="view__input" />
                 <span asp-validation-for="RFC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Salary" class="control-label"></label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="idRole" class="control-label"></label>
-                <select asp-for="idRole" class="form-control" asp-items="Model.roles"></select>
-                <span asp-validation-for="idRole" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="Pass" class="control-label"></label>
-                <input asp-for="Pass" class="form-control" type="password" />
+                <label asp-for="Salary" class="view__label"></label>
+                <input asp-for="Salary" class="view__input" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+                
+                <label asp-for="idRole" class="view__label"></label>
+                <select asp-for="idRole" class="view__input" asp-items="Model.roles"></select>
+                <span asp-validation-for="idRole" class="text-danger"></span>
+                
+                <label asp-for="Email" class="view__label"></label>
+                <input asp-for="Email" class="view__input" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+                
+                <label asp-for="Pass" class="view__label"></label>
+                <input asp-for="Pass" class="view__input" type="password" />
                 <span asp-validation-for="Pass" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" class="form-control" type="file" />
+
+                <label asp-for="ImageFile" class="view__label"></label>
+                <input asp-for="ImageFile" class="view__input" type="file" />
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Agregar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        </div>
+        <div class="view__button-container">
+        
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Agregar" class="nta-btn-secondary"  />
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index" class="button"><i class="bi bi-arrow-return-left"></i></a>
-</div>
