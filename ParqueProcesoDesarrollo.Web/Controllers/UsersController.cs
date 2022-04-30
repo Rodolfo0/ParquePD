@@ -50,7 +50,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(cUser);
         }
 
-        [HttpGet]
+        
         public async Task<IActionResult> Edit(string? id)
         {
             if (id == null)
@@ -58,27 +58,25 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return NotFound();
             }
 
-            var user = await this.dataContext.Users
-                .Include(p => p.Role)
-                .FirstOrDefaultAsync(p => p.Id == id);
-            if (user == null)
+            var cUser = await dataContext.Users.Include(b => b.Role).FirstOrDefaultAsync(m => m.Id == id);
+            if (cUser == null)
             {
                 return NotFound();
             }
-            var model = new addUserViewModel
+            var model = new updateUserViewModel
             {
-                FirstName = user.FirstName,
-                ParentalSurname = user.ParentalSurname,
-                MaternalSurname = user.MaternalSurname,
-                PhoneNumber = user.PhoneNumber,
-                RFC = user.RFC,
-                Email = user.Email,
-                UserName = user.Email,
-                HiringDate = user.HiringDate,
-                Salary = user.Salary,
-                ImageUrl = user.ImageUrl,
-                idRole = user.Role.Id,
-                Role = user.Role,
+                FirstName = cUser.FirstName,
+                ParentalSurname = cUser.ParentalSurname,
+                MaternalSurname = cUser.MaternalSurname,
+                PhoneNumber = cUser.PhoneNumber,
+                RFC = cUser.RFC,
+                Email = cUser.Email,
+                UserName = cUser.Email,
+                HiringDate = cUser.HiringDate,
+                Salary = cUser.Salary,
+                ImageUrl = cUser.ImageUrl,
+                idRole = cUser.Role.Id,
+                Role = cUser.Role,
                 roles = this.combosHelper.GetComboRoles()
             };
             return View(model);
@@ -90,30 +88,30 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User
-                {
-                    FirstName = model.FirstName,
-                    ParentalSurname = model.ParentalSurname,
-                    MaternalSurname = model.MaternalSurname,
-                    PhoneNumber = model.PhoneNumber,
-                    RFC = model.RFC,
-                    Email = model.Email,
-                    UserName = model.Email,
-                    HiringDate = model.HiringDate,
-                    Salary = model.Salary,
-                    
-                    ImageUrl = (model.ImageFile != null ? await imageHelper.UploadImageAsync(
-                    model.ImageFile, model.FirstName, "users") : model.ImageUrl),
-                    Role = await this.dataContext.Roles.FindAsync(model.idRole)
-                };
-                var result = await userHelper.UpdateUserAsync(user);
+
+                var cUser = await dataContext.Users.Include(b => b.Role).FirstOrDefaultAsync(m => m.Id == model.Id);
+
+                cUser.FirstName = model.FirstName;
+                cUser.ParentalSurname = model.ParentalSurname;
+                cUser.MaternalSurname = model.MaternalSurname;
+                cUser.PhoneNumber = model.PhoneNumber;
+                cUser.RFC = model.RFC;
+                cUser.Email = model.Email;  
+                cUser.UserName = model.Email;
+                cUser.HiringDate = model.HiringDate;
+                cUser.Salary = model.Salary;
+                cUser.ImageUrl = (model.ImageFile != null ? await imageHelper.UploadImageAsync(model.ImageFile, model.FirstName, "users") : model.ImageUrl);
+                cUser.Role = await this.dataContext.Roles.FindAsync(model.idRole);
+
+                var result = await userHelper.UpdateUserAsync(cUser);
                 //var result = await UserManager.UpdateAsync(user);
                 if (result != IdentityResult.Success)
                 {
                     throw new InvalidOperationException("No se ha podido añadir el usuario");
                 }
-                await userHelper.AddUserToRoleAsync(user, user.Role.Name);
                 //await this.dataContext.SaveChangesAsync();
+                await userHelper.AddUserToRoleAsync(cUser, cUser.Role.Name);
+                
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
