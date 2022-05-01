@@ -1,0 +1,49 @@
+﻿@model ParqueProcesoDesarrollo.Web.Models.SanitizedGamesViewModel
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h4>Ingresa los nuevos datos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Remarks" class="control-label"></label>
+                <input asp-for="Remarks" class="form-control" />
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SanitizationDate" class="control-label"></label>
+                <input asp-for="SanitizationDate" class="form-control" />
+                <span asp-validation-for="SanitizationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="Model.Users"></select>
+                <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AtraccionId" class="control-label"></label>
+                <select asp-for="AtraccionId" class="form-control" asp-items="Model.Atractions"></select>
+                <span asp-validation-for="Attraction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SanitizacionProtocolId" class="control-label"></label>
+                <select asp-for="SanitizacionProtocolId" class="form-control" asp-items="Model.SanitizationProtocols"></select>
+                <span asp-validation-for="SanitizationProtocol" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="button"><i class="bi bi-arrow-return-left"></i></a>
+</div>
+
+

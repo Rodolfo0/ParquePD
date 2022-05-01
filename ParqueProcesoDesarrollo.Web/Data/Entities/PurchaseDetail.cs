@@ -13,7 +13,9 @@
         [Display(Name = "Precio unitario")]
         public double UnitPrice { get; set; }
 
-        public Supply Supply { get; set; } 
+        [Display(Name = "Consumible")]
+        public Supply Supply { get; set; }
+        [Display(Name = "Razón social del proveedor")]
         public PurchaseHeader PurchaseHeader { get; set; } 
     }
 }

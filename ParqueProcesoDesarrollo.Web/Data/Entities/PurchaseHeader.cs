@@ -17,6 +17,7 @@
         public DateTime DateofPayment { get; set; }
 
         public Provider Provider { get; set; }
+        [Display(Name = "Tipo de pago")]
         public TypeOfPayment TypeOfPayment { get; set; }
         public ICollection <PurchaseDetail> PurchaseDetails { get; set; } 
     }

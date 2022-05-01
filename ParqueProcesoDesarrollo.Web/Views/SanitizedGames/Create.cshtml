@@ -1,0 +1,42 @@
+﻿@model ParqueProcesoDesarrollo.Web.Models.SanitizedGamesViewModel
+
+@{
+    ViewData["Title"] = "Juegos sanitizados";
+}
+
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Agregar nuevo</h3>
+    </div>
+
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div class="view__container">
+            <div>
+                <label asp-for="Remarks" class="view__label"></label>
+                <input asp-for="Remarks" class="view__input"/>
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+                
+                <label asp-for="SanitizationDate" class="view__label"></label>
+                <input asp-for="SanitizationDate" class="view__input" />
+                <span asp-validation-for="SanitizationDate" class="text-danger"></span>
+                
+                <label asp-for="UserId" class="view__label"></label>
+                <select asp-for="UserId" class="view__input" asp-items="Model.Users"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+
+                <label asp-for="AtraccionId" class="view__label"></label>
+                <select asp-for="AtraccionId" class="view__input" asp-items="Model.Atractions"></select>
+                <span asp-validation-for="AtraccionId" class="text-danger"></span>
+
+                <label asp-for="SanitizacionProtocolId" class="view__label"></label>
+                <select asp-for="SanitizacionProtocolId" class="view__input" asp-items="Model.SanitizationProtocols"></select>
+                <span asp-validation-for="SanitizacionProtocolId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="view__button-container">
+        
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Agregar" class="nta-btn-secondary"  />
+        </div>
+    </form>
+</div>
