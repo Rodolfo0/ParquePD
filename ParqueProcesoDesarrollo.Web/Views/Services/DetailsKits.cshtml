@@ -4,32 +4,37 @@
     ViewData["Title"] = "Kits";
 }
 
-<h1>Detalles de la venta</h1>
+<hr />
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Detalles de la venta</h3>
+    </div>
 
-<div>
-    <h4>Kit</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfSale)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateOfSale)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
-    </dl>
+    <div class="view__container">
+        <div>
+            <dl>
+            <dt class="view__label">
+               @Html.DisplayNameFor(model => model.DateOfSale)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.DateOfSale)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+            <dt class="view__label">
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </dt>
+            <dd class="view__data">
+                @Html.DisplayFor(model => model.UnitPrice)
+            </dd>
+    </div>
 </div>
-<div>
-    <a asp-action="IndexKits">Regresar</a>
+<div class="view__button-container">
+<a asp-action="IndexKits" class="contacto__button nta-btn-common view__button">Regresar</a>
 </div>
