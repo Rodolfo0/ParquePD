@@ -4,72 +4,72 @@
 }
 <div class="view">
     <div class="manager-table__top">
-        <h3 class="manager-table__caption">Confirmar</h3>
+        <h3 class="manager-table__caption">Detalles</h3>
     </div>
 
     <div class="view__container">
         <div>
             <dl>
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.FirstName)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.FirstName)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.ParentalSurname)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.ParentalSurname)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.MaternalSurname)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.MaternalSurname)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.PhoneNumber)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.RFC)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.RFC)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.Salary)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.Salary)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.HiringDate)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.HiringDate)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.Email)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.Email)
             </dd>
 
-            <dt class="view__label">
+            <dt class="view__label view__transparency">
                 @Html.DisplayNameFor(model => model.Role.Name)
             </dt>
-            <dd class="view__data">
+            <dd class="view__data view__transparency">
                 @Html.DisplayFor(model => model.Role.Name)
             </dd>
             </dl>
@@ -81,9 +81,12 @@
             }
         </div>
     </div>
-</div>
-<div class="view__button-container">
-<a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
-</div>
 
-
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="Id" />
+        <div class="view__button-container">
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Confirmar" class="nta-btn-danger" /> 
+        </div>
+    </form>
+</div>

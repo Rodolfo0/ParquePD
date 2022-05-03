@@ -169,5 +169,32 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             }
             return View(model);
         }
+
+        public async Task<IActionResult> Delete(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cUser = await dataContext.Users
+                .Include(b => b.Role)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(cUser);
+        }
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var cUser = await this.dataContext.Users.FindAsync(id);
+            dataContext.Users.Remove(cUser);
+            await dataContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
