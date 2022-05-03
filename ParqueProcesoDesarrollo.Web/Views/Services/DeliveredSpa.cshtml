@@ -6,33 +6,33 @@
 
 <h1>Entregar perro</h1>
 
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="DeliveredSpa">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-
-            <div class="form-group">
-                <label asp-for="DateOfCheckInTime" class="control-label"></label>
-                <input asp-for="DateOfCheckInTime" readonly class="form-control" />
-                <span asp-validation-for="DateOfCheckInTime" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Delivered" class="control-label"></label>
-                <input asp-for="Delivered" class="form-control" />
-                <span asp-validation-for="Delivered" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Entregar" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Entregar al perro</h3>
     </div>
-</div>
 
-<div>
-    <a asp-action="IndexSpa">Regresar</a>
+    <form asp-action="DeliveredSpa" enctype="multipart/form-data">
+        <div class="view__container">
+            <div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <label asp-for="DateOfCheckInTime" class="view__label"></label>
+                <input asp-for="DateOfCheckInTime" readonly class="view__input" />
+                <span asp-validation-for="DateOfCheckInTime" class="text-danger"></span>
+
+                <label asp-for="Delivered" class="view__label">Marque la caja para entregar</label>
+                <input asp-for="Delivered" class="view__input" />
+                <span asp-validation-for="Delivered" class="text-danger"></span>
+                
+            </div>      
+
+        </div>
+
+        <div class="view__button-container">
+            <a asp-action="IndexSpa" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Entregar" class="nta-btn-secondary"  />
+        </div>
+    </form>
 </div>
+        

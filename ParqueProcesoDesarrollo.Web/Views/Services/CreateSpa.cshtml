@@ -4,53 +4,44 @@
     ViewData["Title"] = "Spa";
 }
 
-<h1>Realizar un registro</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateSpa">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="IdClient" class="control-label">Seleccione el cliente</label>
-                <select asp-for="IdClient" class="form-control" asp-items="Model.Wristbands"></select>
-                <span asp-validation-for="IdClient" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="idSize" class="control-label"></label>
-                <select asp-for="idSize" id="sizep" class="form-control" asp-items="Model.Sizes"></select>
-                <span asp-validation-for="idSize" class="text-danger"></span>
-            </div>
-
-            <input type="hidden" asp-for="Size.Name" id="size-name" />
-
-            <div class="form-group">
-                <label asp-for="Size.Price" class="control-label">Total</label>
-                <input asp-for="Size.Price" id="pricex" readonly class="form-control" />
-                <span asp-validation-for="Size.Price" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="DateOfCheckInTime" class="control-label">Fecha y hora de entrada</label>
-                <input asp-for="DateOfCheckInTime" readonly class="form-control" />
-                <span asp-validation-for="DateOfCheckInTime" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="button" value="Continuar" class="btn btn-primary" id="continuar-venta" />
-            </div>
-
-            <div class="popUp" id="popUp-generico">
-                 <input type="submit" value="Confirmar" class="btn btn-success" id="continuar-venta" />
-            </div>
-        </form>
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Realizar un registro</h3>
     </div>
-</div>
 
-<div>
-    <a class="btn btn-info" asp-action="IndexSpa">Regresar</a>
+    <form asp-action="CreateSpa" enctype="multipart/form-data">
+        <div class="view__container">
+            <div>
+                <label asp-for="IdClient" class="view__label">Seleccione el cliente</label>
+                <select asp-for="IdClient" class="view__input" asp-items="Model.Wristbands"></select>
+                <span asp-validation-for="IdClient" class="text-danger"></span>
+                
+                <label asp-for="idSize" class="view__label">Cantidad de kits</label>
+                <select asp-for="idSize" id="sizep" class="view__input" asp-items="Model.Sizes"></select>
+                <span asp-validation-for="idSize" class="text-danger"></span>
+
+                <input type="hidden" asp-for="Size.Name" id="size-name" />
+                
+                <div class="form-group">
+                <label asp-for="Size.Price" class="control-label">Total</label>
+                <input asp-for="Size.Price" id="pricex" readonly class="view__input" />
+                <span asp-validation-for="Size.Price" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="DateOfCheckInTime" class="control-label">Fecha y hora de entrada</label>
+                <input asp-for="DateOfCheckInTime" readonly class="view__input" />
+                <span asp-validation-for="DateOfCheckInTime" class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="view__button-container">
+        
+            <a asp-action="IndexSpa" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Confirmar" class="nta-btn-secondary"  />
+        </div>
+    </form>
 </div>
 
 <script>
