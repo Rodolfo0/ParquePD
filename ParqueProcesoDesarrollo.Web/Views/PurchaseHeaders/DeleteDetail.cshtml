@@ -4,11 +4,16 @@
     ViewData["Title"] = "Eliminar";
 }
 
-<h3>¿Deseas eliminar el detalle de compra?</h3>
-<div>
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">¿Deseas eliminar la compra?</h3>
+    </div>
+
     <form asp-action="DeleteDetail">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+        <div class="view__button-container">
+            <input type="submit" value="Confirmar" class="nta-btn-danger" /> 
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+        </div>
     </form>
 </div>

@@ -4,45 +4,56 @@
     ViewData["Title"] = "Editar";
 }
 
-<h1>Ingresa los nuevos datos</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Agregar nuevo</h3>
+    </div>
+
+    <form asp-action="CreateDetail">
+        <div class="view__container">
+            <div>
+                <div class="form-group">
+                <label asp-for="Quantity" class="view__label"></label>
+                <input asp-for="Quantity" class="view__input"/>
                 <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UnitPrice" class="control-label"></label>
-                <input asp-for="UnitPrice" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                <label asp-for="UnitPrice" class="view__label"></label>
+                <input asp-for="UnitPrice" class="view__input" />
                 <span asp-validation-for="UnitPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+                </div>
+
+                @*<div class="form-group">
+                <label asp-for="ProviderId" class="view__label"></label>
+                <select asp-for="ProviderId" asp-items="Model.Providers" class="view__input" />
+                <span asp-validation-for="Provider" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="TypeOfPaymentId" class="view__label"></label>
+                <select asp-for="TypeOfPaymentId" asp-items="Model.TypeOfPayments" class="view__input" />
+                <span asp-validation-for="TypeOfPayment" class="text-danger"></span>
+                </div> *@ 
+                
+                <div class="form-group">
                 <label asp-for="SupplyId" class="control-label"></label>
                 <select asp-for="SupplyId" asp-items="Model.Supplies" class="form-control"></select>
                 <span asp-validation-for="Supply" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+                </div>
+
+                <div class="form-group">
                 <label asp-for="PurchaseHeaderId" class="control-label"></label>
                 <select asp-for="PurchaseHeaderId" asp-items="Model.PurchaseHeaders" class="form-control"></select>
                 <span asp-validation-for="PurchaseHeader" class="text-danger"></span>
+                </div>
+
             </div>
+        </div>
 
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        <div class="view__button-container">
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Guardar" class="nta-btn-secondary"  />
+        </div>
+    </form>
 </div>
-
-<div>
-    <a asp-action="Index" class="btn btn-secondary">Regresar</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

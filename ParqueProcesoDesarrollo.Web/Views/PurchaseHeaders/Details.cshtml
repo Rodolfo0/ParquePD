@@ -45,5 +45,6 @@
     </div>
 </div>
 <div class="view__button-container">
-<a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+    <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+    <a asp-action="DeleteDetail" asp-route-id="@Model.Id" class="nta-btn-danger">Eliminar</a>
 </div>

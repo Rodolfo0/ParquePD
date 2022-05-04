@@ -46,3 +46,57 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Agregar nuevo</h3>
+    </div>
+
+    <form asp-action="Edit">
+        <div class="view__container">
+            <div>
+                <div class="form-group">
+                <label asp-for="IssueDate" class="view__label"></label>
+                <input asp-for="IssueDate" class="view__input"/>
+                <span asp-validation-for="IssueDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="DateofPayment" class="view__label"></label>
+                <input asp-for="DateofPayment" class="view__input" />
+                <span asp-validation-for="DateofPayment" class="text-danger"></span>
+                </div>
+
+                @*<div class="form-group">
+                <label asp-for="ProviderId" class="view__label"></label>
+                <select asp-for="ProviderId" asp-items="Model.Providers" class="view__input" />
+                <span asp-validation-for="Provider" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="TypeOfPaymentId" class="view__label"></label>
+                <select asp-for="TypeOfPaymentId" asp-items="Model.TypeOfPayments" class="view__input" />
+                <span asp-validation-for="TypeOfPayment" class="text-danger"></span>
+                </div> *@ 
+                
+                <div class="form-group">
+                <label asp-for="ProviderId" class="control-label"></label>
+                <select asp-for="ProviderId" asp-items="Model.Providers" class="form-control"></select>
+                <span asp-validation-for="Provider" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TypeOfPaymentId" class="control-label"></label>
+                    <select asp-for="TypeOfPaymentId" asp-items="Model.TypeOfPayments" class="form-control"></select>
+                    <span asp-validation-for="TypeOfPayment" class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="view__button-container">
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Guardar" class="nta-btn-secondary"  />
+        </div>
+    </form>
+</div>
