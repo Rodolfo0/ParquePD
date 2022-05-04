@@ -42,8 +42,7 @@
             // 
             this.txtHoraActual.AutoSize = true;
             this.txtHoraActual.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.txtHoraActual.Location = new System.Drawing.Point(1089, 791);
-            this.txtHoraActual.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtHoraActual.Location = new System.Drawing.Point(354, 317);
             this.txtHoraActual.Name = "txtHoraActual";
             this.txtHoraActual.Size = new System.Drawing.Size(101, 25);
             this.txtHoraActual.TabIndex = 15;
@@ -53,8 +52,7 @@
             // 
             this.txtFechaActual.AutoSize = true;
             this.txtFechaActual.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.txtFechaActual.Location = new System.Drawing.Point(2039, 324);
-            this.txtFechaActual.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtFechaActual.Location = new System.Drawing.Point(628, 148);
             this.txtFechaActual.Name = "txtFechaActual";
             this.txtFechaActual.Size = new System.Drawing.Size(108, 25);
             this.txtFechaActual.TabIndex = 14;
@@ -64,8 +62,7 @@
             // 
             this.txtNumeroMaquina.AutoSize = true;
             this.txtNumeroMaquina.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.txtNumeroMaquina.Location = new System.Drawing.Point(124, 324);
-            this.txtNumeroMaquina.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtNumeroMaquina.Location = new System.Drawing.Point(23, 148);
             this.txtNumeroMaquina.Name = "txtNumeroMaquina";
             this.txtNumeroMaquina.Size = new System.Drawing.Size(171, 25);
             this.txtNumeroMaquina.TabIndex = 13;
@@ -75,8 +72,7 @@
             // 
             this.lblRegresar.AutoSize = true;
             this.lblRegresar.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblRegresar.Location = new System.Drawing.Point(2306, 260);
-            this.lblRegresar.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lblRegresar.Location = new System.Drawing.Point(698, 89);
             this.lblRegresar.Name = "lblRegresar";
             this.lblRegresar.Size = new System.Drawing.Size(75, 25);
             this.lblRegresar.TabIndex = 12;
@@ -85,10 +81,9 @@
             // 
             // btnImprimirBoleto
             // 
-            this.btnImprimirBoleto.Location = new System.Drawing.Point(1925, 971);
-            this.btnImprimirBoleto.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnImprimirBoleto.Location = new System.Drawing.Point(613, 373);
             this.btnImprimirBoleto.Name = "btnImprimirBoleto";
-            this.btnImprimirBoleto.Size = new System.Drawing.Size(456, 125);
+            this.btnImprimirBoleto.Size = new System.Drawing.Size(144, 44);
             this.btnImprimirBoleto.TabIndex = 11;
             this.btnImprimirBoleto.Text = "Imprimir Boleto";
             this.btnImprimirBoleto.UseSelectable = true;
@@ -98,10 +93,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(687, 421);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label1.Location = new System.Drawing.Point(228, 189);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1075, 346);
+            this.label1.Size = new System.Drawing.Size(360, 116);
             this.label1.TabIndex = 10;
             this.label1.Text = "BIENVENIDO A\r\nFUZZY ROAD";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,18 +103,19 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ParqueProcesoDesarollo_Estacionamiento.Properties.Resources.Banner;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 66);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(2428, 177);
+            this.pictureBox1.Size = new System.Drawing.Size(767, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 50;
             this.pictureBox1.TabStop = false;
             // 
             // frmImprimirBoletoEstacionamiento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2454, 1161);
+            this.ClientSize = new System.Drawing.Size(780, 440);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtHoraActual);
             this.Controls.Add(this.txtFechaActual);
@@ -128,9 +123,7 @@
             this.Controls.Add(this.lblRegresar);
             this.Controls.Add(this.btnImprimirBoleto);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "frmImprimirBoletoEstacionamiento";
-            this.Padding = new System.Windows.Forms.Padding(63, 171, 63, 57);
             this.Resizable = false;
             this.Text = "PA-08-07 Imprimir Boleto de Estacionamiento";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmImprimirBoletoEstacionamiento_FormClosed);

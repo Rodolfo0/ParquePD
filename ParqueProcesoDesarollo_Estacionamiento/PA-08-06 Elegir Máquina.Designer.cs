@@ -38,10 +38,9 @@
             // 
             this.cmbMaquinas.FormattingEnabled = true;
             this.cmbMaquinas.ItemHeight = 23;
-            this.cmbMaquinas.Location = new System.Drawing.Point(193, 356);
-            this.cmbMaquinas.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.cmbMaquinas.Location = new System.Drawing.Point(71, 156);
             this.cmbMaquinas.Name = "cmbMaquinas";
-            this.cmbMaquinas.Size = new System.Drawing.Size(555, 29);
+            this.cmbMaquinas.Size = new System.Drawing.Size(178, 29);
             this.cmbMaquinas.TabIndex = 1;
             this.cmbMaquinas.UseSelectable = true;
             this.cmbMaquinas.SelectedIndexChanged += new System.EventHandler(this.cmbMaquinas_SelectedIndexChanged);
@@ -50,8 +49,7 @@
             // 
             this.lblRegresar.AutoSize = true;
             this.lblRegresar.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblRegresar.Location = new System.Drawing.Point(662, 196);
-            this.lblRegresar.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lblRegresar.Location = new System.Drawing.Point(217, 80);
             this.lblRegresar.Name = "lblRegresar";
             this.lblRegresar.Size = new System.Drawing.Size(75, 25);
             this.lblRegresar.TabIndex = 13;
@@ -61,24 +59,23 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ParqueProcesoDesarollo_Estacionamiento.Properties.Resources.Banner;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(957, 118);
+            this.pictureBox1.Size = new System.Drawing.Size(306, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 51;
             this.pictureBox1.TabStop = false;
             // 
             // frmElegirMaquina
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 771);
+            this.ClientSize = new System.Drawing.Size(315, 295);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblRegresar);
             this.Controls.Add(this.cmbMaquinas);
-            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "frmElegirMaquina";
-            this.Padding = new System.Windows.Forms.Padding(63, 171, 63, 57);
             this.Resizable = false;
             this.Text = "PA-08-06 Elegir Máquina";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmElegirMaquina_FormClosed);

@@ -52,10 +52,9 @@
             // 
             this.cmbMaquinas.FormattingEnabled = true;
             this.cmbMaquinas.ItemHeight = 23;
-            this.cmbMaquinas.Location = new System.Drawing.Point(1813, 268);
-            this.cmbMaquinas.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.cmbMaquinas.Location = new System.Drawing.Point(575, 102);
             this.cmbMaquinas.Name = "cmbMaquinas";
-            this.cmbMaquinas.Size = new System.Drawing.Size(568, 29);
+            this.cmbMaquinas.Size = new System.Drawing.Size(182, 29);
             this.cmbMaquinas.TabIndex = 23;
             this.cmbMaquinas.UseSelectable = true;
             this.cmbMaquinas.SelectedIndexChanged += new System.EventHandler(this.cmbMaquinas_SelectedIndexChanged);
@@ -66,10 +65,9 @@
             // 
             // 
             this.txtBilletes100.CustomButton.Image = null;
-            this.txtBilletes100.CustomButton.Location = new System.Drawing.Point(694, 6);
-            this.txtBilletes100.CustomButton.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtBilletes100.CustomButton.Location = new System.Drawing.Point(66, 1);
             this.txtBilletes100.CustomButton.Name = "";
-            this.txtBilletes100.CustomButton.Size = new System.Drawing.Size(301, 270);
+            this.txtBilletes100.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.txtBilletes100.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtBilletes100.CustomButton.TabIndex = 1;
             this.txtBilletes100.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -77,8 +75,7 @@
             this.txtBilletes100.CustomButton.Visible = false;
             this.txtBilletes100.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtBilletes100.Lines = new string[0];
-            this.txtBilletes100.Location = new System.Drawing.Point(1884, 773);
-            this.txtBilletes100.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtBilletes100.Location = new System.Drawing.Point(595, 286);
             this.txtBilletes100.MaxLength = 32767;
             this.txtBilletes100.Name = "txtBilletes100";
             this.txtBilletes100.PasswordChar = '\0';
@@ -87,7 +84,7 @@
             this.txtBilletes100.SelectionLength = 0;
             this.txtBilletes100.SelectionStart = 0;
             this.txtBilletes100.ShortcutsEnabled = true;
-            this.txtBilletes100.Size = new System.Drawing.Size(317, 100);
+            this.txtBilletes100.Size = new System.Drawing.Size(100, 35);
             this.txtBilletes100.TabIndex = 22;
             this.txtBilletes100.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBilletes100.UseSelectable = true;
@@ -100,10 +97,9 @@
             // 
             // 
             this.txtBilletes50.CustomButton.Image = null;
-            this.txtBilletes50.CustomButton.Location = new System.Drawing.Point(694, 6);
-            this.txtBilletes50.CustomButton.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtBilletes50.CustomButton.Location = new System.Drawing.Point(66, 1);
             this.txtBilletes50.CustomButton.Name = "";
-            this.txtBilletes50.CustomButton.Size = new System.Drawing.Size(301, 270);
+            this.txtBilletes50.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.txtBilletes50.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtBilletes50.CustomButton.TabIndex = 1;
             this.txtBilletes50.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -111,8 +107,7 @@
             this.txtBilletes50.CustomButton.Visible = false;
             this.txtBilletes50.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtBilletes50.Lines = new string[0];
-            this.txtBilletes50.Location = new System.Drawing.Point(1884, 403);
-            this.txtBilletes50.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtBilletes50.Location = new System.Drawing.Point(595, 166);
             this.txtBilletes50.MaxLength = 32767;
             this.txtBilletes50.Name = "txtBilletes50";
             this.txtBilletes50.PasswordChar = '\0';
@@ -121,7 +116,7 @@
             this.txtBilletes50.SelectionLength = 0;
             this.txtBilletes50.SelectionStart = 0;
             this.txtBilletes50.ShortcutsEnabled = true;
-            this.txtBilletes50.Size = new System.Drawing.Size(317, 100);
+            this.txtBilletes50.Size = new System.Drawing.Size(100, 35);
             this.txtBilletes50.TabIndex = 21;
             this.txtBilletes50.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBilletes50.UseSelectable = true;
@@ -134,10 +129,9 @@
             // 
             // 
             this.txtMonedas10.CustomButton.Image = null;
-            this.txtMonedas10.CustomButton.Location = new System.Drawing.Point(694, 6);
-            this.txtMonedas10.CustomButton.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtMonedas10.CustomButton.Location = new System.Drawing.Point(66, 1);
             this.txtMonedas10.CustomButton.Name = "";
-            this.txtMonedas10.CustomButton.Size = new System.Drawing.Size(301, 270);
+            this.txtMonedas10.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.txtMonedas10.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtMonedas10.CustomButton.TabIndex = 1;
             this.txtMonedas10.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -145,8 +139,7 @@
             this.txtMonedas10.CustomButton.Visible = false;
             this.txtMonedas10.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtMonedas10.Lines = new string[0];
-            this.txtMonedas10.Location = new System.Drawing.Point(640, 773);
-            this.txtMonedas10.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtMonedas10.Location = new System.Drawing.Point(202, 286);
             this.txtMonedas10.MaxLength = 32767;
             this.txtMonedas10.Name = "txtMonedas10";
             this.txtMonedas10.PasswordChar = '\0';
@@ -155,7 +148,7 @@
             this.txtMonedas10.SelectionLength = 0;
             this.txtMonedas10.SelectionStart = 0;
             this.txtMonedas10.ShortcutsEnabled = true;
-            this.txtMonedas10.Size = new System.Drawing.Size(317, 100);
+            this.txtMonedas10.Size = new System.Drawing.Size(100, 35);
             this.txtMonedas10.TabIndex = 20;
             this.txtMonedas10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtMonedas10.UseSelectable = true;
@@ -168,10 +161,9 @@
             // 
             // 
             this.txtMonedas5.CustomButton.Image = null;
-            this.txtMonedas5.CustomButton.Location = new System.Drawing.Point(694, 6);
-            this.txtMonedas5.CustomButton.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtMonedas5.CustomButton.Location = new System.Drawing.Point(66, 1);
             this.txtMonedas5.CustomButton.Name = "";
-            this.txtMonedas5.CustomButton.Size = new System.Drawing.Size(301, 270);
+            this.txtMonedas5.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.txtMonedas5.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtMonedas5.CustomButton.TabIndex = 1;
             this.txtMonedas5.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -179,8 +171,7 @@
             this.txtMonedas5.CustomButton.Visible = false;
             this.txtMonedas5.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtMonedas5.Lines = new string[0];
-            this.txtMonedas5.Location = new System.Drawing.Point(640, 403);
-            this.txtMonedas5.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtMonedas5.Location = new System.Drawing.Point(202, 166);
             this.txtMonedas5.MaxLength = 32767;
             this.txtMonedas5.Name = "txtMonedas5";
             this.txtMonedas5.PasswordChar = '\0';
@@ -189,7 +180,7 @@
             this.txtMonedas5.SelectionLength = 0;
             this.txtMonedas5.SelectionStart = 0;
             this.txtMonedas5.ShortcutsEnabled = true;
-            this.txtMonedas5.Size = new System.Drawing.Size(317, 100);
+            this.txtMonedas5.Size = new System.Drawing.Size(100, 35);
             this.txtMonedas5.TabIndex = 19;
             this.txtMonedas5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtMonedas5.UseSelectable = true;
@@ -199,10 +190,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1273, 704);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.pictureBox3.Location = new System.Drawing.Point(402, 265);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(478, 236);
+            this.pictureBox3.Size = new System.Drawing.Size(151, 83);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
@@ -210,20 +200,18 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::ParqueProcesoDesarollo_Estacionamiento.Properties.Resources.Billete_de_50_pesos;
-            this.pictureBox4.Location = new System.Drawing.Point(1273, 337);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.pictureBox4.Location = new System.Drawing.Point(402, 142);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(478, 236);
+            this.pictureBox4.Size = new System.Drawing.Size(151, 83);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 17;
             this.pictureBox4.TabStop = false;
             // 
             // btnIngresarMonto
             // 
-            this.btnIngresarMonto.Location = new System.Drawing.Point(1925, 998);
-            this.btnIngresarMonto.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnIngresarMonto.Location = new System.Drawing.Point(611, 373);
             this.btnIngresarMonto.Name = "btnIngresarMonto";
-            this.btnIngresarMonto.Size = new System.Drawing.Size(456, 125);
+            this.btnIngresarMonto.Size = new System.Drawing.Size(144, 44);
             this.btnIngresarMonto.TabIndex = 16;
             this.btnIngresarMonto.Text = "Ingresar Monto";
             this.btnIngresarMonto.UseSelectable = true;
@@ -231,10 +219,9 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(1416, 998);
-            this.btnRegresar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnRegresar.Location = new System.Drawing.Point(449, 373);
             this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(456, 125);
+            this.btnRegresar.Size = new System.Drawing.Size(144, 44);
             this.btnRegresar.TabIndex = 15;
             this.btnRegresar.Text = "Volver";
             this.btnRegresar.UseSelectable = true;
@@ -243,10 +230,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::ParqueProcesoDesarollo_Estacionamiento.Properties.Resources.Moneda_de_10_pesos;
-            this.pictureBox2.Location = new System.Drawing.Point(250, 704);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.pictureBox2.Location = new System.Drawing.Point(79, 265);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(272, 236);
+            this.pictureBox2.Size = new System.Drawing.Size(86, 83);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
@@ -254,10 +240,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(250, 337);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(79, 142);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(272, 236);
+            this.pictureBox1.Size = new System.Drawing.Size(86, 83);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
@@ -265,18 +250,19 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::ParqueProcesoDesarollo_Estacionamiento.Properties.Resources.Banner;
-            this.pictureBox5.Location = new System.Drawing.Point(11, 61);
+            this.pictureBox5.Location = new System.Drawing.Point(6, 11);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(2428, 177);
+            this.pictureBox5.Size = new System.Drawing.Size(767, 62);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 50;
             this.pictureBox5.TabStop = false;
             // 
             // frmDineroInicial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2454, 1196);
+            this.ClientSize = new System.Drawing.Size(780, 440);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.cmbMaquinas);
             this.Controls.Add(this.txtBilletes100);
@@ -289,9 +275,7 @@
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "frmDineroInicial";
-            this.Padding = new System.Windows.Forms.Padding(63, 171, 63, 57);
             this.Resizable = false;
             this.Text = "PA-08-04 Registrar Dinero Inicial en la Máquina";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDineroInicial_FormClosed);
