@@ -14,8 +14,8 @@
 </head>
 <body>
     <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="fa-solid fa-bars"></i></a>
-     @*@if (this.User.Identity.IsAuthenticated)
-    {*@
+     @if (this.User.Identity.IsAuthenticated)
+    {
     <nav class="navbar" id="navbar">
             <ul class="navbar__menu" id="menu-list">
                 <li class="navbar__item">
@@ -66,7 +66,7 @@
             </ul>
             <div class="menu-bg"></div>
         </nav>
-    @*}*@
+    }
     
         <div class="manager-header">
             <h2 class="nta-title nta-title-xs primary manager-header__title">@ViewData["Title"]</h2>
@@ -74,7 +74,7 @@
             {
                 <div class="manager-header__perfil" id="header-perfil">
                     <div class="manager-header__info">
-                        <img class="manager-header__info-img" src="../assets/img/webp/antonio-min.webp" alt="">
+                    <img class="manager-header__info-img" ssrc="../wwwroot/images/users/rodo163ca458-76a8-4200-812e-1071e71285cb.png" alt="">
                         <div>
                             <p>@this.User.Identity.Name</p>
                         </div>
@@ -87,7 +87,7 @@
             {
                 <div class="manager-header__perfil">
                     <div class="manager-header__info">
-                        <img class="manager-header__info-img" src="../assets/img/webp/antonio-min.webp" alt="">
+                    <img class="manager-header__info-img" src="../wwwroot/images/users/rodo163ca458-76a8-4200-812e-1071e71285cb.png" alt="">
                         <div>
                             <h3><a asp-area="" asp-controller="Account" asp-action="Login">Iniciar Sesión</a></h3>
                         </div>
@@ -99,7 +99,7 @@
         @if (this.User.Identity.IsAuthenticated)
         {
             <div class="manager__profile" id="administrar-perfil">
-                    <img class="manager__profile-img" src="../assets/img/webp/antonio-min.webp" alt="">
+                    <img class="manager__profile-img" src="../wwwroot/images/users/rodo163ca458-76a8-4200-812e-1071e71285cb.png" alt="">
                     <h3 class="manager__profile-user">@this.User.Identity.Name</h3>
                     <a class="manager__profile-option" href="">Administrar perfil</a>
                     <a class="manager__profile-close" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar Sesión</a>

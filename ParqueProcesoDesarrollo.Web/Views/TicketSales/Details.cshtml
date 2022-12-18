@@ -1,0 +1,149 @@
+﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.TicketSale
+@{
+    ViewData["Title"] = "Ventas";
+}
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Detalles de la Venta</h3>
+    </div>
+
+    <div class="view__container">
+        <div>
+            <dl>
+                <dt class="view__label">
+                    Id de Venta
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+
+                <dt class="view__label">
+                    @Html.DisplayNameFor(model => model.DateOfIssue)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.DateOfIssue)
+                </dd>
+
+                <dt class="view__label">
+                    Ip de la Caja Emisora
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.CashBox.Ip)
+                </dd>
+
+            </dl>
+            <table class="manager-table">
+                <thead class="manager-table__headers">
+                    <tr class="manager-table__row">
+                        <th class="manager-table__header" scope="col">
+                            Tipo de Pulsera
+                        </th>
+                        <th class="manager-table__header" scope="col">
+                            Cantidad
+                        </th>
+                        <th class="manager-table__header" scope="col">
+                            Precio Unitario
+                        </th>
+                        <th class="manager-table__header" scope="col">
+                            Subtotal
+                        </th>
+                        <th class="manager-table__header" scope="col">
+                            Nombre de la persona encargada
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="manager-table__body">
+                    @foreach (var item in Model.WristbandSaleDetails)
+                    {
+                        <tr class="manager-table__row">
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.TypeOfWristband.Description)
+                            </td>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.NameOfPersonInCharge)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <br />
+
+            <table class="table" align="center">
+                <thead class="manager-table__headers">
+                    <tr class="manager-table__row">
+                        <th class="manager-table__header" scope="col">
+                            Tamaño de la Correa
+                        </th>
+                        <th class="manager-table__header" scope="col">
+                            Cantidad
+                        </th>
+                        <th class="manager-table__header" scope="col">
+                            Precio Unitario
+                        </th>
+                        <th class="manager-table__header" scope="col">
+                            Subtotal
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.NecklaceSaleDetails)
+                    {
+                        <tr>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.CollarSize.Size)
+                            </td>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td class="manager-table__data" scope="row">
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <dl>
+
+                <dt class="view__label">
+                    @Html.DisplayNameFor(model => model.Subtotal)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.Subtotal)
+                </dd>
+                <dt class="view__label">
+                   IVA Aplicado
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.IvaTypes.InterestRate) 
+                </dd>
+
+                <dt class="view__label">
+                    @Html.DisplayNameFor(model => model.Total)
+                </dt>
+                <dd class="view__data">
+                    @Html.DisplayFor(model => model.Total)
+                </dd>
+            </dl>
+               
+
+        </div>
+    </div>
+</div>
+<div class="view__button-container">
+    <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+</div>
+
+

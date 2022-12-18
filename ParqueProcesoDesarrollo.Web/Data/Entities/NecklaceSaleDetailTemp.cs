@@ -16,9 +16,10 @@ namespace ParqueProcesoDesarrollo.Web.Data.Entities
         [Required]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         public double UnitPrice { get; set; }
+
         [Required]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public double Quantity { get; set; }
+        public int Quantity { get; set; }
+
         [DisplayFormat(DataFormatString = "{0:C2}")]
 
         public double Amount { get { return this.UnitPrice * this.Quantity; } }

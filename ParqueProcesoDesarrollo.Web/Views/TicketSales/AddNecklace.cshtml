@@ -1,0 +1,38 @@
+﻿@model ParqueProcesoDesarrollo.Web.Models.TicketSaleViewModel
+@{
+    ViewData["Title"] = "Add Necklace";
+}
+
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Agregar Correa a la Venta</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="addNecklace">
+            <div class="view__container">
+                <div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+            
+                        <label asp-for="CollarSizeId" class="view__label"></label>
+                        <select asp-for="CollarSizeId" asp-items="Model.CollarSizes" class="view__input"></select>
+                        <span asp-validation-for="CollarSizeId" class="text-danger"></span>
+
+                        <label asp-for="CollarQuantity" class="view__label"></label>
+                        <input asp-for="CollarQuantity" class="view__input" max="10" min="1"/>
+                        <span asp-validation-for="CollarQuantity" class="text-danger"></span>
+
+                    <div class="view__button-container">
+                        <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+                        <input type="submit" value="Agregar" class="nta-btn-secondary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

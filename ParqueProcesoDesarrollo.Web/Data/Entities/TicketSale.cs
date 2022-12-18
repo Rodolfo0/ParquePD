@@ -14,19 +14,18 @@
         public DateTime DateOfIssue { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [DisplayFormat(DataFormatString ="{0:C2}")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         [Display(Name = "Subtotal")]
-        public double Subtotal { get { return this.WristbandSaleDetails == null ? 0 : this.NecklaceSaleDetails == null ? this.WristbandSaleDetails.Sum(i => i.Amount) : this.WristbandSaleDetails.Sum(i => i.Amount) + this.NecklaceSaleDetails.Sum(p => p.Amount); }  }
+        public double Subtotal { get { return this.WristbandSaleDetails == null ? 0 : this.NecklaceSaleDetails == null ? this.WristbandSaleDetails.Sum(i => i.Amount) : this.WristbandSaleDetails.Sum(i => i.Amount) + this.NecklaceSaleDetails.Sum(p => p.Amount); } }
 
         [Required(ErrorMessage = "{0} es obligatorio")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         [Display(Name = "Total")]
-        public double Total { get { return Subtotal * .16 + Subtotal; } }
-
+        public double Total { get; set; }
         public Status Status { get; set; }
         public CashBox CashBox { get; set; }
-
         public IvaType IvaTypes { get; set; }
-        public ICollection <WristbandSaleDetail> WristbandSaleDetails { get; set; }
-        public ICollection <NecklaceSaleDetail> NecklaceSaleDetails { get; set; }
+        public ICollection<WristbandSaleDetail> WristbandSaleDetails { get; set; }
+        public ICollection<NecklaceSaleDetail> NecklaceSaleDetails { get; set; }
     }
 }

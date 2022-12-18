@@ -1,4 +1,4 @@
-﻿@model ParqueProcesoDesarrollo.Web.Models.AddItemViewModel
+﻿@model ParqueProcesoDesarrollo.Web.Models.TicketSaleViewModel
 @{
     ViewData["Title"] = "Add Wristband";
 }
@@ -10,29 +10,25 @@
     <div class="col-md-4">
         <form asp-action="addWristband">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="WristbandId" class="control-label"></label>
-                <select asp-for="WristbandId" asp-items="Model.TypeOfWristband" class="form-control"></select>
-                <span asp-validation-for="WristbandId" class="text-danger"></span>
-            </div>
-            
-            
+            <div class="view__container">
+                <div>
+                        <label asp-for="WristbandId" class="view__label"></label>
+                        <select asp-for="WristbandId" asp-items="Model.Wristbands" class="view__input"></select>
+                        <span asp-validation-for="WristbandId" class="text-danger"></span>
 
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NameOfPersonInCharge" class="control-label"></label>
-                <input asp-for="NameOfPersonInCharge" class="form-control" />
-                <span asp-validation-for="NameOfPersonInCharge" class="text-danger"></span>
-            </div>
-         
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-outline-dark">Regresar</a>
+                        <label asp-for="WristBandsQuantity" class="view__label"></label>
+                        <input asp-for="WristBandsQuantity" class="view__input" max="10" min="1" />
+                        <span asp-validation-for="WristBandsQuantity" class="text-danger"></span>
+
+                        <label asp-for="NameOfPersonInCharge" class="view__label"></label>
+                        <input asp-for="NameOfPersonInCharge" class="view__input" />
+                        <span asp-validation-for="NameOfPersonInCharge" class="text-danger"></span>
+
+                    <div class="view__button-container">
+                        <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+                        <input type="submit" value="Agregar" class="nta-btn-secondary" />
+                    </div>
+                </div>
             </div>
         </form>
     </div>

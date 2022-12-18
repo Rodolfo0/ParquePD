@@ -1,0 +1,111 @@
+﻿@model ParqueProcesoDesarrollo.Web.Models.TicketSaleViewModel
+@{
+    ViewData["Title"] = "Nueva Venta";
+}
+
+<h1>Nueva Venta</h1>
+<div>
+    <table class="manager-table">
+        <thead class="manager-table__headers">
+            <tr class="manager-table__row">
+                <th class="manager-table__header" scope="col">
+                    Tipo de Pulsera
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Cantidad
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Precio Unitario
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Subtotal
+                </th>
+                <th class="manager-table__header" scope="col">
+                   Nombre de la persona encargada
+                </th>
+                <th class="manager-table__header" scope="col">
+                </th>
+            </tr>
+        </thead>
+        <tbody class="manager-table__body">
+            @foreach (var item in Model.WristbandSaleDetailTemp)
+            {
+                <tr class="manager-table__row">
+                    <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.TypeOfWristband.Description)
+                </td>
+                <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.NameOfPersonInCharge)
+                </td>
+                    <td class="manager-table__data manager-table__option" scope="row">
+                        <a asp-action="IncreaseWristband" asp-route-id="@item.Id"><i class="fa-solid fa-plus"></i></a>
+                        <a asp-action="DecreaseWristband" asp-route-id="@item.Id"><i class="fa-solid fa-minus"></i></a>
+                
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <br />
+
+    <table class="table" align="center">
+        <thead class="manager-table__headers">
+            <tr class="manager-table__row">
+                <th class="manager-table__header" scope="col">
+                    Tamaño de la Correa
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Cantidad
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Precio Unitario
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Subtotal
+                </th>
+                <th class="manager-table__header" scope="col">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.NecklaceSaleDetailTemp)
+            {
+            <tr class="manager-table__row">
+                    <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.CollarSize.Size)
+                </td>
+                <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                    <td class ="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                    <td class="manager-table__data" scope="row">
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                    <td class="manager-table__data manager-table__option" scope="row">
+                        <a asp-action="IncreaseNecklace" asp-route-id="@item.Id"><i class="fa-solid fa-plus"></i></a>
+                        <a asp-action="DecreaseNecklace" asp-route-id="@item.Id"><i class="fa-solid fa-minus"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="view__container" style="float:right;">
+    <div class="view__button-container">
+        <a asp-action="addWristband" class="contacto__button nta-btn-common view__button">Agregar pulsera</a>
+        <a asp-action="addNecklace" class="contacto__button nta-btn-common view__button">Agregar Collar</a>
+        <a asp-action="ConfirmOrder" class="nta-btn-secondary">Confirmar orden</a>
+    </div>
+</div>

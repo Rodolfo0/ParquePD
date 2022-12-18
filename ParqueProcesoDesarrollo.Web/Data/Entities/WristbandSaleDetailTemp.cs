@@ -21,6 +21,7 @@ namespace ParqueProcesoDesarrollo.Web.Data.Entities
         [Display(Name = "Nombre del responsable")]
         public string NameOfPersonInCharge { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double Amount { get { return this.UnitPrice * this.Quantity; } }
 
         public TypeOfWristband TypeOfWristband { get; set; }

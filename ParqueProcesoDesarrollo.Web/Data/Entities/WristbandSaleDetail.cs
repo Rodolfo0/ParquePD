@@ -20,9 +20,10 @@
         public TicketSale TicketSale { get; set; } 
         public ICollection <SpaRegistration> SpaRegistrations { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double UnitPrice { get; set; }
         [Required]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
 
         public double Amount { get { return this.UnitPrice * this.Quantity; } }
     }
