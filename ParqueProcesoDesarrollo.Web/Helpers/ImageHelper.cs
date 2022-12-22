@@ -20,5 +20,24 @@
             }
             return $"~/images/{folder}/{file}";
         }
+
+        public string GetProfilePath(string imagePath)
+        {
+            var fileName = Path.GetFileName(imagePath);
+            if (fileName == "_default.jpeg")
+            {
+                return $"/images/{fileName}";
+            }
+            else
+            {
+                return $"/images/users/{fileName}";
+            }
+        }
+
+        public void DeleteImage(string imagePath)
+        {
+            var fileName = Path.GetFileName(imagePath);
+            File.Delete($"wwwroot\\images\\users\\{fileName}");
+        }
     }
 }

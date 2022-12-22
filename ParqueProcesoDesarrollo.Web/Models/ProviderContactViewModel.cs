@@ -12,9 +12,10 @@ namespace ParqueProcesoDesarrollo.Web.Models
 {
     public class ProviderContactViewModel:ProviderContact
     {
-        [Display(Name = "Proveedor")]
+        [Display(Name = "Estado")]
+        public int StatusId { get; set; }
         public int ProviderId { get; set; }
 
-        public IEnumerable<SelectListItem> Providerses { get; set; }
+        public IEnumerable<SelectListItem> Statuses { get; set; }
     }
 }

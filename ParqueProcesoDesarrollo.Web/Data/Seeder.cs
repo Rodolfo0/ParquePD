@@ -11,11 +11,13 @@
     {
         private readonly DataContext dataContext;
         private readonly IUserHelper userHelper;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public Seeder(DataContext dataContext, IUserHelper userHelper)
+        public Seeder(DataContext dataContext, IUserHelper userHelper, RoleManager<IdentityRole> roleManager)
         {
             this.dataContext = dataContext;
             this.userHelper = userHelper;
+            this.roleManager = roleManager;
         }
 
         public async Task SeedAsync()
@@ -28,38 +30,6 @@
             await userHelper.CheckRoleAsync("Responsable Mantenimiento");
             await userHelper.CheckRoleAsync("Guardia");
             await userHelper.CheckRoleAsync("Encargado del juego");
-
-            if (!this.dataContext.Employees.Any())
-            {
-                var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
-                var user = await CheckUser("Axel", "Rodríguez", "Pérez", "153689", "FAB245", "peraxe@gmail.com"
-                    , DateTime.Now, 4500, null, "12345", status);
-                await CheckEmployee(user, "Gerente General");
-
-                user = await CheckUser("Alex", "Roque", "Bautista", "153689", "FAB845", "roqueba@gmail.com"
-                    , DateTime.Now, 4500, null, "12345", status);
-                await CheckEmployee(user, "Gerente Administrativo");
-
-                user = await CheckUser("Jesse", "Vélez", "Alatorre", "153689", "FAB245", "jesseve@gmail.com"
-                    , DateTime.Now, 6500, null, "12345", status);
-                await CheckEmployee(user, "Gerente Compras");
-
-                user = await CheckUser("Yael", "Valadez", "Pérez", "153689", "FAB245", "yaelva@gmail.com"
-                    , DateTime.Now, 4500, null, "12345", status);
-                await CheckEmployee(user, "Cajero");
-
-                user = await CheckUser("Dariel", "Ruiz", "Pérez", "153689", "FAB245", "ruizda@gmail.com"
-                    , DateTime.Now, 4500, null, "12345", status);
-                await CheckEmployee(user, "Responsable Mantenimiento");
-
-                user = await CheckUser("Antonio", "Rodríguez", "Ruiz", "153689", "FAB245", "tonyr@gmail.com"
-                    , DateTime.Now, 4500, null, "12345", status);
-                await CheckEmployee(user, "Guardia");
-
-                user = await CheckUser("Manuel", "Parra", "Pérez", "153689", "FAB245", "manupar@gmail.com"
-                    , DateTime.Now, 4500, null, "12345", status);
-                await CheckEmployee(user, "Encargado del juego");
-            }
 
             if (!this.dataContext.Statuses.Any())
             {
@@ -76,6 +46,46 @@
                 await CheckStatus("Emitida");
                 await CheckStatus("Pagado");
                 await CheckStatus("Impreso");
+            }
+
+            if (!this.dataContext.Employees.Any())
+            {
+                var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
+                var role = await roleManager.FindByNameAsync("Gerente General");
+
+                var user = await CheckUser("Axel", "Rodríguez", "Pérez", "153689", "FAB245", "peraxe@gmail.com"
+                    , DateTime.Now, 4500, null, "12345", status, "Gerente General", role);
+                await CheckEmployee(user);
+
+                role = await roleManager.FindByNameAsync("Gerente Administrativo");
+                user = await CheckUser("Alex", "Roque", "Bautista", "153689", "FAB845", "roqueba@gmail.com"
+                    , DateTime.Now, 4500, null, "12345", status, "Gerente Administrativo", role);
+                await CheckEmployee(user);
+
+                role = await roleManager.FindByNameAsync("Gerente Compras");
+                user = await CheckUser("Jesse", "Vélez", "Alatorre", "153689", "FAB245", "jesseve@gmail.com"
+                    , DateTime.Now, 6500, null, "12345", status, "Gerente Compras", role);
+                await CheckEmployee(user);
+
+                role = await roleManager.FindByNameAsync("Cajero");
+                user = await CheckUser("Yael", "Valadez", "Pérez", "153689", "FAB245", "yaelva@gmail.com"
+                    , DateTime.Now, 4500, null, "12345", status, "Cajero", role);
+                await CheckEmployee(user);
+
+                role = await  roleManager.FindByNameAsync("Responsable Mantenimiento");
+                user = await CheckUser("Dariel", "Ruiz", "Pérez", "153689", "FAB245", "ruizda@gmail.com"
+                    , DateTime.Now, 4500, null, "12345", status, "Responsable Mantenimiento", role);
+                await CheckEmployee(user);
+
+                role = await roleManager.FindByNameAsync("Gerente General");
+                user = await CheckUser("Antonio", "Rodríguez", "Ruiz", "153689", "FAB245", "tonyr@gmail.com"
+                    , DateTime.Now, 4500, null, "12345", status, "Guardia", role);
+                await CheckEmployee(user);
+
+                role = await roleManager.FindByNameAsync("Gerente General");
+                user = await CheckUser("Manuel", "Parra", "Pérez", "153689", "FAB245", "manupar@gmail.com"
+                    , DateTime.Now, 4500, null, "12345", status, "Encargado del juego", role);
+                await CheckEmployee(user);
             }
 
             if (!this.dataContext.Providers.Any())
@@ -277,7 +287,7 @@
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
             string phone, string rfc, string email, DateTime hiringDate, int salary, string imageUrl,
-            string password, Status status)
+            string password, Status status, string rolName, IdentityRole role)
         {
             var user = await userHelper.GetUserByEmailAsync(email);
             if (user == null)
@@ -294,25 +304,27 @@
                     HiringDate = hiringDate,
                     Salary = salary,
                     ImageUrl = imageUrl == null ? $"~/images/_default.jpeg" : imageUrl,
-                    Status = status
+                    Status = status,
+                    Role= role
+                    
                 };
                 var result = await userHelper.AddUserAsync(user, password);
                 if (result != IdentityResult.Success)
                 {
                     throw new InvalidOperationException("Error no se puede crear el usuario");
                 }
+                await userHelper.AddUserToRoleAsync(user, rolName);
             }
             return user;
         }
 
-        public async Task CheckEmployee(User user, string rol)
+        public async Task CheckEmployee(User user)
         {
             this.dataContext.Employees.Add(new Employee
             {
                 User = user
             });
             await this.dataContext.SaveChangesAsync();
-            await userHelper.AddUserToRoleAsync(user, rol);
         }
 
         public async Task CheckStatus(string name)

@@ -5,5 +5,7 @@
     public interface IImageHelper
     {
         Task<string> UploadImageAsync(IFormFile imageFile, string nameFile, string folder);
+        string GetProfilePath(string imagePath);
+        void DeleteImage(string imagePath);
     }
 }

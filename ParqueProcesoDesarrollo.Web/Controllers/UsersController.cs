@@ -1,14 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParqueProcesoDesarrollo.Web.Data;
 using ParqueProcesoDesarrollo.Web.Data.Entities;
 using ParqueProcesoDesarrollo.Web.Helpers;
 using ParqueProcesoDesarrollo.Web.Models;
+using System;
+using System.Threading.Tasks;
 
 
 namespace ParqueProcesoDesarrollo.Web.Controllers
@@ -26,12 +24,12 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             this.combosHelper = combosHelper;
             dataContext = context;
             this.imageHelper = imageHelper;
-            
+
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await dataContext.Users.ToListAsync());
+            return View(await dataContext.Users.Include(u => u.Role).ToListAsync());
         }
 
         public async Task<IActionResult> Details(string? id)
@@ -41,7 +39,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return NotFound();
             }
 
-            var cUser = await dataContext.Users.Include(b => b.Role).FirstOrDefaultAsync(m => m.Id == id);
+            var cUser = await dataContext.Users.Include(u => u.Role).FirstOrDefaultAsync(m => m.Id == id);
             if (cUser == null)
             {
                 return NotFound();
@@ -50,7 +48,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             return View(cUser);
         }
 
-        
+
         public async Task<IActionResult> Edit(string? id)
         {
             if (id == null)
@@ -58,7 +56,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return NotFound();
             }
 
-            var cUser = await dataContext.Users.Include(b => b.Role).FirstOrDefaultAsync(m => m.Id == id);
+            var cUser = await dataContext.Users.Include(u => u.Role).FirstOrDefaultAsync(m => m.Id == id);
             if (cUser == null)
             {
                 return NotFound();
@@ -89,14 +87,14 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             if (ModelState.IsValid)
             {
 
-                var cUser = await dataContext.Users.Include(b => b.Role).FirstOrDefaultAsync(m => m.Id == model.Id);
+                var cUser = await dataContext.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == model.Id);
 
                 cUser.FirstName = model.FirstName;
                 cUser.ParentalSurname = model.ParentalSurname;
                 cUser.MaternalSurname = model.MaternalSurname;
                 cUser.PhoneNumber = model.PhoneNumber;
                 cUser.RFC = model.RFC;
-                cUser.Email = model.Email;  
+                cUser.Email = model.Email;
                 cUser.UserName = model.Email;
                 cUser.HiringDate = model.HiringDate;
                 cUser.Salary = model.Salary;
@@ -111,7 +109,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 }
                 //await this.dataContext.SaveChangesAsync();
                 await userHelper.AddUserToRoleAsync(cUser, cUser.Role.Name);
-                
+
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
@@ -132,39 +130,27 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = await userHelper.GetUserByIdAsync(model.Id);
-                if (user == null)
+                user ??= new User
                 {
-                    user = new User
-                    {
-                        FirstName = model.FirstName,
-                        ParentalSurname = model.ParentalSurname,
-                        MaternalSurname = model.MaternalSurname,
-                        PhoneNumber = model.PhoneNumber,
-                        RFC = model.RFC,
-                        Email = model.Email,
-                        UserName = model.Email,
-                        HiringDate = model.HiringDate,
-                        Salary = model.Salary,
-                        ImageUrl = (model.ImageFile != null ? await imageHelper.UploadImageAsync(
-                        model.ImageFile, model.FirstName, "users") : string.Empty),
-                        Role = await this.dataContext.Roles.FindAsync(model.idRole)
-                    };
-                }
+                    FirstName = model.FirstName,
+                    ParentalSurname = model.ParentalSurname,
+                    MaternalSurname = model.MaternalSurname,
+                    PhoneNumber = model.PhoneNumber,
+                    RFC = model.RFC,
+                    Email = model.Email,
+                    UserName = model.Email,
+                    HiringDate = model.HiringDate,
+                    Salary = model.Salary,
+                    ImageUrl = model.ImageFile != null ? await imageHelper.UploadImageAsync(
+                        model.ImageFile, model.FirstName, "users") : string.Empty,
+                    Role = await this.dataContext.Roles.FindAsync(model.idRole)
+                };
                 var result = await userHelper.AddUserAsync(user, model.Pass);
                 if (result != IdentityResult.Success)
                 {
                     throw new InvalidOperationException("No se ha podido añadir el usuario");
                 }
                 await userHelper.AddUserToRoleAsync(user, user.Role.Name);
-                /*
-                var manager = new User
-                {
-                    Id = model.Id,
-                    User = await dataContext.Users.FindAsync(user.Id)
-                };
-                dataContext.Add(manager);
-                await dataContext.SaveChangesAsync();
-                */
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
@@ -179,7 +165,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
 
             var cUser = await dataContext.Users
                 .Include(b => b.Role)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(u => u.Id == id);
             if (cUser == null)
             {
                 return NotFound();

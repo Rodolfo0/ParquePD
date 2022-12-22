@@ -1,15 +1,12 @@
 ﻿
 namespace ParqueProcesoDesarrollo.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using ParqueProcesoDesarrollo.Web.Data;
     using ParqueProcesoDesarrollo.Web.Data.Entities;
     using ParqueProcesoDesarrollo.Web.Helpers;
     using ParqueProcesoDesarrollo.Web.Models;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.EntityFrameworkCore;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class ProvidersContactController : Controller
@@ -61,11 +58,17 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         }
 
 
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var model = new ProviderContactViewModel
             {
-                Providerses = this.combosHelper.GetComboProviders()
+                ProviderId = id.Value,
+                Statuses = this.combosHelper.GetComboStatus()
             };
             return View(model);
         }
@@ -85,15 +88,14 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Phone = model.Phone,
                     Post = model.Post,
                     BusinessHours = model.BusinessHours,
-
+                    Status = await _context.Statuses.FindAsync(model.StatusId),
                     Provider = await _context.Providers.FindAsync(model.ProviderId)
-                    //ProviderContacts = model.ProviderContacts
 
                 };
 
                 _context.Add(providercontact);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index2));
+                return RedirectToAction("Details", "Providers", new { id = model.ProviderId });
             }
             return View(model);
         }
@@ -108,6 +110,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
 
             var providercontact = await _context.ProviderContacts
                 .Include(p => p.Provider)
+                .Include(p => p.Status)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (providercontact == null)
@@ -124,14 +127,11 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 Phone = providercontact.Phone,
                 Post = providercontact.Post,
                 BusinessHours = providercontact.BusinessHours,
+                Provider = await this._context.Providers.FindAsync(providercontact.Provider.Id),
+                Status = await this._context.Statuses.FindAsync(providercontact.Status.Id),
                 ProviderId = providercontact.Provider.Id,
-                Providerses = this.combosHelper.GetComboProviders(),
-               
-                
-
-                //
-                //ProviderContacts = provider2.ProviderContacts
-
+                StatusId = providercontact.Status.Id,
+                Statuses = this.combosHelper.GetComboStatus()
 
             };
             return View(model);
@@ -153,7 +153,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Phone = model.Phone,
                     Post = model.Post,
                     BusinessHours = model.BusinessHours,
-
+                    Status = await _context.Statuses.FindAsync(model.StatusId),
                     Provider = await _context.Providers.FindAsync(model.ProviderId)
 
 
@@ -161,7 +161,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
 
                 _context.Update(providercontact);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index2));
+                return RedirectToAction("Details", "Providers", new { id = model.ProviderId } );
             }
 
             return View(model);
@@ -191,12 +191,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             var providerContact = await _context.ProviderContacts.FindAsync(id);
             _context.ProviderContacts.Remove(providerContact);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index2));
-        }
-
-        private bool CBrandExists(int id)
-        {
-            return _context.ProviderContacts.Any(e => e.Id == id);
+            return RedirectToAction("Details", "Providers", new { id = providerContact.Provider.Id });
         }
     }
 }

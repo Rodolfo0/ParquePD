@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using ParqueProcesoDesarrollo.Web.Controllers;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,6 +9,22 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/95642045a2.js" crossorigin="anonymous"></script>
+    <script>
+        $.ajax
+            (
+                {
+                    type: 'GET',
+                    url: '@Url.Action("GetPicture","Home")',
+                    dataType: 'text',
+                    success: function (image) {
+                        var imageContainer = document.getElementById("imageContainer");
+                        imageContainer.src = image;
+                        imageContainer = document.getElementById("imageConfig");
+                        imageContainer.src = image;
+                    }
+                }
+            );
+    </script>
     <link rel="stylesheet" href="~/css/normalize.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/style.css" />
@@ -38,7 +55,7 @@
                         <i class="fa-solid fa-cart-shopping"></i><span>Compras</span>
                     </a>
                 </li>
-                                <li>
+                <li>
                     <a class="navbar__link" asp-area="" asp-controller="TicketSales" asp-action="Index">
                         <i class="fa-solid fa-dollar-sign"></i><span>Ventas</span>
                     </a>
@@ -72,26 +89,22 @@
             <h2 class="nta-title nta-title-xs primary manager-header__title">@ViewData["Title"]</h2>
             @if (this.User.Identity.IsAuthenticated)
             {
+
                 <div class="manager-header__perfil" id="header-perfil">
                     <div class="manager-header__info">
-                    <img class="manager-header__info-img" ssrc="../wwwroot/images/users/rodo163ca458-76a8-4200-812e-1071e71285cb.png" alt="">
+                    <img class="manager-header__info-img" id="imageContainer" alt="">
                         <div>
                             <p>@this.User.Identity.Name</p>
                         </div>
                     </div>
                 </div>
-
-                
             }
             else
             {
                 <div class="manager-header__perfil">
-                    <div class="manager-header__info">
-                    <img class="manager-header__info-img" src="../wwwroot/images/users/rodo163ca458-76a8-4200-812e-1071e71285cb.png" alt="">
                         <div>
                             <h3><a asp-area="" asp-controller="Account" asp-action="Login">Iniciar Sesión</a></h3>
                         </div>
-                    </div>
                 </div>
             }
             
@@ -99,9 +112,8 @@
         @if (this.User.Identity.IsAuthenticated)
         {
             <div class="manager__profile" id="administrar-perfil">
-                    <img class="manager__profile-img" src="../wwwroot/images/users/rodo163ca458-76a8-4200-812e-1071e71285cb.png" alt="">
+            <img class="manager__profile-img" id="imageConfig" alt="">
                     <h3 class="manager__profile-user">@this.User.Identity.Name</h3>
-                    <a class="manager__profile-option" href="">Administrar perfil</a>
                     <a class="manager__profile-close" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar Sesión</a>
                 </div>
         }
@@ -111,13 +123,6 @@
             @RenderBody()
     </div>
 
-    <!--
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ParqueProcesoDesarrollo.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,51 +1,51 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.Provider
 
 @{
-    
+    ViewData["Title"] = "Proveedores";
 }
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Eliminar</h3>
+    </div>
 
-<h1>Delete</h1>
-
-<h3>¿Deseas elminiarlo?</h3>
-<div>
-    <h4>Provider</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl>
+        <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.SocialReason)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.SocialReason)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.RFC)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.RFC)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.Address)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.Phone)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.Phone)
         </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <div class="view__button-container">
+            <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Confirmar" class="nta-btn-danger" />
+        </div>
     </form>
 </div>

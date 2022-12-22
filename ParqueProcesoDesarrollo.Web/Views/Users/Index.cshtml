@@ -16,13 +16,19 @@
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th class="manager-table__header" scope="col">
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.ParentalSurname)
             </th>
             <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.MaternalSurname)
             </th>
             <th class="manager-table__header" scope="col">
-                Ver
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="manager-table__header" scope="col">
+                Rol Asignado
+            </th>
+            <th class="manager-table__header" scope="col">
+                Detalles
             </th>
             <th class="manager-table__header" scope="col">
                 Editar
@@ -40,14 +46,19 @@
                 <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.FirstName)>
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
-                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Email)>
-                    @Html.DisplayFor(modelItem => item.Email)
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.ParentalSurname)>
+                    @Html.DisplayFor(modelItem => item.ParentalSurname)
                 </td>
                 <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.MaternalSurname)>
                     @Html.DisplayFor(modelItem => item.MaternalSurname)
                 </td>
-
-                <td class="manager-table__data manager-table__option" data-label="Ver">
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Email)>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Role.Name)>
+                    @Html.DisplayFor(modelItem => item.Role.Name)
+                </td>
+                <td class="manager-table__data manager-table__option" data-label="Detalles">
                     <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
                 </td>
                 <td class="manager-table__data manager-table__option" data-label="Editar">

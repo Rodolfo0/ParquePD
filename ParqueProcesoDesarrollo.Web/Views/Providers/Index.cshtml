@@ -1,10 +1,5 @@
 ﻿@model IEnumerable<ParqueProcesoDesarrollo.Web.Data.Entities.Provider>
 
-@{
-  
-}
-
-
 <div class="manager-table__top">
     <h3 class="manager-table__caption">Proveedores</h3>
 
@@ -33,7 +28,15 @@
             <th class="manager-table__header" scope="col">
                 @Html.DisplayNameFor(model => model.Status.Name)
             </th>
-            <th></th>
+            <th class="manager-table__header" scope="col">
+                Detalles
+            </th>
+            <th class="manager-table__header" scope="col">
+                Editar
+            </th>
+            <th class="manager-table__header" scope="col">
+                Eliminar
+            </th>
         </tr>
     </thead>
     <tbody class="manager-table__body">
@@ -57,30 +60,18 @@
             <td class="manager-table__data" scope="row" data-label=@Html.DisplayNameFor(model => model.Status.Name)>
                 @Html.DisplayFor(modelItem => item.Status.Name)
             </td>
-            <td>
-
+            <td class="manager-table__data manager-table__option" data-label="Detalles">
+               <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
             </td>
-              <td class="manager-table__data manager-table__option" data-label="Ver">
-                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
-              </td>
-              <td class="manager-table__data manager-table__option" data-label="Editar">
-                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+            <td class="manager-table__data manager-table__option" data-label="Editar">
+               <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+            </td>
+            <td class="manager-table__data manager-table__option" data-label="Eliminar">
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
             </td>
           
         </tr>
 }
     </tbody>
 </table>
-<br />
-<br />
-<div class="manager-table__top">
-    <h3 class="manager-table__caption">Contactos</h3>
-
-</div>
-
- <div style="width:fit-content">
-       <a class="ripple" asp-area="" asp-controller="ProvidersContact" asp-action="Index2">
-            <img src="/images/providers/Contact.png" alt="Contacto Proveedor" style="width:250px; padding:33px">
-        </a>
- </div>
   

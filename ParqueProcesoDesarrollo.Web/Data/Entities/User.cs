@@ -26,7 +26,7 @@
         public override string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "{0} es obligatorio.")]
-        [MaxLength(14, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
+        [MaxLength(13, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         [Display(Name = "RFC")]
         public string RFC { get; set; }
 

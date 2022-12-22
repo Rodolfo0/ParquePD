@@ -43,6 +43,8 @@
 
         public Provider Provider { get; set; }
 
+        public Status Status { get; set; }
+
         [Display(Name = "Nombre Completo")]
         public string FullName { get { return this.Name +" "+ this.PaternalSurname +" "+ this.MaternalSurname; } }
     }

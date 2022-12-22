@@ -2,14 +2,12 @@
 
 namespace ParqueProcesoDesarrollo.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using ParqueProcesoDesarrollo.Web.Data;
     using ParqueProcesoDesarrollo.Web.Data.Entities;
     using ParqueProcesoDesarrollo.Web.Helpers;
     using ParqueProcesoDesarrollo.Web.Models;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -40,7 +38,9 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             }
 
             var provider = await _context.Providers
+                .Include(p => p.ProviderContacts)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (provider == null)
             {
                 return NotFound();
@@ -135,7 +135,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Email = model.Email,
                     Phone = model.Phone,
                     Status = await _context.Statuses.FindAsync(model.StatusId)
-                    
+
 
                 };
 

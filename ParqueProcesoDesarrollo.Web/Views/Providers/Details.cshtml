@@ -1,49 +1,100 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.Provider
 
 @{
-   
+    ViewData["Title"] = "Proveedores";
 }
-
-<h1>Detalles</h1>
-
-<div>
-    <h4>Provider</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-6">
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Proveedor</h3>
+</div>
+    <div class="view__container">
+    <dl>
+            <dt class="view__label">
             @Html.DisplayNameFor(model => model.SocialReason)
         </dt>
-        <dd class = "col-sm-6">
+            <dd class="view__data">
             @Html.DisplayFor(model => model.SocialReason)
         </dd>
-        <dt class = "col-sm-6">
+            <dt class="view__label">
             @Html.DisplayNameFor(model => model.RFC)
         </dt>
-        <dd class = "col-sm-6">
+            <dd class="view__data">
             @Html.DisplayFor(model => model.RFC)
         </dd>
-        <dt class = "col-sm-6">
+            <dt class="view__label">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-        <dd class = "col-sm-6">
+            <dd class="view__data">
             @Html.DisplayFor(model => model.Address)
         </dd>
-        <dt class = "col-sm-6">
+            <dt class="view__label">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-6">
+            <dd class="view__data">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-6">
+            <dt class="view__label">
             @Html.DisplayNameFor(model => model.Phone)
         </dt>
-        <dd class = "col-sm-6">
+            <dd class="view__data">
             @Html.DisplayFor(model => model.Phone)
         </dd>
-      
     </dl>
+    </div>
+
+    <table class="manager-table">
+        <thead class="manager-table__headers">
+            <tr class="manager-table__row">
+                <th class="manager-table__header" scope="col">
+                    Nombre Completo
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Correo Electrónico
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Teléfono
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Horario de Atención
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Editar
+                </th>
+                <th class="manager-table__header" scope="col">
+                    Eliminar
+                </th>
+            </tr>
+
+        </thead>
+        <tbody class="manager-table__body">
+            @foreach (var item in Model.ProviderContacts)
+            {
+                <tr class="manager-table__row">
+                    <td class="manager-table__data" scope="row">
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td class="manager-table__data" scope="row">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td class="manager-table__data" scope="row">
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td class="manager-table__data" scope="row">
+                        @Html.DisplayFor(modelItem => item.BusinessHours)
+                    </td>
+                    <td class="manager-table__data manager-table__option" data-label="Editar">
+                        <a asp-action="Edit" asp-controller="ProvidersContact" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+                    </td>
+                    <td class="manager-table__data manager-table__option" data-label="Eliminar">
+                        <a asp-action="Delete" asp-controller="ProvidersContact" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="view__button-container">
+    <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+    <a asp-action="Create" asp-controller="ProvidersContact" asp-route-id="@Model.Id" class="nta-btn-secondary">Persona de Contacto</a>
 </div>
+
