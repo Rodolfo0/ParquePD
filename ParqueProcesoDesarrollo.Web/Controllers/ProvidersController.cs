@@ -38,7 +38,8 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             }
 
             var provider = await _context.Providers
-                .Include(p => p.ProviderContacts)
+                .Include(p => p.ProviderContacts
+                   .Where(pc=>pc.Status.Name!="Inactivo"))
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (provider == null)
@@ -51,11 +52,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
 
         public IActionResult Create()
         {
-            var model = new ProviderViewModel
-            {
-                Statuses = this.combosHelper.GetComboStatus()
-            };
-            return View(model);
+            return View();
         }
 
         [HttpPost]
@@ -71,8 +68,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Address = model.Address,
                     Email = model.Email,
                     Phone = model.Phone,
-                    Status = await _context.Statuses.FindAsync(model.StatusId)
-                    //ProviderContacts = model.ProviderContacts
+                    Status = await _context.Statuses.FirstOrDefaultAsync(s => s.Name == "Activo")
 
                 };
 
@@ -110,10 +106,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 Phone = provider.Phone,
                 Status = provider.Status,
                 StatusId = provider.Status.Id,
-                Statuses = this.combosHelper.GetComboStatus(),
-
-                //
-                //ProviderContacts = provider2.ProviderContacts
+                Statuses = this.combosHelper.GetComboUserStatus(),
 
 
             };

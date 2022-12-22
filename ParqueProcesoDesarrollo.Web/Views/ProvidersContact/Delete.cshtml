@@ -1,63 +1,65 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Data.Entities.ProviderContact
 
 @{
-    
+    ViewData["Title"] = "Personas de Contacto";
 }
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Eliminar</h3>
+    </div>
 
-<h1>Delete</h1>
-
-<h3>¿Deseas elminiarlo?</h3>
-<div>
-    <h4>Provider</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <div class="view__container">
+    <dl>
+            <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+            <dt class ="view__label view__transparency">
             @Html.DisplayNameFor(model => model.PaternalSurname)
         </dt>
-        <dd class = "col-sm-10">
+            <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.PaternalSurname)
         </dd>
-          <dt class = "col-sm-2">
+            <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.MaternalSurname)
         </dt>
-        <dd class = "col-sm-10">
+            <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.MaternalSurname)
         </dd>
-        <dt class = "col-sm-2">
+            <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+            <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+            <dt class="view__label view__transparency">
             @Html.DisplayNameFor(model => model.Phone)
         </dt>
-        <dd class = "col-sm-10">
+            <dd class="view__data view__transparency">
             @Html.DisplayFor(model => model.Phone)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Post)
+            <dt class="view__label view__transparency">
+             @Html.DisplayNameFor(model => model.Post)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Post)
+            <dd class="view__data view__transparency">
+             @Html.DisplayFor(model => model.Post)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessHours)
+            <dt class="view__label view__transparency">
+             @Html.DisplayNameFor(model => model.BusinessHours)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BusinessHours)
+            <dd class="view__data view__transparency">
+             @Html.DisplayFor(model => model.BusinessHours)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
+    </div>
+    <form asp-action="DeleteConfirmed">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index2">Back to List</a>
+        <div class="view__button-container">
+            <a asp-action="Details" asp-controller="Providers" asp-route-id="@Model.Provider.Id" class="contacto__button nta-btn-common view__button">Regresar</a>
+            <input type="submit" value="Confirmar" class="nta-btn-danger" />
+        </div>
     </form>
 </div>
+

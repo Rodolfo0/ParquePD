@@ -245,5 +245,23 @@
 
             return list;
         }
+
+        public IEnumerable<SelectListItem> GetComboUserStatus()
+        {
+            var list = this.dataContext.Statuses
+                .Where(s => s.Name == "Activo" || s.Name == "Inactivo")
+                .Select(b => new SelectListItem
+            {
+                Text = b.Name,
+                Value = $"{b.Id}"
+            }).ToList();
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Selecciona un Estado",
+                Value = "0"
+            });
+
+            return list;
+        }
     }
 }

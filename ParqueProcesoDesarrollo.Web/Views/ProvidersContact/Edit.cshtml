@@ -1,65 +1,75 @@
 ﻿@model ParqueProcesoDesarrollo.Web.Models.ProviderContactViewModel
 
-<h1>Ingresa los nuevos datos</h1>
+@{
+    ViewData["Title"] = "Editar";
+}
 
+<div class="view">
+    <div class="manager-table__top">
+        <h3 class="manager-table__caption">Ingresa los nuevos datos</h3>
+    </div>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="ProviderId" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PaternalSurname" class="control-label"></label>
-                <input asp-for="PaternalSurname" class="form-control" />
-                <span asp-validation-for="PaternalSurname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaternalSurname" class="control-label"></label>
-                <input asp-for="MaternalSurname" class="form-control" />
-                <span asp-validation-for="MaternalSurname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-              <div class="form-group">
-                <label asp-for="Post" class="control-label"></label>
-                <input asp-for="Post" class="form-control" />
-                <span asp-validation-for="Post" class="text-danger"></span>
-            </div>
-              <div class="form-group">
-                <label asp-for="BusinessHours" class="control-label"></label>
-                <input asp-for="BusinessHours" class="form-control" />
-                <span asp-validation-for="BusinessHours" class="text-danger"></span>
-            </div>
-             <div class="form-group">
-                <label asp-for="StatusId" class="control-label"></label>
-                <select asp-for="StatusId" asp-items="Model.Statuses" class="form-control"></select>
-                <span asp-validation-for="Provider" class="text-danger"></span>
-            </div>
+            <div class="view__container">
+                <div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ProviderId" />
 
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" asp-route-id="@Model.ProviderId"/>
+                @if(!this.User.IsInRole("Admin"))
+                {
+                    <input type="hidden" asp-for="StatusId" />
+                }
+                    <label asp-for="Name" class="view__label"></label>
+                    <input asp-for="Name" class="view__input" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                    <label asp-for="PaternalSurname" class="view__label"></label>
+                    <input asp-for="PaternalSurname" class="view__input" />
+                    <span asp-validation-for="PaternalSurname" class="text-danger"></span>
+
+                    <label asp-for="MaternalSurname" class="view__label"></label>
+                    <input asp-for="MaternalSurname" class="view__input" />
+                    <span asp-validation-for="MaternalSurname" class="text-danger"></span>
+
+                    <label asp-for="Email" class="view__label"></label>
+                    <input asp-for="Email" class="view__input" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <label asp-for="Phone" class="view__label"></label>
+                    <input asp-for="Phone" class="view__input" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+
+                    <label asp-for="Post" class="view__label"></label>
+                    <input asp-for="Post" class="view__input" />
+                    <span asp-validation-for="Post" class="text-danger"></span>
+  
+                    <label asp-for="BusinessHours" class="view__label"></label>
+                    <input asp-for="BusinessHours" class="view__input" />
+                    <span asp-validation-for="BusinessHours" class="text-danger"></span>
+
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <label asp-for="StatusId" class="view__label"></label>
+                    <select asp-for="StatusId" asp-items="Model.Statuses" class="view__input"></select>
+                    <span asp-validation-for="StatusId" class="text-danger"></span>
+
+
+                    <div class="view__button-container">
+                        <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+                        <input type="submit" value="Guardar" class="nta-btn-secondary" />
+                    </div>
+                }
+                else
+                {
+                <div class="view__button-container">
+                    <a asp-action="Details" asp-controller="Providers" asp-route-id="@Model.ProviderId" class="contacto__button nta-btn-common view__button">Regresar</a>
+                    <input type="submit" value="Guardar" class="nta-btn-secondary" />
+                </div>
+                }
+            </div>
             </div>
         </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index2">Regresar</a>
 </div>
 
 @section Scripts {

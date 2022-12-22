@@ -23,6 +23,7 @@
         public async Task SeedAsync()
         {
             await dataContext.Database.EnsureCreatedAsync();
+            await userHelper.CheckRoleAsync("Admin");
             await userHelper.CheckRoleAsync("Gerente General");
             await userHelper.CheckRoleAsync("Gerente Administrativo");
             await userHelper.CheckRoleAsync("Gerente Compras");
@@ -50,12 +51,18 @@
 
             if (!this.dataContext.Employees.Any())
             {
-                var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
-                var role = await roleManager.FindByNameAsync("Gerente General");
+                var status = dataContext.Statuses.FirstOrDefault(s => s.Id == 1);
+                var role = await roleManager.FindByNameAsync("Admin");
+                var user = await CheckUser("Admin", "", "", "", "", "admin@gmail.com",
+                           DateTime.Now, 0, "", "12345", status, "Admin", role);
+                    
+                status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
+                role = await roleManager.FindByNameAsync("Gerente General");
 
-                var user = await CheckUser("Axel", "Rodríguez", "Pérez", "153689", "FAB245", "peraxe@gmail.com"
+                user = await CheckUser("Axel", "Rodríguez", "Pérez", "153689", "FAB245", "peraxe@gmail.com"
                     , DateTime.Now, 4500, null, "12345", status, "Gerente General", role);
                 await CheckEmployee(user);
+ 
 
                 role = await roleManager.FindByNameAsync("Gerente Administrativo");
                 user = await CheckUser("Alex", "Roque", "Bautista", "153689", "FAB845", "roqueba@gmail.com"
@@ -97,7 +104,9 @@
             if (!this.dataContext.ProviderContacts.Any())
             {
                 var provider = dataContext.Providers.FirstOrDefault(c => c.Id == 1);
-                await CheckProviderContact("Luis", "Ramírez", "Mendoza", "mendram@gmail.com", "2724683", provider, "Gerente de ventas", "Martes y jueves de 7-14 horas");
+                var status = dataContext.Statuses.FirstOrDefault(c => c.Id == 1);
+
+                await CheckProviderContact("Luis", "Ramírez", "Mendoza", "mendram@gmail.com", "2724683", provider, "Gerente de ventas", "Martes y jueves de 7-14 horas",status);
             }
 
             if (!this.dataContext.Supplies.Any())
@@ -259,30 +268,31 @@
                 await CheckVrEquipment("Vive", "HTC", DateTime.Today, status);
             }
 
-            //if (!this.dataContext.TicketSales.Any())
-            //{
-            //    var cashBox = this.dataContext.CashBoxes.FirstOrDefault(cb => cb.Id == 1);
-            //    var iva = this.dataContext.IvaTypes.FirstOrDefault(i => i.Id == 1);
-            //    var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "Emitida");
-            //    await CheckTicketSale(cashBox, DateTime.MinValue, iva, status);
-            //    await CheckTicketSale(cashBox, DateTime.Today, iva, status);
-            //    await CheckTicketSale(cashBox, new DateTime(2001, 01, 15), iva, status);
-            //}
+            if (!this.dataContext.TicketSales.Any())
+            {
+                var cashBox = this.dataContext.CashBoxes.FirstOrDefault(cb => cb.Id == 1);
+                var iva = this.dataContext.IvaTypes.FirstOrDefault(i => i.InterestRate == .16);
+                var status = this.dataContext.Statuses.FirstOrDefault(s => s.Name == "Emitida");
 
-            //if (!this.dataContext.WristbandsSaleDetail.Any())
-            //{
-            //    var type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 4);
-            //    var sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 1);
-            //    await CheckWrisbandSaleDetail(1.0, "Pepe Pecas", type, sale, 600.0);
+                await CheckTicketSale(cashBox, new DateTime(2022,08, 23), iva, status);
+                await CheckTicketSale(cashBox, DateTime.Today, iva, status);
+                await CheckTicketSale(cashBox, new DateTime(2021, 01, 15), iva, status);
+            }
 
-            //    type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 3);
-            //    sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 2);
-            //    await CheckWrisbandSaleDetail(1.0, "Rosa Sanchez", type, sale, 300.0);
+            if (!this.dataContext.WristbandsSaleDetail.Any())
+            {
+                var type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 4);
+                var sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 1);
+                await CheckWrisbandSaleDetail(1.0, "Pepe Pecas", type, sale, 600.0);
 
-            //    type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 4);
-            //    sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 3);
-            //    await CheckWrisbandSaleDetail(1.0, "Jose Manuel", type, sale, 600.0);
-            //}
+                type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 3);
+                sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 2);
+                await CheckWrisbandSaleDetail(1.0, "Rosa Sanchez", type, sale, 300.0);
+
+                type = this.dataContext.TypeOfWristbands.FirstOrDefault(t => t.Id == 4);
+                sale = this.dataContext.TicketSales.FirstOrDefault(t => t.Id == 3);
+                await CheckWrisbandSaleDetail(1.0, "Jose Manuel", type, sale, 600.0);
+            }
         }
 
         public async Task<User> CheckUser(string firstName, string parentalSurname, string maternalSurname, 
@@ -360,7 +370,7 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        public async Task CheckProviderContact(string name, string paternalSurname, string maternalSurname, string email, string phone, Provider provider, string post, string businessHours)
+        public async Task CheckProviderContact(string name, string paternalSurname, string maternalSurname, string email, string phone, Provider provider, string post, string businessHours, Status status)
         {
             this.dataContext.ProviderContacts.Add(new ProviderContact
             {
@@ -371,7 +381,8 @@
                 Phone = phone,
                 Provider = provider,
                 Post = post,
-                BusinessHours = businessHours
+                BusinessHours = businessHours,
+                Status = status
             });
             await this.dataContext.SaveChangesAsync();
         }

@@ -6,6 +6,7 @@
     public interface ICombosHelper
     {
         public IEnumerable<SelectListItem> GetComboRoles();
+        public IEnumerable<SelectListItem> GetComboUserStatus();
         public IEnumerable<SelectListItem> GetComboStatus();
         public IEnumerable<SelectListItem> GetComboProviders();
         public IEnumerable<SelectListItem> GetComboTypeOfPayments();

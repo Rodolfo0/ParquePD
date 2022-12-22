@@ -7,31 +7,37 @@
     <div class="manager-table__top">
         <h3 class="manager-table__caption">Ingresa los nuevos datos</h3>
     </div>
-
+    @if (this.User.IsInRole("Admin"))
+    {
         <form asp-action="Edit">
-        <div class="view__container">
+            <div class="view__container">
             <div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="SocialReason" />
+            <input type="hidden" asp-for="RFC" />
+            <input type="hidden" asp-for="Address" />
+            <input type="hidden" asp-for="Email" />
+            <input type="hidden" asp-for="Phone" />
 
                 <label asp-for="SocialReason" class="view__label"></label>
-                <input asp-for="SocialReason" class="view__input" />
+                <input asp-for="SocialReason" class="view__input" disabled />
                 <span asp-validation-for="SocialReason" class="text-danger"></span>
 
                 <label asp-for="RFC" class="view__label"></label>
-                <input asp-for="RFC" class="view__input" />
+                    <input asp-for="RFC" class="view__input" disabled />
                 <span asp-validation-for="RFC" class="text-danger"></span>
            
                 <label asp-for="Address" class="view__label"></label>
-                <input asp-for="Address" class="view__input" />
+                    <input asp-for="Address" class="view__input" disabled/>
                 <span asp-validation-for="Address" class="text-danger"></span>
 
                 <label asp-for="Email" class="view__label"></label>
-                <input asp-for="Email" class="view__input" />
+                    <input asp-for="Email" class="view__input" disabled />
                 <span asp-validation-for="Email" class="text-danger"></span>
   
                 <label asp-for="Phone" class="view__label"></label>
-                <input asp-for="Phone" class="view__input" />
+                    <input asp-for="Phone" class="view__input" disabled />
                 <span asp-validation-for="Phone" class="text-danger"></span>
 
                 <label asp-for="StatusId" class="view__label"></label>
@@ -44,6 +50,44 @@
             <input type="submit" value="Guardar" class="nta-btn-secondary" />
         </div>
         </form>
+    }
+    else
+    {
+        <form asp-action="Edit">
+            <div class="view__container">
+                <div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="StatusId" />
+
+                    <label asp-for="SocialReason" class="view__label"></label>
+                    <input asp-for="SocialReason" class="view__input" />
+                    <span asp-validation-for="SocialReason" class="text-danger"></span>
+
+                    <label asp-for="RFC" class="view__label"></label>
+                    <input asp-for="RFC" class="view__input" />
+                    <span asp-validation-for="RFC" class="text-danger"></span>
+
+                    <label asp-for="Address" class="view__label"></label>
+                    <input asp-for="Address" class="view__input" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+
+                    <label asp-for="Email" class="view__label"></label>
+                    <input asp-for="Email" class="view__input" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <label asp-for="Phone" class="view__label"></label>
+                    <input asp-for="Phone" class="view__input" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="view__button-container">
+                <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+                <input type="submit" value="Guardar" class="nta-btn-secondary" />
+            </div>
+        </form>
+    }
 </div>
 
 @section Scripts {

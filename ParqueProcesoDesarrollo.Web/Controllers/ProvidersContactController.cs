@@ -7,6 +7,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
     using ParqueProcesoDesarrollo.Web.Data.Entities;
     using ParqueProcesoDesarrollo.Web.Helpers;
     using ParqueProcesoDesarrollo.Web.Models;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class ProvidersContactController : Controller
@@ -14,29 +15,19 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         private readonly DataContext _context;
         private readonly ICombosHelper combosHelper;
 
+
         public ProvidersContactController(DataContext context, ICombosHelper combosHelper)
         {
             _context = context;
             this.combosHelper = combosHelper;
         }
 
-        //public async Task<IActionResult> Index(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var providerContacts = (await this._context.ProviderContacts.Include(p => p.Provider).Where(pc => pc.Id == id).ToListAsync());
-
-        //    return View(providerContacts);
-        //}
-
-        public async Task<IActionResult> Index2()
+        public IActionResult Index()
         {
-            return View(await _context.ProviderContacts
-                .Include(p => p.Provider)
-                .ToListAsync());
+            return View(this._context.ProviderContacts
+                .Include(pc => pc.Provider)
+                .Include(pc => pc.Status)
+                .ToList());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -68,7 +59,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             var model = new ProviderContactViewModel
             {
                 ProviderId = id.Value,
-                Statuses = this.combosHelper.GetComboStatus()
+                Statuses = this.combosHelper.GetComboUserStatus()
             };
             return View(model);
         }
@@ -88,7 +79,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Phone = model.Phone,
                     Post = model.Post,
                     BusinessHours = model.BusinessHours,
-                    Status = await _context.Statuses.FindAsync(model.StatusId),
+                    Status = await _context.Statuses.FirstOrDefaultAsync(s => s.Name == "Activo"),
                     Provider = await _context.Providers.FindAsync(model.ProviderId)
 
                 };
@@ -131,7 +122,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 Status = await this._context.Statuses.FindAsync(providercontact.Status.Id),
                 ProviderId = providercontact.Provider.Id,
                 StatusId = providercontact.Status.Id,
-                Statuses = this.combosHelper.GetComboStatus()
+                Statuses = this.combosHelper.GetComboUserStatus()
 
             };
             return View(model);
@@ -155,13 +146,17 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     BusinessHours = model.BusinessHours,
                     Status = await _context.Statuses.FindAsync(model.StatusId),
                     Provider = await _context.Providers.FindAsync(model.ProviderId)
-
-
                 };
 
                 _context.Update(providercontact);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", "Providers", new { id = model.ProviderId } );
+
+                if(this.User.IsInRole("Admin"))
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                
+                return RedirectToAction("Details", "Providers", new { id = model.ProviderId });
             }
 
             return View(model);
@@ -174,7 +169,9 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return NotFound();
             }
 
-            var providerContact = await _context.ProviderContacts
+            var providerContact = await _context
+                .ProviderContacts
+                .Include(pc => pc.Provider)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (providerContact == null)
             {
@@ -189,7 +186,9 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var providerContact = await _context.ProviderContacts.FindAsync(id);
-            _context.ProviderContacts.Remove(providerContact);
+            var status = await this._context.Statuses.FirstOrDefaultAsync(s => s.Name == "Inactivo");
+            providerContact.Status = status;
+            //_context.ProviderContacts.Remove(providerContact);
             await _context.SaveChangesAsync();
             return RedirectToAction("Details", "Providers", new { id = providerContact.Provider.Id });
         }

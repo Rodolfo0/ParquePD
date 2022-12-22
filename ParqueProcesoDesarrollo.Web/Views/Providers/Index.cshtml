@@ -34,9 +34,12 @@
             <th class="manager-table__header" scope="col">
                 Editar
             </th>
-            <th class="manager-table__header" scope="col">
-                Eliminar
-            </th>
+            @if (!this.User.IsInRole("Admin"))
+            {
+                <th class="manager-table__header" scope="col">
+                    Eliminar
+                </th>
+            }
         </tr>
     </thead>
     <tbody class="manager-table__body">
@@ -66,9 +69,12 @@
             <td class="manager-table__data manager-table__option" data-label="Editar">
                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
             </td>
-            <td class="manager-table__data manager-table__option" data-label="Eliminar">
-                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
-            </td>
+             @if (!this.User.IsInRole("Admin"))
+            {
+                    <td class="manager-table__data manager-table__option" data-label="Eliminar">
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+            }
           
         </tr>
 }
