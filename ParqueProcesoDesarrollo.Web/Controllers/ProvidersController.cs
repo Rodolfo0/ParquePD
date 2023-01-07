@@ -37,17 +37,33 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return NotFound();
             }
 
-            var provider = await _context.Providers
-                .Include(p => p.ProviderContacts
-                   .Where(pc=>pc.Status.Name!="Inactivo"))
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (provider == null)
+            if (this.User.IsInRole("Admin"))
             {
-                return NotFound();
-            }
+                var provider = await _context.Providers
+                    .Include(p => p.ProviderContacts)
+                    .ThenInclude(s => s.Status)
+                    .FirstOrDefaultAsync(m => m.Id == id);
 
-            return View(provider);
+                if (provider == null)
+                {
+                    return NotFound();
+                }
+
+                return View(provider);
+            }
+            else
+            {
+                var provider = await _context.Providers
+                    .Include(p => p.ProviderContacts
+                       .Where(pc => pc.Status.Name != "Inactivo"))
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                if (provider == null)
+                {
+                    return NotFound();
+                }
+
+                return View(provider);
+            }
         }
 
         public IActionResult Create()
@@ -128,7 +144,6 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                     Email = model.Email,
                     Phone = model.Phone,
                     Status = await _context.Statuses.FindAsync(model.StatusId)
-
 
                 };
 

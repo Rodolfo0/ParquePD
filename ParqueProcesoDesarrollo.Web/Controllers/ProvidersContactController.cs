@@ -38,6 +38,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
             }
 
             var providerContact = await _context.ProviderContacts
+                .Include(pc=>pc.Status)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (providerContact == null)
@@ -49,16 +50,16 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         }
 
 
-        public IActionResult Create(int? id)
+        public IActionResult Create(int? providerId)
         {
-            if (id == null)
+            if (providerId == null)
             {
                 return NotFound();
             }
 
             var model = new ProviderContactViewModel
             {
-                ProviderId = id.Value,
+                ProviderId = providerId.Value,
                 Statuses = this.combosHelper.GetComboUserStatus()
             };
             return View(model);
@@ -150,11 +151,6 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
 
                 _context.Update(providercontact);
                 await _context.SaveChangesAsync();
-
-                if(this.User.IsInRole("Admin"))
-                {
-                    return RedirectToAction(nameof(Index));
-                }
                 
                 return RedirectToAction("Details", "Providers", new { id = model.ProviderId });
             }
@@ -185,10 +181,9 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var providerContact = await _context.ProviderContacts.FindAsync(id);
+            var providerContact = await _context.ProviderContacts.Include(pc=>pc.Provider).FirstOrDefaultAsync(pc=>pc.Id==id);
             var status = await this._context.Statuses.FirstOrDefaultAsync(s => s.Name == "Inactivo");
             providerContact.Status = status;
-            //_context.ProviderContacts.Remove(providerContact);
             await _context.SaveChangesAsync();
             return RedirectToAction("Details", "Providers", new { id = providerContact.Provider.Id });
         }

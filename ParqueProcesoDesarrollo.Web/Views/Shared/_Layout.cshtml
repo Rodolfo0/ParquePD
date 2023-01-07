@@ -33,66 +33,6 @@
     <a href="#" class="navbar__toggle" id="navbar__toggle"><i class="fa-solid fa-bars"></i></a>
      @if (this.User.Identity.IsAuthenticated)
     {
-        @if(this.User.IsInRole("Admin"))
-        {
-            <nav class="navbar" id="navbar">
-                <ul class="navbar__menu" id="menu-list">
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="Home" asp-action="Index">
-                            <i class="fa-solid fa-house"></i><span>Inicio</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="Users" asp-action="Index">
-                            <i class="fa-solid fa-user"></i><span>Usuarios</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="Providers" asp-action="Index">
-                            <i class="fa-solid fa-boxes-packing"></i><span>Proveedores</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="ProvidersContact" asp-action="Index">
-                            <i class="fa-solid fa-address-book"></i><span>Personas de Contacto</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="PurchaseHeaders" asp-action="Index">
-                            <i class="fa-solid fa-cart-shopping"></i><span>Compras</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="navbar__link" asp-area="" asp-controller="TicketSales" asp-action="Index">
-                            <i class="fa-solid fa-dollar-sign"></i><span>Ventas</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="Services" asp-action="Index">
-                            <i class="fa-solid fa-bone"></i><span>Servicios</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="Maintenances" asp-action="Index">
-                            <i class="fa-solid fa-gears"></i><span>Mantenimientos</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="Supplies" asp-action="Index">
-                            <i class="fa-solid fa-box-open"></i><span>Consumibles</span>
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a class="navbar__link" asp-area="" asp-controller="SanitizedGames" asp-action="Index">
-                            <i class="fa-solid fa-spray-can-sparkles"></i><span>Juegos Sanitizados</span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="menu-bg"></div>
-            </nav>
-        }
-        else
-        {
     <nav class="navbar" id="navbar">
             <ul class="navbar__menu" id="menu-list">
                 <li class="navbar__item">
@@ -143,7 +83,7 @@
             </ul>
             <div class="menu-bg"></div>
         </nav>
-        }
+        
     }
     
         <div class="manager-header">

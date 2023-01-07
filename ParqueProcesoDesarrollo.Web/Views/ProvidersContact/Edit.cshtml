@@ -16,10 +16,76 @@
                 <input type="hidden" asp-for="Id" />
                 <input type="hidden" asp-for="ProviderId" />
 
-                @if(!this.User.IsInRole("Admin"))
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <input type="hidden" asp-for="Name" />
+                    <input type="hidden" asp-for="PaternalSurname" />
+                    <input type="hidden" asp-for="MaternalSurname" />
+                    <input type="hidden" asp-for="Email" />
+                    <input type="hidden" asp-for="Phone" />
+                    <input type="hidden" asp-for="Post" />
+                    <input type="hidden" asp-for="BusinessHours" />
+
+                    <div class="view__container">
+                        <dl>
+                            <dt class="view__label view__transparency">
+                                @Html.DisplayNameFor(model => model.Name)
+                            </dt>
+                            <dd class="view__data view__transparency">
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+                            <dt class="view__label view__transparency">
+                                @Html.DisplayNameFor(model => model.PaternalSurname)
+                            </dt>
+                            <dd class="view__data view__transparency">
+                                @Html.DisplayFor(model => model.PaternalSurname)
+                            </dd>
+                            <dt class="view__label view__transparency">
+                                @Html.DisplayNameFor(model => model.MaternalSurname)
+                            </dt>
+                            <dd class="view__data view__transparency">
+                                @Html.DisplayFor(model => model.MaternalSurname)
+                            </dd>
+                            <dt class="view__label view__transparency">
+                                @Html.DisplayNameFor(model => model.Email)
+                            </dt>
+                            <dd class="view__data view__transparency">
+                                @Html.DisplayFor(model => model.Email)
+                            </dd>
+                            <dt class="view__label view__transparency">
+                                @Html.DisplayNameFor(model => model.Phone)
+                            </dt>
+                            <dd class="view__data view__transparency">
+                                @Html.DisplayFor(model => model.Phone)
+                            </dd>
+                            <dt class="view__label view__transparency">
+                                @Html.DisplayNameFor(model => model.Post)
+                            </dt>
+                            <dd class="view__data view__transparency">
+                                @Html.DisplayFor(model => model.Post)
+                            </dd>
+                            <dt class="view__label view__transparency">
+                                @Html.DisplayNameFor(model => model.BusinessHours)
+                            </dt>
+                            <dd class="view__data view__transparency">
+                                @Html.DisplayFor(model => model.BusinessHours)
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <label asp-for="StatusId" class="view__label"></label>
+                    <select asp-for="StatusId" asp-items="Model.Statuses" class="view__input"></select>
+                    <span asp-validation-for="StatusId" class="text-danger"></span>
+
+                    <div class="view__button-container">
+                        <a asp-action="Details" asp-controller="Providers" asp-route-id="@Model.ProviderId" class="contacto__button nta-btn-common view__button">Regresar</a>
+                        <input type="submit" value="Guardar" class="nta-btn-secondary" />
+                    </div>
+                }
+                else
                 {
                     <input type="hidden" asp-for="StatusId" />
-                }
+
                     <label asp-for="Name" class="view__label"></label>
                     <input asp-for="Name" class="view__input" />
                     <span asp-validation-for="Name" class="text-danger"></span>
@@ -43,33 +109,19 @@
                     <label asp-for="Post" class="view__label"></label>
                     <input asp-for="Post" class="view__input" />
                     <span asp-validation-for="Post" class="text-danger"></span>
-  
+
                     <label asp-for="BusinessHours" class="view__label"></label>
                     <input asp-for="BusinessHours" class="view__input" />
                     <span asp-validation-for="BusinessHours" class="text-danger"></span>
 
-                @if (this.User.IsInRole("Admin"))
-                {
-                    <label asp-for="StatusId" class="view__label"></label>
-                    <select asp-for="StatusId" asp-items="Model.Statuses" class="view__input"></select>
-                    <span asp-validation-for="StatusId" class="text-danger"></span>
-
-
                     <div class="view__button-container">
-                        <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
+                        <a asp-action="Details" asp-controller="Providers" asp-route-id="@Model.ProviderId" class="contacto__button nta-btn-common view__button">Regresar</a>
                         <input type="submit" value="Guardar" class="nta-btn-secondary" />
                     </div>
                 }
-                else
-                {
-                <div class="view__button-container">
-                    <a asp-action="Details" asp-controller="Providers" asp-route-id="@Model.ProviderId" class="contacto__button nta-btn-common view__button">Regresar</a>
-                    <input type="submit" value="Guardar" class="nta-btn-secondary" />
-                </div>
-                }
             </div>
-            </div>
-        </form>
+        </div>
+    </form>
 </div>
 
 @section Scripts {

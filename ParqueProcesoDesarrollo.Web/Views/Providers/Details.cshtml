@@ -57,12 +57,21 @@
                 <th class="manager-table__header" scope="col">
                     Horario de Atención
                 </th>
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <th class="manager-table__header" scope="col">
+                        Estado
+                    </th>
+                }
                 <th class="manager-table__header" scope="col">
                     Editar
                 </th>
-                <th class="manager-table__header" scope="col">
-                    Eliminar
-                </th>
+                @if (!this.User.IsInRole("Admin"))
+                    {
+                        <th class="manager-table__header" scope="col">
+                            Eliminar
+                        </th>
+                    }
             </tr>
 
         </thead>
@@ -82,12 +91,21 @@
                     <td class="manager-table__data" scope="row">
                         @Html.DisplayFor(modelItem => item.BusinessHours)
                     </td>
+                    @if (this.User.IsInRole("Admin"))
+                    {
+                        <td class="manager-table__data" scope="row">
+                            @Html.DisplayFor(modelItem => item.Status.Name)
+                        </td>
+                    }
                     <td class="manager-table__data manager-table__option" data-label="Editar">
                         <a asp-action="Edit" asp-controller="ProvidersContact" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
                     </td>
-                    <td class="manager-table__data manager-table__option" data-label="Eliminar">
-                        <a asp-action="Delete" asp-controller="ProvidersContact" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
-                    </td>
+                    @if (!this.User.IsInRole("Admin"))
+                    {
+                        <td class="manager-table__data manager-table__option" data-label="Eliminar">
+                            <a asp-action="Delete" asp-controller="ProvidersContact" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
@@ -95,6 +113,9 @@
 </div>
 <div class="view__button-container">
     <a asp-action="Index" class="contacto__button nta-btn-common view__button">Regresar</a>
-    <a asp-action="Create" asp-controller="ProvidersContact" asp-route-id="@Model.Id" class="nta-btn-secondary">Persona de Contacto</a>
+                    @if (!this.User.IsInRole("Admin"))
+                    {
+    <a asp-action="Create" asp-controller="ProvidersContact" asp-route-providerId="@Model.Id" class="nta-btn-secondary">Persona de Contacto</a>
+                    }
 </div>
 
