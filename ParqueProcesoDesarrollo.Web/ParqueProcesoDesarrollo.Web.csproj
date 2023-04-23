@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\users\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ParqueProcesoDesarollo_Estacionamiento\ParqueProcesoDesarollo_Estacionamiento.csproj" />
   </ItemGroup>
 
 </Project>

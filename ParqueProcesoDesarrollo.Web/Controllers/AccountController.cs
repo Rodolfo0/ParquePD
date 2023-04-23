@@ -39,6 +39,7 @@ namespace ParqueProcesoDesarrollo.Web.Controllers
                 return this.View(model);
             }
 
+            this.ModelState.TryAddModelError(string.Empty, "Falló el LogIn");
             return this.View(model);
         }
 

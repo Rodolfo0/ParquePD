@@ -3,36 +3,40 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Acceder a Cuenta</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" >
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<link href="~/css/Login.css" type="text/css" rel="stylesheet"/>
 
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" type="email" />
-                <span asp-validation-for="Email" class="text-anger"></span>
-            </div>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-7">
+              <div class="card-body p-md-6 mx-md-5">
+                <form method="post">
+                  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                  <div class="form-outline mb-4">
+                                    <label asp-for="Email" class="view__label" for="form2Example11">Correo Electrónico*</label>
+                                    <input type="email" asp-for="Email" id="form2Example11" class="view__input"
+                      placeholder="Correo Electrónico" />
+                    
+                  </div>
 
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" type="password" />
-                <span asp-validation-for="Password" class="text-anger"></span>
-            </div>
+                  <div class="form-outline mb-4">
+                                    <label class="view__label" asp-for="Password" for="form2Example22">Contraseña*</label>
+                                    <input type="password" asp-for="Password" id="form2Example22" class="view__input" placeholder="Contraseña" />
+                  </div>
 
-            <div class="form-group">
-                <div class="form-check">
-                    <input asp-for="RememberMe" class="form-check-input" type="checkbox" />
-                    <label asp-for="RememberMe" class="form-check-label"></label>
-                </div>
-                <span asp-validation-for="RememberMe" class="text-anger"></span>
-            </div>
+                  <div class="view__button-container">
+                                    <input type="submit" value="Iniciar Sesión" class="nta-btn-secondary" />
+                   </div>
+                </form>
 
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+              </div>
             </div>
-        </form>
+              <div class="col-lg-5 d-flex align-items-center gradient-custom-2">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
