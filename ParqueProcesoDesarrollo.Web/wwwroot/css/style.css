@@ -13,12 +13,12 @@ html {
 }
 
 body {
-  font: "Montserrat";
-  background-image: url(../images/background.jpg);
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size:cover;
-  color: #363636;
+    font: "Montserrat";
+    background-color: #f1f1f1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #363636;
 }
 
 /* ================= Scrollbar ================= */

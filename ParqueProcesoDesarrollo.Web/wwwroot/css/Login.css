@@ -1,6 +1,7 @@
 ﻿
 .gradient-custom-2 {
     background-color: #253575;
+    align-items:center;
 }
 
 @media (min-width: 768px) {
